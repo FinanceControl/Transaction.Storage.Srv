@@ -11,9 +11,12 @@ public class Asset : EntityBase
 {
   private string name;
 
-  public static void BuildNew(string Name, short DecimalSize, int AssetTypeId)
+  public static Asset BuildNew(string Name, short DecimalSize, int AssetTypeId)
   {
-
+    return null;
+  }
+  protected Asset()
+  {
   }
   [MaxLength(50)]
   [Required]

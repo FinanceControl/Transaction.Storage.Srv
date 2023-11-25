@@ -17,7 +17,8 @@ public partial class AssetType : EntityBase
     else
       return Result.Invalid(result.AsErrors());    
   }
-  
+  protected AssetType(){
+  }
   protected AssetType(NewAssetTypeAddEvent newAssetTypeAddEvent){
     this.Name = newAssetTypeAddEvent.Name;
     this.IsInflationProtected = newAssetTypeAddEvent.IsInflationProtected;

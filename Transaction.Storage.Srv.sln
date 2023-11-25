@@ -3,21 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6FC3EF24-38B9-411F-B231-23613826C035}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30032F90-D4B5-4AEB-9F69-1410965AF697}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{4FD726B0-9120-441C-9FBA-38EFD352E2FF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{B8FFD0AA-8994-46C5-A735-EE3FD2605029}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.Asset.Test\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.csproj", "{5DA85347-5B92-42B9-83D1-360DA204AA8F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F17CBBE3-075B-4432-9A1A-6A41AF0687AB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{97614A0A-653D-444A-BAF8-A03DF8068418}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{57714EC3-4B8E-4AAB-9EC5-4C79E845E82F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.Asset.Test\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.csproj", "{CEA8A897-CD63-4293-943F-572F66FB23DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database", "src\Shared\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj", "{0ADC095E-3A62-4BFA-A26A-289F68451355}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BDC1B518-8969-4B89-95CA-5473284D84E3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{214360D6-D526-4496-9983-A70CE526CDFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database", "src\Shared\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj", "{76ED9737-EA4B-41F0-94AB-D889F0A482F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate", "src\App\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj", "{E7F236D9-549D-45CB-900C-B5480A9937F5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{0830D399-4688-4E3A-AB2F-D365FA86202B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate", "src\App\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj", "{740E386B-CCD3-4906-B713-9D493EDA9D79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{8F9EF81A-9988-4264-B5F6-1BB2E0F82CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Configurations.DataBase.Migrations.Factory", "src\Configurations\DataBase\Transaction.Storage.Srv.Configurations.DataBase.Migrations.Factory\Transaction.Storage.Srv.Configurations.DataBase.Migrations.Factory.csproj", "{855439E7-6EA9-41CC-9A47-A16E2F947827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Configurations.DataBase", "src\Configurations\DataBase\Transaction.Storage.Srv.Configurations.DataBase\Transaction.Storage.Srv.Configurations.DataBase.csproj", "{4C06590D-7C89-438E-92C3-5169FCBC4151}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{A077B25C-22DC-4071-B470-30B841A10BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.API.WebApi", "src\Api\Transaction.Storage.Srv.API.WebApi\Transaction.Storage.Srv.API.WebApi.csproj", "{BF02298A-7C26-4009-8B68-8A80BEDBCF4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,25 +40,43 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5DA85347-5B92-42B9-83D1-360DA204AA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DA85347-5B92-42B9-83D1-360DA204AA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DA85347-5B92-42B9-83D1-360DA204AA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DA85347-5B92-42B9-83D1-360DA204AA8F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0ADC095E-3A62-4BFA-A26A-289F68451355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0ADC095E-3A62-4BFA-A26A-289F68451355}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0ADC095E-3A62-4BFA-A26A-289F68451355}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0ADC095E-3A62-4BFA-A26A-289F68451355}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7F236D9-549D-45CB-900C-B5480A9937F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7F236D9-549D-45CB-900C-B5480A9937F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7F236D9-549D-45CB-900C-B5480A9937F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7F236D9-549D-45CB-900C-B5480A9937F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740E386B-CCD3-4906-B713-9D493EDA9D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740E386B-CCD3-4906-B713-9D493EDA9D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740E386B-CCD3-4906-B713-9D493EDA9D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740E386B-CCD3-4906-B713-9D493EDA9D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{855439E7-6EA9-41CC-9A47-A16E2F947827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{855439E7-6EA9-41CC-9A47-A16E2F947827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{855439E7-6EA9-41CC-9A47-A16E2F947827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{855439E7-6EA9-41CC-9A47-A16E2F947827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C06590D-7C89-438E-92C3-5169FCBC4151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C06590D-7C89-438E-92C3-5169FCBC4151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C06590D-7C89-438E-92C3-5169FCBC4151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C06590D-7C89-438E-92C3-5169FCBC4151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF02298A-7C26-4009-8B68-8A80BEDBCF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF02298A-7C26-4009-8B68-8A80BEDBCF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF02298A-7C26-4009-8B68-8A80BEDBCF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF02298A-7C26-4009-8B68-8A80BEDBCF4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4FD726B0-9120-441C-9FBA-38EFD352E2FF} = {6FC3EF24-38B9-411F-B231-23613826C035}
-		{5DA85347-5B92-42B9-83D1-360DA204AA8F} = {4FD726B0-9120-441C-9FBA-38EFD352E2FF}
-		{57714EC3-4B8E-4AAB-9EC5-4C79E845E82F} = {97614A0A-653D-444A-BAF8-A03DF8068418}
-		{0ADC095E-3A62-4BFA-A26A-289F68451355} = {57714EC3-4B8E-4AAB-9EC5-4C79E845E82F}
-		{214360D6-D526-4496-9983-A70CE526CDFF} = {97614A0A-653D-444A-BAF8-A03DF8068418}
-		{E7F236D9-549D-45CB-900C-B5480A9937F5} = {214360D6-D526-4496-9983-A70CE526CDFF}
+		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
+		{CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
+		{CEA8A897-CD63-4293-943F-572F66FB23DF} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
+		{BDC1B518-8969-4B89-95CA-5473284D84E3} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
+		{76ED9737-EA4B-41F0-94AB-D889F0A482F6} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
+		{0830D399-4688-4E3A-AB2F-D365FA86202B} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
+		{740E386B-CCD3-4906-B713-9D493EDA9D79} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
+		{8F9EF81A-9988-4264-B5F6-1BB2E0F82CB4} = {B8FFD0AA-8994-46C5-A735-EE3FD2605029}
+		{855439E7-6EA9-41CC-9A47-A16E2F947827} = {8F9EF81A-9988-4264-B5F6-1BB2E0F82CB4}
+		{4C06590D-7C89-438E-92C3-5169FCBC4151} = {8F9EF81A-9988-4264-B5F6-1BB2E0F82CB4}
+		{A077B25C-22DC-4071-B470-30B841A10BF7} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
+		{BF02298A-7C26-4009-8B68-8A80BEDBCF4C} = {A077B25C-22DC-4071-B470-30B841A10BF7}
 	EndGlobalSection
 EndGlobal
