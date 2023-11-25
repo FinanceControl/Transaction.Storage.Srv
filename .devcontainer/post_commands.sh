@@ -1,0 +1,1 @@
+dotnet build /workspaces/Transaction.Storage.Srv/Transaction.Storage.Srv.sln 
