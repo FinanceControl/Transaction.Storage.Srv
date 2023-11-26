@@ -1,12 +1,12 @@
 using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using Ardalis.Specification;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Mappers;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers;
 
@@ -33,7 +33,7 @@ public class AssetTypeController : ControllerBase
     var ent = await readRepository.GetByIdAsync(id, cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.ToDTO());
+    return Ok(ent.Adapt<AssetTypeDto>());
   }
 
   [HttpDelete("{id}")]

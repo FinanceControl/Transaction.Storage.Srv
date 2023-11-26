@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Data.Common;
 using Npgsql;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ardalis.GuardClauses;
 using Ardalis.Specification;
-
+using Microsoft.Extensions.Hosting;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase;
 

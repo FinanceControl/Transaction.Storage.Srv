@@ -1,11 +1,11 @@
 
 using Ardalis.Result.AspNetCore;
 using Ardalis.Specification;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Mappers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers;
@@ -33,16 +33,16 @@ public class AssetController : ControllerBase
     var ent = await readRepository.GetByIdAsync(id, cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.ToDTO());
+    return Ok(ent.Adapt<AssetTypeDto>());
   }
 
   [HttpDelete("{id}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AssetTypeDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())
+  public async Task<ActionResult<AssetTypeDto>> Delete([FromRoute] int id, CancellationToken cancellationToken = new())
   {
-    var eventDto = new AssetDeleteEvent() { Id = id, IsForced = isForced };
+    var eventDto = new AssetDeleteEvent() { Id = id };
     var result = await mediator.Send(eventDto, cancellationToken);
     return result.ToActionResult(this);
   }

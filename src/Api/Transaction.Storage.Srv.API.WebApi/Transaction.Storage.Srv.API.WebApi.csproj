@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\App\Transaction.Storage.Srv.App\Transaction.Storage.Srv.App.csproj" />
+    <ProjectReference Include="..\..\App\Transaction.Storage.Srv.App\Transaction.Storage.Srv.App.csproj" />    
   </ItemGroup>
 
 </Project>

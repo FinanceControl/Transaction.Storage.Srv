@@ -1,10 +1,9 @@
 using Ardalis.Result;
 using MediatR;
+using Transaction.Storage.Srv.Shared.Events;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 
-public class AssetTypeDeleteEvent : IRequest<Result>
+public class AssetTypeDeleteEvent : EntityWithRelationDeleteEvent
 {
-  public int Id { get; set; }
-  public bool IsForced { get; set; }
 }

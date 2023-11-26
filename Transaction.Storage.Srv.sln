@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{522D42
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database.Test", "test\Shared\Transcation.Storage.Srv.Shared.Database.Test\Transcation.Storage.Srv.Shared.Database.Test.csproj", "{E4DBCF71-9783-4542-B6FB-7D945DE848C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Events", "src\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj", "{00169B6E-673B-4CAA-9F22-BF31B747D2A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -109,5 +115,6 @@ Global
 		{5C56CBA8-8042-4753-BC37-927B26649F53} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
 		{522D4283-6CFD-4FA3-918F-60546E439E2C} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
 		{E4DBCF71-9783-4542-B6FB-7D945DE848C0} = {522D4283-6CFD-4FA3-918F-60546E439E2C}
+		{00169B6E-673B-4CAA-9F22-BF31B747D2A6} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
 	EndGlobalSection
 EndGlobal
