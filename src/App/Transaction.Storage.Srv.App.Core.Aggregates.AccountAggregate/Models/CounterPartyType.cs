@@ -15,10 +15,6 @@ public class CounterPartyType : EnumEntity<CounterPartyType.Enum>, ICounterParty
   {
   }
 
-  public CounterPartyType(string Name) : base(Name)
-  {
-  }
-
   public enum Enum
   {
     LegalEntity = 1,

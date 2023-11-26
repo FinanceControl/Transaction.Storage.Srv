@@ -11,6 +11,5 @@ public class CounterPartyTypeConfig : IEntityTypeConfiguration<CounterPartyType>
     {
       entityBuilder.HasData(new CounterPartyType(tf.EnumId));
     }
-    entityBuilder.Property(e => e.Name).HasMaxLength(CounterPartyType.NameLenght);
   }
 }

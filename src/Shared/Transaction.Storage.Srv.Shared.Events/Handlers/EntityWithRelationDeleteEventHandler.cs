@@ -1,10 +1,11 @@
 using Ardalis.Result;
 using Ardalis.Specification;
+using Mapster;
 using MediatR;
 using Transcation.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Shared.Events.Handlers;
-public class EntityDeleteEventHandler<TEvent, TEntity> : IRequestHandler<TEvent, Result> where TEntity : DomainEntity where TEvent : EntityDeleteEvent
+public class EntityDeleteEventHandler<TEvent, TEntity, TResult> : IRequestHandler<TEvent, Result<TResult>> where TEntity : DomainEntity where TEvent : EntityDeleteEvent<TResult>
 {
   private readonly IRepositoryBase<TEntity> assetRep;
 
@@ -17,7 +18,7 @@ public class EntityDeleteEventHandler<TEvent, TEntity> : IRequestHandler<TEvent,
     return Task.FromResult(Result.Success());
   }
 
-  public async Task<Result> Handle(TEvent request, CancellationToken cancellationToken)
+  public async Task<Result<TResult>> Handle(TEvent request, CancellationToken cancellationToken)
   {
     var assertType = await assetRep.GetByIdAsync(request.Id, cancellationToken);
     if (assertType is null)
@@ -31,6 +32,6 @@ public class EntityDeleteEventHandler<TEvent, TEntity> : IRequestHandler<TEvent,
     }
 
     await assetRep.DeleteAsync(assertType, cancellationToken);
-    return Result.Success();
+    return Result.Success(assertType.Adapt<TResult>());
   }
 }

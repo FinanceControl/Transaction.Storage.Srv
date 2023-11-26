@@ -5,10 +5,11 @@ using Ardalis.Result;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Specifications;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
-public class AssetTypeDeleteEventHandler : EntityDeleteEventHandler<AssetTypeDeleteEvent, AssetType>
+public class AssetTypeDeleteEventHandler : EntityDeleteEventHandler<AssetTypeDeleteEvent, AssetType, AssetTypeDto>
 {
   private readonly IRepositoryBase<Asset> assetRep;
 

@@ -8,6 +8,7 @@ public static class Application
   {
     Configurations.DataBase.Module.Register(sc);
     Core.Aggregates.AssetAggregate.Module.Register(sc);
+    Core.Aggregates.AccountAggregate.Module.Register(sc);
     return sc;
   }
 }

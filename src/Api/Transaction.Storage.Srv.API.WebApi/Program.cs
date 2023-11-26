@@ -1,3 +1,5 @@
+using System.Reflection;
+using Transaction.Storage.Srv.API.WebApi;
 using Transaction.Storage.Srv.App;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,16 +10,22 @@ builder.Services.InitApp();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.Init();
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.Init();
+    options.RoutePrefix = string.Empty;
+});
 
 app.UseHttpsRedirection();
 

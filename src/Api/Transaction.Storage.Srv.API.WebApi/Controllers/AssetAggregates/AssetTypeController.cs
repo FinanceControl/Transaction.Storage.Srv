@@ -11,7 +11,8 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 namespace Transaction.Storage.Srv.API.WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route($"api/{SwaggerGenOptionsInit.AssetAggregate}/[controller]")]
+[ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AssetAggregate)]
 public class AssetTypeController : ControllerBase
 {
   private readonly IMediator mediator;
@@ -37,7 +38,7 @@ public class AssetTypeController : ControllerBase
   }
 
   [HttpDelete("{id}")]
-  [ProducesResponseType(StatusCodes.Status200OK)]
+  [ProducesResponseType(typeof(AssetTypeDto), StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
   public async Task<ActionResult<AssetTypeDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())

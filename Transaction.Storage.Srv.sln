@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F17CBBE3-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.Asset.Test\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.csproj", "{CEA8A897-CD63-4293-943F-572F66FB23DF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BDC1B518-8969-4B89-95CA-5473284D84E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database", "src\Shared\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj", "{76ED9737-EA4B-41F0-94AB-D889F0A482F6}"
@@ -43,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Events", "src\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj", "{00169B6E-673B-4CAA-9F22-BF31B747D2A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.csproj", "{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,10 +52,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEA8A897-CD63-4293-943F-572F66FB23DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76ED9737-EA4B-41F0-94AB-D889F0A482F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -96,11 +92,14 @@ Global
 		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00169B6E-673B-4CAA-9F22-BF31B747D2A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
 		{CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
-		{CEA8A897-CD63-4293-943F-572F66FB23DF} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
 		{BDC1B518-8969-4B89-95CA-5473284D84E3} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
 		{76ED9737-EA4B-41F0-94AB-D889F0A482F6} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
 		{0830D399-4688-4E3A-AB2F-D365FA86202B} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -116,5 +115,6 @@ Global
 		{522D4283-6CFD-4FA3-918F-60546E439E2C} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
 		{E4DBCF71-9783-4542-B6FB-7D945DE848C0} = {522D4283-6CFD-4FA3-918F-60546E439E2C}
 		{00169B6E-673B-4CAA-9F22-BF31B747D2A6} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
+		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
 	EndGlobalSection
 EndGlobal

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Transaction.Storage.Srv.Configurations.DataBase;
@@ -11,9 +12,11 @@ using Transaction.Storage.Srv.Configurations.DataBase;
 namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231126052918_AddAccountAggregates")]
+    partial class AddAccountAggregates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,23 +107,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CounterPartyTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "LegalEntity"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Individual"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Storage"
-                        });
                 });
 
             modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.Asset", b =>
@@ -152,9 +138,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.HasIndex("AssetTypeId");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.ToTable("Assets");
                 });
 
@@ -184,9 +167,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("AssetTypes");
                 });

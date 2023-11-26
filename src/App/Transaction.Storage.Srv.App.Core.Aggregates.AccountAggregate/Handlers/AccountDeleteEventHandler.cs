@@ -10,7 +10,7 @@ using Transaction.Storage.Srv.Shared.Events.Handlers;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 
-public class AccountDeleteEventHandler : EntityDeleteEventHandler<AccountDeleteEvent, Account>
+public class AccountDeleteEventHandler : EntityDeleteEventHandler<AccountDeleteEvent, Account, AccountDto>
 {
   public AccountDeleteEventHandler(IRepositoryBase<Account> AccountRep) : base(AccountRep)
   {
