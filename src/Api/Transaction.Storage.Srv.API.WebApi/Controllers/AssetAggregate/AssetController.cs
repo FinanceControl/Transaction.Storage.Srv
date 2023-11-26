@@ -1,4 +1,4 @@
-using Ardalis.Result;
+
 using Ardalis.Result.AspNetCore;
 using Ardalis.Specification;
 using Mapster;
@@ -8,24 +8,24 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
-namespace Transaction.Storage.Srv.API.WebApi.Controllers;
+namespace Transaction.Storage.Srv.API.WebApi.Controllers.AssetAggregate;
 
 [ApiController]
 [Route($"api/{SwaggerGenOptionsInit.AssetAggregate}/[controller]")]
 [ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AssetAggregate)]
-public class AssetTypeController : ControllerBase
+public class AssetController : ControllerBase
 {
   private readonly IMediator mediator;
-  private readonly IReadRepositoryBase<AssetType> readRepository;
+  private readonly IReadRepositoryBase<Asset> readRepository;
 
-  public AssetTypeController(IMediator mediator, IReadRepositoryBase<AssetType> readRepository)
+  public AssetController(IMediator mediator, IReadRepositoryBase<Asset> readRepository)
   {
     this.mediator = mediator;
     this.readRepository = readRepository;
   }
 
   [HttpGet("{id}")]
-  [ProducesResponseType(typeof(AssetTypeDto), StatusCodes.Status200OK)]
+  [ProducesResponseType(typeof(AssetDto), StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
   public async Task<ActionResult<AssetTypeDto>> Get([FromRoute] int id,
@@ -38,20 +38,20 @@ public class AssetTypeController : ControllerBase
   }
 
   [HttpDelete("{id}")]
-  [ProducesResponseType(typeof(AssetTypeDto), StatusCodes.Status200OK)]
+  [ProducesResponseType(typeof(AssetDto), StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AssetTypeDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())
+  public async Task<ActionResult<AssetDto>> Delete([FromRoute] int id, CancellationToken cancellationToken = new())
   {
-    var eventDto = new AssetTypeDeleteEvent() { Id = id, IsForced = isForced };
+    var eventDto = new AssetDeleteEvent() { Id = id };
     var result = await mediator.Send(eventDto, cancellationToken);
     return result.ToActionResult(this);
   }
 
   [HttpPost()]
-  [ProducesResponseType(typeof(AssetTypeDto), StatusCodes.Status201Created)]
+  [ProducesResponseType(typeof(AssetDto), StatusCodes.Status201Created)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AssetTypeDto>> PostAsset([FromBody] AssetTypeAddEvent newAssetAddEvent,
+  public async Task<ActionResult<AssetDto>> PostAsset([FromBody] AssetAddEvent newAssetAddEvent,
       CancellationToken cancellationToken = new())
   {
     var result = await mediator.Send(newAssetAddEvent, cancellationToken);

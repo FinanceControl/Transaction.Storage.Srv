@@ -47,6 +47,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Configurations.DataBase.Test", "test\Configurations\Transaction.Storage.Srv.Configurations.DataBase.Test\Transaction.Storage.Srv.Configurations.DataBase.Test.csproj", "{05386E10-AD16-4986-9FC4-0575AE7F1D1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate", "src\App\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.csproj", "{EAF09D71-D7AF-4594-9BCD-85A93475786C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Test\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Test.csproj", "{7A84548A-79B8-4E43-AFE4-65464D1C9237}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +108,14 @@ Global
 		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF09D71-D7AF-4594-9BCD-85A93475786C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF09D71-D7AF-4594-9BCD-85A93475786C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF09D71-D7AF-4594-9BCD-85A93475786C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF09D71-D7AF-4594-9BCD-85A93475786C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A84548A-79B8-4E43-AFE4-65464D1C9237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A84548A-79B8-4E43-AFE4-65464D1C9237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A84548A-79B8-4E43-AFE4-65464D1C9237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A84548A-79B8-4E43-AFE4-65464D1C9237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -126,5 +138,7 @@ Global
 		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
 		{A73A3166-22EF-471B-AEBA-DC9FF00DB9E8} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
 		{05386E10-AD16-4986-9FC4-0575AE7F1D1F} = {A73A3166-22EF-471B-AEBA-DC9FF00DB9E8}
+		{EAF09D71-D7AF-4594-9BCD-85A93475786C} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
+		{7A84548A-79B8-4E43-AFE4-65464D1C9237} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
 	EndGlobalSection
 EndGlobal

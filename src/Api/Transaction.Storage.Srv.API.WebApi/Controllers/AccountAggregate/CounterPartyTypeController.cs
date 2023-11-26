@@ -7,10 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
-namespace Transaction.Storage.Srv.API.WebApi.Controllers;
+namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
 [ApiController]
 [Route($"api/{SwaggerGenOptionsInit.AccountAggregate}/[controller]")]

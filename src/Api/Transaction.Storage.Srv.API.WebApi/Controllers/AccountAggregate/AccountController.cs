@@ -8,7 +8,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 
-namespace Transaction.Storage.Srv.API.WebApi.Controllers;
+namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
 [ApiController]
 [Route($"api/{SwaggerGenOptionsInit.AccountAggregate}/[controller]")]

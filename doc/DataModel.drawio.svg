@@ -1,4 +1,4 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="431px" height="421px" viewBox="-0.5 -0.5 431 421" content="&lt;mxfile&gt;&lt;diagram id=&quot;UjO7hInVAmHwRB6BVGu7&quot; name=&quot;Page-1&quot;&gt;zZhNb6MwEIZ/DceuwDRkc0zTtHtZqVIi7fboxVOwBDYyToD99WuCzce6pVXTQE7xvB6HmYdhbHD8TVo+CpzFPzmBxEEuKR3/3kHIC9BC/dRKZRQXNUokKNFaJ+zoX9Ciq9UDJZAPHCXniaTZUAw5YxDKgYaF4MXQ7YUnw6tmOAJL2IU4sdVflMi4Ub8v3E7/ATSKzZU9V8+k2DhrIY8x4UVP8reOvxGcy2aUlhtIanqGS7Pu4Y3ZNjABTH5kgb4TuaxMbkBUqtrkQsY84gwn2069i2WaqElPDYGRdc1TmYTilDPSiA80MS6CHxiB+nKusuz4dMg5P4hQh6CLQWIRgfbyG6kOrrdM5/QIPAUpKuUgIMGSHof3CevbHbV+HRE10FBeB6RjOeLkoP/UQQFOM5VLomK7W+c5yHUUCYiwhHYukqdkg5PPH6FGUettIR8iKmIqYZfhE41CPUFD5G8SPIKQUI7S0bOmTvXjh261XXS17JkCjXt1HLjn8/S/nue+yuDamLZP/BRMA4vpXmCW41BSzmYng9wZ0XjozAZXUvm7RvVtoa1nDa4e35d9ozLGRZri0m6KwVxN0bv9BNVhzqObyD6mbMDsHEqr2Sh9ZnM9h9LoA/sOJTQXpeVY83riOb3KJuZPuWd6npX/BE1MBdlbVJvPbSkqo1t2si7b/FZ2wZp3gekrdmVV7DoMVU7zH+xuPG/Go523HC1TxtlV1eVI+/yvpt4tT0N9UJ/BVNuMa9XjhjMJ4gkLWV1fTU57/rPPxj04X/XmYNF4hdnHAd2gywFSZvdx4TTX+0bjb/8B&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="431px" height="421px" viewBox="-0.5 -0.5 431 421" content="&lt;mxfile&gt;&lt;diagram id=&quot;UjO7hInVAmHwRB6BVGu7&quot; name=&quot;Page-1&quot;&gt;zZhNj5swEIZ/DcetMCSkOWaz2e2l0kqJ1O7RxVOwZGxknAT662vC8CV2s22+yCme1+Mw8zCMDY6/TPIXTdP4u2IgHM9lueM/OZ5HprOJ/SmVApXA9Ssl0pyh1gpr/gdQdFHdcgZZz9EoJQxP+2KopITQ9DSqtdr33X4r0b9qSiMYCOuQiqH6gzMTV+rXqdvq34BHcX1l4uJMQmtnFLKYMrXvSP7K8ZdaKVONknwJoqRXc6nWPX8w2wSmQZp/WTDFMExR5wbMpoqm0iZWkZJUrFr1MTaJsJPEDkGyRcnTmozTRElWic9c1C5abSWD8nKutYbxYciZ2uoQQ/DwllIdAXphfZTBdZZhTi+gEjC6sA4aBDV8179PFG931Pi1ROwAobwPCGPZUbHFP3W8gCapzUXY2B4XWQZmEUUaImqgmYvMIdng4PNL21HUeA+Q9xHtY25gndIDjb19gvrIPyS4A20gP0oHZ+s6xcfPm6C9b2uZ1AUad+o4cM/n6V+e56ZI4d6YNk/8LZgGA6YbTWVGQ8OVHJ2M546IhnhnNricm58lqi9TtN4QXDl+yrtGURtXaYqzYVMMxmqKZHIC1X7ORzeRTcxlj9k5lOajUTplcz2H0tEH9hNK3liUZsea16vK+F02Mf+WeyYhg/xv0MRskJ1FpfnWlKI12mUH67rNbz4s2Ppd4PYVO//sCBOGNsP/OMRU/qPX+AMhIx4MyexokUsl76qqT2++NeReMY+3lbsXrualkgb0K9WmuL+Kvu3Zc3guvxjau3jnGeB98K6H15rtZ5HDXOfrkr/6Cw==&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
         <path d="M 220 260 L 220 187.71" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
@@ -90,13 +90,15 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 290px; margin-left: 1px;">
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                &lt;AccountAggregate&gt;
+                                <br/>
                                 Account
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="60" y="294" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Account
+                    &lt;AccountAggregate&gt;...
                 </text>
             </switch>
         </g>
@@ -109,13 +111,15 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 150px; margin-left: 1px;">
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                &lt;AccountAggregate&gt;
+                                <br/>
                                 ConterParty
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="60" y="154" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    ConterParty
+                    &lt;AccountAggregate&gt;...
                 </text>
             </switch>
         </g>
@@ -126,13 +130,15 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 30px; margin-left: 1px;">
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                &lt;AccountAggregate&gt;
+                                <br/>
                                 ConterPartyType
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="60" y="34" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    ConterPartyType
+                    &lt;AccountAggregate&gt;...
                 </text>
             </switch>
         </g>

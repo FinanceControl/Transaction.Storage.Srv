@@ -14,4 +14,6 @@ public partial class CounterParty : DomainEntity, ICounterPartyDto
   [Required]
   public int CounterPartyTypeId { get; private set; }
   public CounterPartyType CounterPartyType { get; private set; }
+
+  public ICollection<Account> Accounts { get; }
 }

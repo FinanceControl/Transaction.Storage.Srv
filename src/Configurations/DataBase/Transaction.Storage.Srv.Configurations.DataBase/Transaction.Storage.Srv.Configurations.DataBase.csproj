@@ -15,5 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj" />
     <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj" />
+    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.csproj" />
   </ItemGroup>
 </Project>
