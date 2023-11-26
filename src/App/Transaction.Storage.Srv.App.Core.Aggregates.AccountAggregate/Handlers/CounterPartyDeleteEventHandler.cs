@@ -24,6 +24,6 @@ public class CounterPartyDeleteEventHandler : EntityDeleteEventHandler<CounterPa
     var assets_exist = await _accountRep.AnyAsync(new AccountsOfCounterPartySpec(request.Id), cancellationToken);
     if (assets_exist)
       return Result.Conflict("Account for this CounterParty exist");
-    return Result.Success();
+    return await base.CheckDependency(request, cancellationToken);
   }
 }

@@ -21,6 +21,6 @@ public class AssetTypeDeleteEventHandler : EntityDeleteEventHandler<AssetTypeDel
     var assets_exist = await this.assetRep.AnyAsync(new AssetOfTypeSpec(request.Id), cancellationToken);
     if (assets_exist)
       return Result.Conflict("Asset for this type exist");
-    return Result.Success();
+    return await base.CheckDependency(request, cancellationToken);
   }
 }

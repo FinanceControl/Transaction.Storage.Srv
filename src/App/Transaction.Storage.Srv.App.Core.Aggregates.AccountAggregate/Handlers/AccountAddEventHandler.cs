@@ -5,30 +5,24 @@ using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.Shared.Events.Handlers;
+using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 
-public class AccountAddEventHandler : IRequestHandler<AccountAddEvent, Result<AccountDto>>
+public class AccountAddEventHandler : EntityAddEventHandler<AccountAddEvent, Account, AccountDto>
 {
   private readonly IReadRepositoryBase<CounterParty> _counterPartyRep;
-  private readonly IRepositoryBase<Account> _accountRep;
 
-  public AccountAddEventHandler(IReadRepositoryBase<CounterParty> AccountTypeRep, IRepositoryBase<Account> AccountRep)
+  public AccountAddEventHandler(IReadRepositoryBase<CounterParty> AccountTypeRep, IRepositoryBase<Account> AccountRep, IEntityFactory<AccountAddEvent, Account> entityFactory) : base(AccountRep, entityFactory)
   {
     this._counterPartyRep = AccountTypeRep;
-    this._accountRep = AccountRep;
   }
-  public async Task<Result<AccountDto>> Handle(AccountAddEvent request, CancellationToken cancellationToken)
+  protected override async Task<Result> CheckDependency(AccountAddEvent request, CancellationToken cancellationToken)
   {
     var cpt = await _counterPartyRep.GetByIdAsync(request.CounterPartyId, cancellationToken);
     if (cpt is null)
       return Result.NotFound("CounterPartyId doesn't exist");
-
-    var build_result = Account.BuildNew(request);
-    if (!build_result.IsSuccess)
-      return build_result.Map<Account, AccountDto>((at) => throw new ApplicationException("Unexpected result mapping"));
-
-    var new_Asset = await _accountRep.AddAsync(build_result.Value, cancellationToken);
-    return Result.Success(new_Asset.Adapt<AccountDto>());
+    return await base.CheckDependency(request, cancellationToken);
   }
 }

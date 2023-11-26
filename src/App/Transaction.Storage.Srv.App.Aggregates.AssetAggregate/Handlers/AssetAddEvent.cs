@@ -5,31 +5,24 @@ using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.Shared.Events.Handlers;
+using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
 
-public class AssetAddEventHandler : IRequestHandler<AssetAddEvent, Result<AssetDto>>
+public class AssetAddEventHandler : EntityAddEventHandler<AssetAddEvent, Asset, AssetDto>
 {
-  private readonly IRepositoryBase<Asset> repository;
   private readonly IReadRepositoryBase<AssetType> assetTypeRep;
 
-  public AssetAddEventHandler(IRepositoryBase<Asset> assetRep, IReadRepositoryBase<AssetType> assetTypeRep)
+  public AssetAddEventHandler(IRepositoryBase<Asset> assetRep, IReadRepositoryBase<AssetType> assetTypeRep, IEntityFactory<AssetAddEvent, Asset> entityFactory) : base(assetRep, entityFactory)
   {
-    this.repository = assetRep;
     this.assetTypeRep = assetTypeRep;
   }
-
-  public async Task<Result<AssetDto>> Handle(AssetAddEvent request, CancellationToken cancellationToken)
+  protected override async Task<Result> CheckDependency(AssetAddEvent request, CancellationToken cancellationToken)
   {
     var assetType = await assetTypeRep.GetByIdAsync(request.AssetTypeId, cancellationToken);
     if (assetType is null)
       return Result.NotFound("AssetTypeId doesn't exist");
-
-    var build_result = Asset.BuildNew(request);
-    if (!build_result.IsSuccess)
-      return build_result.Map<Asset, AssetDto>((at) => throw new ApplicationException("Unexpected result mapping"));
-
-    var new_Asset = await repository.AddAsync(build_result.Value, cancellationToken);
-    return Result.Success(new_Asset.Adapt<AssetDto>());
+    return await base.CheckDependency(request, cancellationToken);
   }
 }
