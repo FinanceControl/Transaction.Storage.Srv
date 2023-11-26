@@ -27,6 +27,7 @@ public partial class CounterParty
       {
         CounterPartyType = counterPartyType
       };
+
       var result = new Validator().Validate(new_assertType);
       if (result.IsValid)
         return Result.Success(new_assertType);

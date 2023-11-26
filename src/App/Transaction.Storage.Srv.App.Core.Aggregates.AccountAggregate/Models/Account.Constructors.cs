@@ -1,4 +1,5 @@
 
+using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
@@ -12,15 +13,27 @@ public partial class Account
 {
   public class Factory : IEntityFactory<AccountAddEvent, Account>
   {
+    private readonly IReadRepositoryBase<CounterParty> counterPartyRep;
 
-    public Task<Result<Account>> BuildAsync(AccountAddEvent source, CancellationToken cancellationToken = default)
+    public Factory(IReadRepositoryBase<CounterParty> counterPartyRep)
     {
-      var new_assertType = new Account(source);
+      this.counterPartyRep = counterPartyRep;
+    }
+    public async Task<Result<Account>> BuildAsync(AccountAddEvent source, CancellationToken cancellationToken = default)
+    {
+      var counterParty = await counterPartyRep.GetByIdAsync(source.CounterPartyId, cancellationToken);
+      Guard.Against.Null(counterParty);
+
+      var new_assertType = new Account(source)
+      {
+        CounterParty = counterParty
+      };
+
       var result = new Validator().Validate(new_assertType);
       if (result.IsValid)
-        return Task.FromResult(Result.Success(new_assertType));
+        return Result.Success(new_assertType);
       else
-        return Task.FromResult((Result<Account>)Result.Invalid(result.AsErrors()));
+        return (Result<Account>)Result.Invalid(result.AsErrors());
     }
   }
 
