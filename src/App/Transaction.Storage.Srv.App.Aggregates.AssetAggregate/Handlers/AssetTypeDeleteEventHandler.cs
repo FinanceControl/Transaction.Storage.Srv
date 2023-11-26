@@ -8,7 +8,7 @@ using Transaction.Storage.Srv.Shared.Events.Handlers;
 
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
-public class AssetTypeDeleteEventHandler : EntityWithRelationDeleteEventHandler<AssetTypeDeleteEvent, AssetType>
+public class AssetTypeDeleteEventHandler : EntityDeleteEventHandler<AssetTypeDeleteEvent, AssetType>
 {
   private readonly IRepositoryBase<Asset> assetRep;
 

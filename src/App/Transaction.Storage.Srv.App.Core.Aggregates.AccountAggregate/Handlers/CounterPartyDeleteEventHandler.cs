@@ -10,7 +10,7 @@ using Transaction.Storage.Srv.Shared.Events.Handlers;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 
-public class CounterPartyDeleteEventHandler : EntityWithRelationDeleteEventHandler<CounterPartyDeleteEvent, CounterParty>
+public class CounterPartyDeleteEventHandler : EntityDeleteEventHandler<CounterPartyDeleteEvent, CounterParty>
 {
   private readonly IReadRepositoryBase<Account> _accountRep;
 

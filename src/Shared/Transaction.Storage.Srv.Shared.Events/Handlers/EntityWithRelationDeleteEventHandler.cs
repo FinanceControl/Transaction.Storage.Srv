@@ -4,11 +4,11 @@ using MediatR;
 using Transcation.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Shared.Events.Handlers;
-public class EntityWithRelationDeleteEventHandler<TEvent, TEntity> : IRequestHandler<TEvent, Result> where TEntity : DomainEntity where TEvent : EntityWithRelationDeleteEvent
+public class EntityDeleteEventHandler<TEvent, TEntity> : IRequestHandler<TEvent, Result> where TEntity : DomainEntity where TEvent : EntityDeleteEvent
 {
   private readonly IRepositoryBase<TEntity> assetRep;
 
-  public EntityWithRelationDeleteEventHandler(IRepositoryBase<TEntity> repository)
+  public EntityDeleteEventHandler(IRepositoryBase<TEntity> repository)
   {
     assetRep = repository;
   }
