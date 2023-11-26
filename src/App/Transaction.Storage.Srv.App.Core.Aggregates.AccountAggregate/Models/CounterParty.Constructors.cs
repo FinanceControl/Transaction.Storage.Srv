@@ -1,4 +1,5 @@
 
+using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
@@ -11,9 +12,21 @@ public partial class CounterParty
 {
   public class Factory : IEntityFactory<CounterPartyAddEvent, CounterParty>
   {
-    public Result<CounterParty> Build(CounterPartyAddEvent assetAddEventDto)
+    private readonly IReadRepositoryBase<CounterPartyType> counterPartyTypeRep;
+
+    public Factory(IReadRepositoryBase<CounterPartyType> counterPartyTypeRep)
     {
-      var new_assertType = new CounterParty(assetAddEventDto);
+      this.counterPartyTypeRep = counterPartyTypeRep;
+    }
+    public async Task<Result<CounterParty>> BuildAsync(CounterPartyAddEvent source, CancellationToken cancellationToken = default)
+    {
+      var counterPartyType = await counterPartyTypeRep.GetByIdAsync(source.CounterPartyTypeId, cancellationToken);
+      Guard.Against.Null(counterPartyType);
+
+      var new_assertType = new CounterParty(source)
+      {
+        CounterPartyType = counterPartyType
+      };
       var result = new Validator().Validate(new_assertType);
       if (result.IsValid)
         return Result.Success(new_assertType);

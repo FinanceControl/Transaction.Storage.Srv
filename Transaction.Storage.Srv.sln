@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.csproj", "{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{A73A3166-22EF-471B-AEBA-DC9FF00DB9E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Configurations.DataBase.Test", "test\Configurations\Transaction.Storage.Srv.Configurations.DataBase.Test\Transaction.Storage.Srv.Configurations.DataBase.Test.csproj", "{05386E10-AD16-4986-9FC4-0575AE7F1D1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +100,10 @@ Global
 		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05386E10-AD16-4986-9FC4-0575AE7F1D1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -116,5 +124,7 @@ Global
 		{E4DBCF71-9783-4542-B6FB-7D945DE848C0} = {522D4283-6CFD-4FA3-918F-60546E439E2C}
 		{00169B6E-673B-4CAA-9F22-BF31B747D2A6} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
 		{2FB6D6B0-FACD-4F6F-AC2E-3E22174BBDCD} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
+		{A73A3166-22EF-471B-AEBA-DC9FF00DB9E8} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
+		{05386E10-AD16-4986-9FC4-0575AE7F1D1F} = {A73A3166-22EF-471B-AEBA-DC9FF00DB9E8}
 	EndGlobalSection
 EndGlobal

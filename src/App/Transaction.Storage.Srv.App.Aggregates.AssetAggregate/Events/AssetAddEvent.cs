@@ -8,7 +8,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 
 public class AssetAddEvent : IRequest<Result<AssetDto>>
 {
-  public string Name { get; private set; }
-  public short DecimalSize { get; private set; }
-  public int AssetTypeId { get; private set; }
+  public string Name { get; set; }
+  public short DecimalSize { get; set; }
+  public int AssetTypeId { get; set; }
 }

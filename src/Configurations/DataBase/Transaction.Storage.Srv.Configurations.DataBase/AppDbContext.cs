@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transcation.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase;
 
-public class AppDbContext : DbContext
+public partial class AppDbContext : DbContext
 {
   private readonly ILogger<AppDbContext> logger;
 
@@ -21,48 +22,33 @@ public class AppDbContext : DbContext
   public DbSet<CounterParty> CounterParties { get; set; }
   public DbSet<CounterPartyType> CounterPartyTypes { get; set; }
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  public override int SaveChanges()
   {
-    base.OnModelCreating(modelBuilder);
-    AutoUseConfig(modelBuilder);
+    OnBeforeSaving();
+    return base.SaveChanges();
   }
-  private void AutoUseConfig(ModelBuilder modelBuilder)
+  public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
   {
-    logger?.LogInformation("Auto Config entity");
-    IEnumerable<Assembly> usingAssemble = getUsingAssemblyList();
-
-    ApplyConfigFromAssemlies(modelBuilder, usingAssemble);
-    logger?.LogInformation("Auto Config entity - done");
+    OnBeforeSaving();
+    return await base.SaveChangesAsync(cancellationToken);
   }
-
-  private void ApplyConfigFromAssemlies(ModelBuilder modelBuilder, IEnumerable<Assembly> usingAssemble)
+  private void OnBeforeSaving()
   {
-    logger?.LogInformation("Apply config in assembly");
-    foreach (var assembly in usingAssemble)
+    var allEntites = ChangeTracker.Entries<DomainEntity>();
+    var entityTuples = ChangeTracker.Entries<DomainEntity>()
+       .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
+       .Select(e => new { state = e.State, entity = e.Entity })
+       .ToArray();
+    var currentTime = DateTimeOffset.UtcNow;
+
+    foreach (var entityTpl in entityTuples)
     {
-      modelBuilder.ApplyConfigurationsFromAssembly(assembly);
-    }
-    logger?.LogInformation("Apply config in assembly - done");
-  }
-
-  private IEnumerable<Assembly> getUsingAssemblyList()
-  {
-    logger?.LogInformation("Search assamblies");
-    HashSet<Assembly> usingAssemble = new HashSet<Assembly>();
-    foreach (var propInfo in this.GetType().GetProperties())
-    {
-      if (propInfo.PropertyType.IsGenericType
-            && propInfo.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>))
+      entityTpl.entity.UpdatedDateTime = currentTime;
+      if (entityTpl.state == EntityState.Added)
       {
-        var assamble = propInfo.PropertyType.GetGenericArguments()[0].Assembly;
-
-        if (!usingAssemble.Contains(assamble))
-        {
-          usingAssemble.Add(assamble);
-        }
+        entityTpl.entity.CreatedDateTime = currentTime;
       }
     }
-    logger?.LogInformation("Search assamblies - done");
-    return usingAssemble;
+
   }
 }

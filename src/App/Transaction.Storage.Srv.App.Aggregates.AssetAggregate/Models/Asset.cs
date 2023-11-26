@@ -10,7 +10,7 @@ public partial class Asset : DomainEntity,IAssetDto
   private const int NameMaxLenght = 50;
   [MaxLength(NameMaxLenght)]
   [Required]
-  public string Name { get; private set; }
+  public string Name { get; set; }
 
   [Display(Name = "Lenght of decimal part in int amount value")]
   [Range(0, short.MaxValue)]

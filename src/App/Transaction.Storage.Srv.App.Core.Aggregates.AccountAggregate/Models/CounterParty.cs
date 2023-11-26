@@ -9,7 +9,7 @@ public partial class CounterParty : DomainEntity, ICounterPartyDto
   private const int NameMaxLenght = 50;
 
   [MaxLength(NameMaxLenght)]
-  public string Name { get; private set; }
+  public string Name { get; set; }
 
   [Required]
   public int CounterPartyTypeId { get; private set; }

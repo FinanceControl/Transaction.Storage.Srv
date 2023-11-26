@@ -12,16 +12,18 @@ public partial class Account
 {
   public class Factory : IEntityFactory<AccountAddEvent, Account>
   {
-    public Result<Account> Build(AccountAddEvent assetAddEventDto)
+
+    public Task<Result<Account>> BuildAsync(AccountAddEvent source, CancellationToken cancellationToken = default)
     {
-      var new_assertType = new Account(assetAddEventDto);
+      var new_assertType = new Account(source);
       var result = new Validator().Validate(new_assertType);
       if (result.IsValid)
-        return Result.Success(new_assertType);
+        return Task.FromResult(Result.Success(new_assertType));
       else
-        return Result.Invalid(result.AsErrors());
+        return Task.FromResult((Result<Account>)Result.Invalid(result.AsErrors()));
     }
   }
+
   protected Account()
   {
   }

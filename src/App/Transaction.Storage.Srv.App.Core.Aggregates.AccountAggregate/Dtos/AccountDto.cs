@@ -10,9 +10,8 @@ public class AccountDto : IAccountDto
   public int CounterPartyId { get; set; }
 
   public bool IsUnderManagement { get; set; }
-  public DateTimeOffset CreatedDateTime { get; set; }
 
   public DateTimeOffset UpdatedDateTime { get; set; }
 
-
+  public DateTimeOffset CreatedDateTime { get; set; }
 }

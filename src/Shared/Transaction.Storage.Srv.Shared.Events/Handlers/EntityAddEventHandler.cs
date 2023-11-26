@@ -28,7 +28,7 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
       return check_dependency_result;
     }
 
-    var build_result = _entityFactory.Build(request);
+    var build_result = await _entityFactory.BuildAsync(request, cancellationToken);
     if (!build_result.IsSuccess)
       return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping"));
 
