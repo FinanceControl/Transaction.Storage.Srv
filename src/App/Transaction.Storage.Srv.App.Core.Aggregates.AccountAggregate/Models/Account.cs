@@ -3,7 +3,7 @@ using Transcation.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 
-public class AccountParty : DomainEntity
+public partial class Account : DomainEntity
 {
   private const int NameMaxLenght = 50;
 
@@ -15,8 +15,8 @@ public class AccountParty : DomainEntity
   public string Description { get; private set; }
 
   [Required]
-  public int CounterPartyId { get; set; }
-  public CounterParty CounterParty { get; set; }
+  public int CounterPartyId { get; private set; }
+  public CounterParty CounterParty { get; private set; }
 
   [Display(Name = "Are account controlled automatically")]
   public bool IsUnderManagement { get; private set; }
