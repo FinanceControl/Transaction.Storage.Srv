@@ -8,7 +8,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Model
 
 public partial class Position : DomainEntity, IPositionDto
 {
-  public int AccountId { get; private set; }
+  public int? AccountId { get; private set; }
   public Account? Account { get; private set; }
 
   public int Amount { get; set; }

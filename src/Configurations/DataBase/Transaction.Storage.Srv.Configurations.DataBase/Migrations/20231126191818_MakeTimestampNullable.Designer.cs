@@ -12,8 +12,8 @@ using Transaction.Storage.Srv.Configurations.DataBase;
 namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231126184810_Init")]
-    partial class Init
+    [Migration("20231126191818_MakeTimestampNullable")]
+    partial class MakeTimestampNullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -95,7 +94,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -171,7 +169,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -212,7 +209,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -232,6 +228,9 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTimeOffset?>("CommitDateTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTimeOffset>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -245,7 +244,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -282,7 +280,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -343,7 +340,7 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         .IsRequired();
 
                     b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", "Header")
-                        .WithMany()
+                        .WithMany("Positions")
                         .HasForeignKey("HeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -368,6 +365,11 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
             modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.AssetType", b =>
                 {
                     b.Navigation("Assets");
+                });
+
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", b =>
+                {
+                    b.Navigation("Positions");
                 });
 #pragma warning restore 612, 618
         }

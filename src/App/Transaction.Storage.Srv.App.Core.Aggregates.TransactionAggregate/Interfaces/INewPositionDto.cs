@@ -2,7 +2,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Inter
 
 public interface INewPositionDto
 {
-  public int AccountId { get; }
+  public int? AccountId { get; }
 
   public int Amount { get; }
 

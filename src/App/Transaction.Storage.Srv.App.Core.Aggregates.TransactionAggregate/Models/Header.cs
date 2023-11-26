@@ -10,8 +10,7 @@ public partial class Header : DomainEntity, IHeaderDto
   [MaxLength(DescriptionMaxLenght)]
   public string Description { get; private set; }
 
-  [Required]
-  public DateTimeOffset CommitDateTime { get; private set; }
+  public DateTimeOffset? CommitDateTime { get; private set; }
 
   public ICollection<Position> Positions { get; private set; }
 }

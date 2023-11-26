@@ -23,7 +23,7 @@ public abstract class DomainEntity : EntityBase, IDomainEntityDto
   public DateTimeOffset UpdatedDateTime { get; set; }
 
   [Timestamp]
-  public byte[] Version { get; set; }
+  public byte[]? Version { get; set; }
 
   private List<EventLogEntity> _domainEvents = new();
 

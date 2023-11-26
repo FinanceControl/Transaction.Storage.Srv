@@ -1,6 +1,7 @@
 
 using Ardalis.Result;
 using Ardalis.Specification;
+using Mapster;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
@@ -29,9 +30,12 @@ public class TransactionAddEventHandler : EntityAddEventHandler<TransactionAddEv
     List<string> errors = new List<string>();
     foreach (var pos in request.Positions)
     {
-      var acc = await _accountReadRep.GetByIdAsync(pos.AccountId, cancellationToken);
-      if (acc is null)
-        errors.Add($"AccountId {pos.AccountId} doesn't exist");
+      if (pos.AccountId != null)
+      {
+        var acc = await _accountReadRep.GetByIdAsync((int)pos.AccountId, cancellationToken);
+        if (acc is null)
+          errors.Add($"AccountId {pos.AccountId} doesn't exist");
+      }
 
       var asset = await _assetReadRep.GetByIdAsync(pos.AssetId, cancellationToken);
       if (asset is null)
@@ -43,5 +47,14 @@ public class TransactionAddEventHandler : EntityAddEventHandler<TransactionAddEv
       return Result.NotFound(errors.ToArray());
 
     return await base.CheckDependency(request, cancellationToken);
+  }
+
+  protected override Task<TransactionDto> ToResult(Header entity)
+  {
+    return Task.FromResult(new TransactionDto()
+    {
+      Header = entity.Adapt<HeaderDto>(),
+      Positions = entity.Positions.Select(p => p.Adapt<PositionDto>()).ToList()
+    });
   }
 }

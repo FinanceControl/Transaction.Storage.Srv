@@ -25,7 +25,7 @@ public partial class Position
     public async Task<Result<Position>> BuildAsync(INewPositionDto source, CancellationToken cancellationToken = default)
     {
       var asset = await assetRep.GetByIdAsync(source.AssetId, cancellationToken);
-      var account = await accountRep.GetByIdAsync(source.AccountId, cancellationToken);
+      var account = source.AccountId != null ? await accountRep.GetByIdAsync((int)source.AccountId, cancellationToken) : null;
 
       Guard.Against.Null(asset);
 
@@ -52,6 +52,5 @@ public partial class Position
     AssetId = newPositionDto.AssetId;
     AccountId = newPositionDto.AccountId;
     Amount = newPositionDto.Amount;
-
   }
 }

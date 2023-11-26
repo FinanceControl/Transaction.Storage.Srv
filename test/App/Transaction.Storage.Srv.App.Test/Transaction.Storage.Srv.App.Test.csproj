@@ -20,6 +20,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Divergic.Logging.Xunit" Version="4.3.0" />
+    <PackageReference Include="NSubstitute" Version="5.1.0" />
   </ItemGroup>
 
-</Project>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\App\Transaction.Storage.Srv.App\Transaction.Storage.Srv.App.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="./appsettings.test.json">
+     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>  

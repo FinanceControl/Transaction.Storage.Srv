@@ -21,6 +21,7 @@ public partial class AssetType
   }
   protected AssetType()
   {
+
   }
   protected AssetType(AssetTypeAddEvent newAssetTypeAddEvent)
   {

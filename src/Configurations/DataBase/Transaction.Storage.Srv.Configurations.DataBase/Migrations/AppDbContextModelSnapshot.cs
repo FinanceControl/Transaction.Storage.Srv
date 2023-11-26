@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Transaction.Storage.Srv.Configurations.DataBase;
@@ -12,11 +11,9 @@ using Transaction.Storage.Srv.Configurations.DataBase;
 namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231126182341_RemovePositionFromHeadre")]
-    partial class RemovePositionFromHeadre
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +54,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -95,7 +91,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -171,7 +166,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -212,7 +206,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -232,6 +225,9 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTimeOffset?>("CommitDateTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTimeOffset>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -245,7 +241,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -282,7 +277,6 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea");
 
@@ -343,7 +337,7 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         .IsRequired();
 
                     b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", "Header")
-                        .WithMany()
+                        .WithMany("Positions")
                         .HasForeignKey("HeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -368,6 +362,11 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
             modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.AssetType", b =>
                 {
                     b.Navigation("Assets");
+                });
+
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", b =>
+                {
+                    b.Navigation("Positions");
                 });
 #pragma warning restore 612, 618
         }

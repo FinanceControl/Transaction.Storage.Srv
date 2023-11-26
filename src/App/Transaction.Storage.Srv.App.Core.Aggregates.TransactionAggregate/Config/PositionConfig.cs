@@ -7,11 +7,11 @@ public class PositionConfig : IEntityTypeConfiguration<Position>
 {
   public void Configure(EntityTypeBuilder<Position> entityBuilder)
   {
-    entityBuilder
-      .HasOne(e => e.Header)
-      .WithMany(e => e.Positions)
-      .HasForeignKey(e => e.HeaderId)
-      .IsRequired();
+    //entityBuilder
+    //  .HasOne(e => e.Header)
+    //  .WithMany(e => e.Positions)
+    //  .HasForeignKey(e => e.HeaderId)
+    //  .IsRequired();
       
     entityBuilder
       .HasOne(e => e.Account)
@@ -21,6 +21,7 @@ public class PositionConfig : IEntityTypeConfiguration<Position>
     entityBuilder
       .HasOne(e => e.Asset)
       .WithMany()
-      .HasForeignKey(e => e.AssetId);
+      .HasForeignKey(e => e.AssetId)
+      .IsRequired();
   }
 }

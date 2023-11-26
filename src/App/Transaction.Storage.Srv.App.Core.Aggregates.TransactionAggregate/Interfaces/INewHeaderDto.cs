@@ -4,5 +4,5 @@ public interface INewHeaderDto
 {
   public string Description { get; }
 
-  public DateTimeOffset CommitDateTime { get; }
+  public DateTimeOffset? CommitDateTime { get; }
 }

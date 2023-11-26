@@ -6,5 +6,5 @@ public class NewHeaderDto : INewHeaderDto
 {
   public string Description { get; set; }
 
-  public DateTimeOffset CommitDateTime { get; set; }
+  public DateTimeOffset? CommitDateTime { get; set; }
 }

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
@@ -22,10 +23,13 @@ public partial class Header
     {
 
       List<Position> newPosList = new List<Position>();
+
       foreach (var pos in source.Positions)
       {
         var newPos = await posFactory.BuildAsync(pos, cancellationToken);
-        newPosList.Add(newPos);
+        Guard.Against.Null(newPos.Value);
+
+        newPosList.Add(newPos.Value);
       }
 
       var newHeader = new Header(source.Header)
@@ -50,6 +54,5 @@ public partial class Header
   {
     Description = newHeaderDto.Description;
     CommitDateTime = newHeaderDto.CommitDateTime;
-
   }
 }

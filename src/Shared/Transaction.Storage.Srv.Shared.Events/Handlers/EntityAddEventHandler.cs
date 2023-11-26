@@ -10,11 +10,13 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
 {
   private readonly IRepositoryBase<TEntity> _repository;
   private readonly IEntityFactory<TEvent, TEntity> _entityFactory;
+  private readonly ISpecification<TEntity, TResult>? specification;
 
   public EntityAddEventHandler(IRepositoryBase<TEntity> entityRep, IEntityFactory<TEvent, TEntity> entityFactory)
   {
     this._repository = entityRep;
     this._entityFactory = entityFactory;
+    this.specification = specification;
   }
   protected virtual Task<Result> CheckDependency(TEvent request, CancellationToken cancellationToken)
   {
@@ -33,6 +35,12 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
       return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping"));
 
     var new_Asset = await _repository.AddAsync(build_result.Value, cancellationToken);
-    return Result.Success(new_Asset.Adapt<TResult>());
+
+    return Result.Success(await ToResult(new_Asset));
+  }
+
+  protected virtual Task<TResult> ToResult(TEntity entity)
+  {
+    return Task.FromResult(entity.Adapt<TResult>());
   }
 }
