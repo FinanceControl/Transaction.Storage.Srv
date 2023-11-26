@@ -6,9 +6,9 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 
-public class NewAssetTypeAddEvent : IRequest<Result<AssetTypeDto>>
+public class AssetAddEvent : IRequest<Result<AssetDto>>
 {
-  public string Name { get; set; }
-  public bool IsInflationProtected { get; set; }
-  public bool IsUnderManagement { get; set; }
+  public string Name { get; private set; }
+  public short DecimalSize { get; private set; }
+  public int AssetTypeId { get; private set; }
 }

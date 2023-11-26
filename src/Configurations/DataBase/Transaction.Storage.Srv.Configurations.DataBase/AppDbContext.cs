@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
-namespace Transaction.Storage.Srv.Configuration.DataBase;
+namespace Transaction.Storage.Srv.Configurations.DataBase;
 
 public class AppDbContext : DbContext
 {

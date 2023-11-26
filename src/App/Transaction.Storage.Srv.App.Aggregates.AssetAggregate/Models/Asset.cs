@@ -6,28 +6,12 @@ using Transcation.Storage.Srv.Shared.Database;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
-[Index(nameof(Name), IsUnique = true)]
-public class Asset : EntityBase
+public partial class Asset : DomainEntity
 {
-  private string name;
 
-  public static Asset BuildNew(string Name, short DecimalSize, int AssetTypeId)
-  {
-    return null;
-  }
-  protected Asset()
-  {
-  }
   [MaxLength(50)]
   [Required]
-  public string Name
-  {
-    get => name; 
-    private set {
-
-      name = value;
-    }
-  }
+  public string Name { get; private set; }
 
   [Display(Name = "Lenght of decimal part in int amount value")]
   [Range(0, short.MaxValue)]

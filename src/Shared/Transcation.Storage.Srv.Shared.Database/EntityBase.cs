@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace Transcation.Storage.Srv.Shared.Database;
@@ -13,13 +12,4 @@ public abstract class EntityBase
 
   [Required]
   public DateTimeOffset UpdatedDateTime { get; private set; }
-
-
-  private List<EventLogEntity> _domainEvents = new();
-  [NotMapped]
-  public IEnumerable<EventLogEntity> DomainEvents => _domainEvents.AsReadOnly();
-
-  protected void RegisterDomainEvent(EventLogEntity domainEvent) => _domainEvents.Add(domainEvent);
-
-  internal void ClearDomainEvents() => _domainEvents.Clear();
 }

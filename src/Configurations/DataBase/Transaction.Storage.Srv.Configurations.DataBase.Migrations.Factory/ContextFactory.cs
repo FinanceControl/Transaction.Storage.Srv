@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-namespace Transaction.Storage.Srv.Configuration.DataBase.Migrations.Factory;
+namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations.Factory;
 
 
 public class ContextFactory : IDesignTimeDbContextFactory<AppDbContext>

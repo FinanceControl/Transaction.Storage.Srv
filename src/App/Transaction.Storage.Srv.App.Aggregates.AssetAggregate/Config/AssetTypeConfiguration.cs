@@ -3,16 +3,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Config;
-public class AssetConfiguration : IEntityTypeConfiguration<Asset>
+public class AssetTypeConfiguration : IEntityTypeConfiguration<AssetType>
 {
-  public void Configure(EntityTypeBuilder<Asset> builder)
+  public void Configure(EntityTypeBuilder<AssetType> builder)
   {
-    builder
-      .HasOne(e=>e.AssetType)
-      .WithMany(e=>e.Assets)
-      .HasForeignKey(e=>e.AssetTypeId)
-      .OnDelete(DeleteBehavior.Cascade)
-      .IsRequired();;
     builder.HasIndex(e => e.Name).IsUnique();
   }
 }
