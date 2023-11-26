@@ -1,9 +1,9 @@
 using Ardalis.Result;
 using Ardalis.Specification;
+using Mapster;
 using MediatR;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dto;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Mappers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
@@ -30,6 +30,6 @@ public class AssetAddEventHandler : IRequestHandler<AssetAddEvent, Result<AssetD
       return build_result.Map<Asset, AssetDto>((at) => throw new ApplicationException("Unexpected result mapping"));
 
     var new_Asset = await repository.AddAsync(build_result.Value, cancellationToken);
-    return Result.Success(new_Asset.ToDTO());
+    return Result.Success(new_Asset.Adapt<AssetDto>());
   }
 }

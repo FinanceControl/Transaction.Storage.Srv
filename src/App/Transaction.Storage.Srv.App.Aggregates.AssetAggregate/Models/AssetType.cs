@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
-using Transcation.Storage.Srv.Shared.Database;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
+using Transcation.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
-public partial class AssetType : DomainEntity
+public partial class AssetType : DomainEntity, IAssetTypeDto
 {
-  [MaxLength(50)]
+  private const int NameMaxLenght = 50;
+  [MaxLength(NameMaxLenght)]
   public string Name { get; private set; }
 
   [Display(Name = "Are assets protected against inflation")]

@@ -33,6 +33,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.API
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App", "src\App\Transaction.Storage.Srv.App\Transaction.Storage.Srv.App.csproj", "{C3F16DF2-CA01-4EE8-9F4A-A8FE1D45A326}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate", "src\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj", "{9F6A778D-33A3-4487-8343-7070A309738E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Validators", "src\Shared\Transaction.Storage.Srv.Shared.Validators\Transaction.Storage.Srv.Shared.Validators.csproj", "{5C56CBA8-8042-4753-BC37-927B26649F53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{522D4283-6CFD-4FA3-918F-60546E439E2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database.Test", "test\Shared\Transcation.Storage.Srv.Shared.Database.Test\Transcation.Storage.Srv.Shared.Database.Test.csproj", "{E4DBCF71-9783-4542-B6FB-7D945DE848C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +78,18 @@ Global
 		{C3F16DF2-CA01-4EE8-9F4A-A8FE1D45A326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3F16DF2-CA01-4EE8-9F4A-A8FE1D45A326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3F16DF2-CA01-4EE8-9F4A-A8FE1D45A326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F6A778D-33A3-4487-8343-7070A309738E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6A778D-33A3-4487-8343-7070A309738E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F6A778D-33A3-4487-8343-7070A309738E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F6A778D-33A3-4487-8343-7070A309738E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C56CBA8-8042-4753-BC37-927B26649F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C56CBA8-8042-4753-BC37-927B26649F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C56CBA8-8042-4753-BC37-927B26649F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C56CBA8-8042-4753-BC37-927B26649F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4DBCF71-9783-4542-B6FB-7D945DE848C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -85,5 +105,9 @@ Global
 		{A077B25C-22DC-4071-B470-30B841A10BF7} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
 		{BF02298A-7C26-4009-8B68-8A80BEDBCF4C} = {A077B25C-22DC-4071-B470-30B841A10BF7}
 		{C3F16DF2-CA01-4EE8-9F4A-A8FE1D45A326} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
+		{9F6A778D-33A3-4487-8343-7070A309738E} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
+		{5C56CBA8-8042-4753-BC37-927B26649F53} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
+		{522D4283-6CFD-4FA3-918F-60546E439E2C} = {F17CBBE3-075B-4432-9A1A-6A41AF0687AB}
+		{E4DBCF71-9783-4542-B6FB-7D945DE848C0} = {522D4283-6CFD-4FA3-918F-60546E439E2C}
 	EndGlobalSection
 EndGlobal

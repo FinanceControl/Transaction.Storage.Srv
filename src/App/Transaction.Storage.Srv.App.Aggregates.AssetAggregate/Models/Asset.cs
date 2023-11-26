@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using InsonusK.Shared.Validation;
-using Microsoft.EntityFrameworkCore;
-using Transcation.Storage.Srv.Shared.Database;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
+using Transcation.Storage.Srv.Shared.Database.Models;
 
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
-public partial class Asset : DomainEntity
+public partial class Asset : DomainEntity,IAssetDto
 {
-
-  [MaxLength(50)]
+  private const int NameMaxLenght = 50;
+  [MaxLength(NameMaxLenght)]
   [Required]
   public string Name { get; private set; }
 

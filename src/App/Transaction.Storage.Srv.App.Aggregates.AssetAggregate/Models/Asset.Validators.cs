@@ -1,5 +1,5 @@
 using FluentValidation;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Validators;
+using Transaction.Storage.Srv.Shared.Validators;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
@@ -10,7 +10,7 @@ public partial class Asset
     public Validator()
     {
       RuleFor(at => at.DecimalSize).SetValidator(new DecimalSizeValidator());
-      RuleFor(e => e.Name).SetValidator(new NameValidator());
+      RuleFor(e => e.Name).SetValidator(new NameValidator(NameMaxLenght));
     }
   }
 

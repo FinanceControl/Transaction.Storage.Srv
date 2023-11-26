@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Ardalis.Result;
 using InsonusK.Shared.Validation;
 using MediatR;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dto;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 

@@ -3,13 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using InsonusK.Shared.Validation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Transcation.Storage.Srv.Shared.Database;
+namespace Transcation.Storage.Srv.Shared.Database.Models;
 
-public class EventLogEntity
+public class EventLogEntity : EntityBase
 {
-  [Key]
-  public int Id { get; set; }
-
   [Required]
   [MaxLength(50)]
   public string Name { get; set; }

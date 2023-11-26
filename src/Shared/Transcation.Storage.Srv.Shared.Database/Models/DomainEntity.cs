@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Transcation.Storage.Srv.Shared.Database.Interfaces;
 
-namespace Transcation.Storage.Srv.Shared.Database;
+namespace Transcation.Storage.Srv.Shared.Database.Models;
 
-public abstract class DomainEntity : EntityBase
+public abstract class DomainEntity : EntityBase,IDomainEntityDto
 {
   [Required]
   public DateTimeOffset CreatedDateTime { get; private set; }
