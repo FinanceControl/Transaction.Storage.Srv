@@ -1,14 +1,22 @@
+using Ardalis.Specification;
 using FluentValidation;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
 using Transaction.Storage.Srv.Shared.Validators;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 public partial class Asset
 {
-  public class Validator : AbstractValidator<Asset>
+  public class Validator : AbstractValidator<IAssetBodyDto>
   {
+    public Validator(IReadRepositoryBase<AssetType> assetTypeRep) : this()
+    {
+      RuleFor(at => at.AssetTypeId).SetValidator(new IdValidator<AssetType>(assetTypeRep, nameof(AssetTypeId)));
+    }
+
     public Validator()
     {
+
       RuleFor(at => at.DecimalSize).SetValidator(new DecimalSizeValidator());
       RuleFor(e => e.Name).SetValidator(new NameValidator(NameMaxLenght));
     }

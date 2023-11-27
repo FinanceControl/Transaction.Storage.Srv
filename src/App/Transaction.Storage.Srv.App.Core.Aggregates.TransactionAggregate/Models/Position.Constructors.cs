@@ -12,7 +12,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Model
 
 public partial class Position
 {
-  public class Factory : IEntityFactory<INewPositionDto, Position>
+  public class Factory : IEntityFactory<IPositionBodyDto, Position>
   {
     private readonly IReadRepositoryBase<Asset> assetRep;
     private readonly IReadRepositoryBase<Account> accountRep;
@@ -22,8 +22,12 @@ public partial class Position
       this.assetRep = assetRep;
       this.accountRep = accountRep;
     }
-    public async Task<Result<Position>> BuildAsync(INewPositionDto source, CancellationToken cancellationToken = default)
+    public async Task<Result<Position>> BuildAsync(IPositionBodyDto source, CancellationToken cancellationToken = default)
     {
+      var source_result = await new Validator(accountRep,assetRep).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Invalid(source_result.AsErrors());
+
       var asset = await assetRep.GetByIdAsync(source.AssetId, cancellationToken);
       var account = source.AccountId != null ? await accountRep.GetByIdAsync((int)source.AccountId, cancellationToken) : null;
 
@@ -35,11 +39,7 @@ public partial class Position
         Account = account
       };
 
-      var result = new Validator().Validate(new_assertType);
-      if (result.IsValid)
-        return Result.Success(new_assertType);
-      else
-        return Result.Invalid(result.AsErrors());
+      return Result.Success(new_assertType);
     }
   }
 
@@ -47,7 +47,7 @@ public partial class Position
   {
   }
 
-  protected Position(INewPositionDto newPositionDto)
+  protected Position(IPositionBodyDto newPositionDto)
   {
     AssetId = newPositionDto.AssetId;
     AccountId = newPositionDto.AccountId;

@@ -1,6 +1,6 @@
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
 
-public interface INewPositionDto
+public interface IPositionBodyDto
 {
   public int? AccountId { get; }
 

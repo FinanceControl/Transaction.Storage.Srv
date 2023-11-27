@@ -10,17 +10,9 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 
 public class AccountAddEventHandler : EntityAddEventHandler<AccountAddEvent, Account, AccountDto>
 {
-  private readonly IReadRepositoryBase<CounterParty> _counterPartyRep;
 
-  public AccountAddEventHandler(IReadRepositoryBase<CounterParty> counterPartyRep, IRepositoryBase<Account> AccountRep, IEntityFactory<AccountAddEvent, Account> entityFactory) : base(AccountRep, entityFactory)
+  public AccountAddEventHandler(IRepositoryBase<Account> AccountRep, IEntityFactory<AccountAddEvent, Account> entityFactory) : base(AccountRep, entityFactory)
   {
-    this._counterPartyRep = counterPartyRep;
-  }
-  protected override async Task<Result> CheckDependency(AccountAddEvent request, CancellationToken cancellationToken)
-  {
-    var cpt = await _counterPartyRep.GetByIdAsync(request.CounterPartyId, cancellationToken);
-    if (cpt is null)
-      return Result.NotFound("CounterPartyId doesn't exist");
-    return await base.CheckDependency(request, cancellationToken);
+    
   }
 }

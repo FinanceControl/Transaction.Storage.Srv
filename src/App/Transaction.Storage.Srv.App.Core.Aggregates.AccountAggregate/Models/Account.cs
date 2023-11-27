@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
 using Transcation.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 
-public partial class Account : DomainEntity
+public partial class Account : DomainEntity, IAccountDto
 {
   private const int NameMaxLenght = 50;
 

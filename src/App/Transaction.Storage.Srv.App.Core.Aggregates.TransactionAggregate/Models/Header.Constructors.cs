@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
+using Ardalis.Specification;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
@@ -13,14 +16,23 @@ public partial class Header
 {
   public class Factory : IEntityFactory<TransactionAddEvent, Header>
   {
-    private readonly IEntityFactory<INewPositionDto, Position> posFactory;
+    private readonly IEntityFactory<IPositionBodyDto, Position> posFactory;
+    private readonly IReadRepositoryBase<Account> accountReadRep;
+    private readonly IReadRepositoryBase<Asset> assetReadRep;
 
-    public Factory(IEntityFactory<INewPositionDto, Position> posFactory)
+    public Factory(IEntityFactory<IPositionBodyDto, Position> posFactory,
+                      IReadRepositoryBase<Account> accountReadRep,
+                      IReadRepositoryBase<Asset> assetReadRep)
     {
       this.posFactory = posFactory;
+      this.accountReadRep = accountReadRep;
+      this.assetReadRep = assetReadRep;
     }
     public async Task<Result<Header>> BuildAsync(TransactionAddEvent source, CancellationToken cancellationToken = default)
     {
+      var source_result = await new EventValidator(accountReadRep, assetReadRep).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Invalid(source_result.AsErrors());
 
       List<Position> newPosList = new List<Position>();
 
@@ -37,11 +49,7 @@ public partial class Header
         Positions = newPosList
       };
 
-      var result = new Validator().Validate(newHeader);
-      if (result.IsValid)
-        return Result.Success(newHeader);
-      else
-        return Result.Invalid(result.AsErrors());
+      return Result.Success(newHeader);
     }
 
 

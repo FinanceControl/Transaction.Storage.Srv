@@ -7,8 +7,6 @@ public partial class AssetType
 {
   public class Factory : IEntityFactory<AssetTypeAddEvent, AssetType>
   {
-
-
     public Task<Result<AssetType>> BuildAsync(AssetTypeAddEvent source, CancellationToken cancellationToken = default)
     {
       var new_assertType = new AssetType(source);

@@ -21,19 +21,19 @@ public partial class Account
     }
     public async Task<Result<Account>> BuildAsync(AccountAddEvent source, CancellationToken cancellationToken = default)
     {
+      var source_result = await new Validator(counterPartyRep).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Invalid(source_result.AsErrors());
+
       var counterParty = await counterPartyRep.GetByIdAsync(source.CounterPartyId, cancellationToken);
       Guard.Against.Null(counterParty);
 
-      var new_assertType = new Account(source)
+      var new_account = new Account(source)
       {
         CounterParty = counterParty
       };
 
-      var result = new Validator().Validate(new_assertType);
-      if (result.IsValid)
-        return Result.Success(new_assertType);
-      else
-        return (Result<Account>)Result.Invalid(result.AsErrors());
+      return Result.Success(new_account);
     }
   }
 

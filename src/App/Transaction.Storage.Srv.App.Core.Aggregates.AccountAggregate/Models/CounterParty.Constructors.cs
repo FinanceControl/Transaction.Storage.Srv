@@ -20,19 +20,19 @@ public partial class CounterParty
     }
     public async Task<Result<CounterParty>> BuildAsync(CounterPartyAddEvent source, CancellationToken cancellationToken = default)
     {
+      var source_result = await new Validator(counterPartyTypeRep).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Invalid(source_result.AsErrors());
+
       var counterPartyType = await counterPartyTypeRep.GetByIdAsync(source.CounterPartyTypeId, cancellationToken);
       Guard.Against.Null(counterPartyType);
 
-      var new_assertType = new CounterParty(source)
+      var new_counterParty = new CounterParty(source)
       {
         CounterPartyType = counterPartyType
       };
 
-      var result = new Validator().Validate(new_assertType);
-      if (result.IsValid)
-        return Result.Success(new_assertType);
-      else
-        return Result.Invalid(result.AsErrors());
+      return Result.Success(new_counterParty);
     }
   }
   protected CounterParty()

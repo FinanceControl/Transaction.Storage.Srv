@@ -20,6 +20,10 @@ public partial class Asset
     }
     public async Task<Result<Asset>> BuildAsync(AssetAddEvent source, CancellationToken cancellationToken = default)
     {
+      var source_result = await new Validator(assetTypeRep).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Invalid(source_result.AsErrors());
+
       var assetType = await assetTypeRep.GetByIdAsync(source.AssetTypeId, cancellationToken);
       Guard.Against.Null(assetType);
 
@@ -28,11 +32,7 @@ public partial class Asset
         AssetType = assetType
       };
 
-      var result = new Validator().Validate(new_assertType);
-      if (result.IsValid)
-        return Result.Success(new_assertType);
-      else
-        return Result.Invalid(result.AsErrors());
+      return Result.Success(new_assertType);
     }
   }
 

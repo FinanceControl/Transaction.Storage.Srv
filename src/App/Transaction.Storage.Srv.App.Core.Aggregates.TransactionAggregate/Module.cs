@@ -11,7 +11,7 @@ public static class Module
 {
   public static IServiceCollection Register(this IServiceCollection sc)
   {
-    sc.AddScoped<IEntityFactory<INewPositionDto, Position>, Position.Factory>();
+    sc.AddScoped<IEntityFactory<IPositionBodyDto, Position>, Position.Factory>();
     sc.AddScoped<IEntityFactory<TransactionAddEvent, Header>, Header.Factory>();
     sc.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
     return sc;

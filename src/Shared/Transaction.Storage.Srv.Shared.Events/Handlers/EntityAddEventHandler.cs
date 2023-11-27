@@ -18,17 +18,17 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
     this._entityFactory = entityFactory;
     this.specification = specification;
   }
-  protected virtual Task<Result> CheckDependency(TEvent request, CancellationToken cancellationToken)
-  {
-    return Task.FromResult(Result.Success());
-  }
+  //protected virtual Task<Result> CheckDependency(TEvent request, CancellationToken cancellationToken)
+  //{
+  //  return Task.FromResult(Result.Success());
+  //}
   public async Task<Result<TResult>> Handle(TEvent request, CancellationToken cancellationToken)
   {
-    var check_dependency_result = await CheckDependency(request, cancellationToken);
-    if (!check_dependency_result.IsSuccess)
-    {
-      return check_dependency_result;
-    }
+    //var check_dependency_result = await CheckDependency(request, cancellationToken);
+    //if (!check_dependency_result.IsSuccess)
+    //{
+    //  return check_dependency_result;
+    //}
 
     var build_result = await _entityFactory.BuildAsync(request, cancellationToken);
     if (!build_result.IsSuccess)
