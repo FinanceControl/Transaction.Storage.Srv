@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using InsonusK.Shared.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Transcation.Storage.Srv.Shared.Database.Models;
