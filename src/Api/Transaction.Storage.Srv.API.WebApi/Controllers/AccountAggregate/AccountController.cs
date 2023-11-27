@@ -48,6 +48,17 @@ public class AccountController : ControllerBase
     return result.ToActionResult(this);
   }
 
+  [HttpGet()]
+  [ProducesResponseType(typeof(IEnumerable<AccountDto>), StatusCodes.Status200OK)]
+  public async Task<ActionResult<IEnumerable<AccountDto>>> GetAll(
+      CancellationToken cancellationToken = new())
+  {
+    var ent = await readRepository.ListAsync(cancellationToken);
+    if (ent is null)
+      return NotFound();
+    return Ok(ent.Select(e => e.Adapt<AccountDto>()));
+  }
+
   [HttpPost()]
   [ProducesResponseType(typeof(AccountDto), StatusCodes.Status201Created)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]

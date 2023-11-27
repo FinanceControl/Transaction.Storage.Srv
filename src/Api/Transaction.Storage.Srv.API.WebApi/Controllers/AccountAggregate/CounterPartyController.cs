@@ -34,7 +34,7 @@ public class CounterPartyController : ControllerBase
     var ent = await readRepository.GetByIdAsync(id, cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.Adapt<CounterPartyTypeDto>());
+    return Ok(ent.Adapt<CounterPartyDto>());
   }
 
   [HttpDelete("{id}")]
@@ -46,6 +46,17 @@ public class CounterPartyController : ControllerBase
     var eventDto = new CounterPartyDeleteEvent() { Id = id, IsForced = isForced };
     var result = await mediator.Send(eventDto, cancellationToken);
     return result.ToActionResult(this);
+  }
+
+  [HttpGet()]
+  [ProducesResponseType(typeof(IEnumerable<CounterPartyDto>), StatusCodes.Status200OK)]
+  public async Task<ActionResult<IEnumerable<CounterPartyDto>>> GetAll(
+      CancellationToken cancellationToken = new())
+  {
+    var ent = await readRepository.ListAsync(cancellationToken);
+    if (ent is null)
+      return NotFound();
+    return Ok(ent.Select(e => e.Adapt<CounterPartyDto>()));
   }
 
   [HttpPost()]

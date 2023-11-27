@@ -28,13 +28,13 @@ public class AssetController : ControllerBase
   [ProducesResponseType(typeof(AssetDto), StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AssetTypeDto>> Get([FromRoute] int id,
+  public async Task<ActionResult<AssetDto>> Get([FromRoute] int id,
       CancellationToken cancellationToken = new())
   {
     var ent = await readRepository.GetByIdAsync(id, cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.Adapt<AssetTypeDto>());
+    return Ok(ent.Adapt<AssetDto>());
   }
 
   [HttpDelete("{id}")]
@@ -46,6 +46,17 @@ public class AssetController : ControllerBase
     var eventDto = new AssetDeleteEvent() { Id = id };
     var result = await mediator.Send(eventDto, cancellationToken);
     return result.ToActionResult(this);
+  }
+
+  [HttpGet()]
+  [ProducesResponseType(typeof(IEnumerable<AssetDto>), StatusCodes.Status200OK)]
+  public async Task<ActionResult<IEnumerable<AssetDto>>> GetAll(
+      CancellationToken cancellationToken = new())
+  {
+    var ent = await readRepository.ListAsync(cancellationToken);
+    if (ent is null)
+      return NotFound();
+    return Ok(ent.Select(e => e.Adapt<AssetDto>()));
   }
 
   [HttpPost()]

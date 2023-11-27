@@ -1,12 +1,9 @@
 
 using Ardalis.Result.AspNetCore;
 using Ardalis.Specification;
-using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
@@ -53,6 +50,16 @@ public class TransactionController : ControllerBase
   }
 
 
+  [HttpGet()]
+  [ProducesResponseType(typeof(IEnumerable<TransactionDto>), StatusCodes.Status200OK)]
+  public async Task<ActionResult<IEnumerable<TransactionDto>>> GetAll(
+      CancellationToken cancellationToken = new())
+  {
+    var ent = await readRepository.ListAsync(new TransactionByHeaderSpec(), cancellationToken);
+    if (ent is null)
+      return NotFound();
+    return Ok(ent);
+  }
 
   [HttpPost()]
   [ProducesResponseType(typeof(TransactionDto), StatusCodes.Status201Created)]

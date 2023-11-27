@@ -1,4 +1,3 @@
-using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using Ardalis.Specification;
 using Mapster;
@@ -46,6 +45,17 @@ public class AssetTypeController : ControllerBase
     var eventDto = new AssetTypeDeleteEvent() { Id = id, IsForced = isForced };
     var result = await mediator.Send(eventDto, cancellationToken);
     return result.ToActionResult(this);
+  }
+
+  [HttpGet()]
+  [ProducesResponseType(typeof(IEnumerable<AssetTypeDto>), StatusCodes.Status200OK)]
+  public async Task<ActionResult<IEnumerable<AssetTypeDto>>> GetAll(
+      CancellationToken cancellationToken = new())
+  {
+    var ent = await readRepository.ListAsync(cancellationToken);
+    if (ent is null)
+      return NotFound();
+    return Ok(ent.Select(e => e.Adapt<AssetTypeDto>()));
   }
 
   [HttpPost()]
