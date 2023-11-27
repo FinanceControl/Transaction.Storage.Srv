@@ -2,7 +2,6 @@ using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;

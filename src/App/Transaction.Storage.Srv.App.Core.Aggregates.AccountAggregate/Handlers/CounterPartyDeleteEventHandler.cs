@@ -1,7 +1,5 @@
 using Ardalis.Result;
 using Ardalis.Specification;
-using Mapster;
-using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;

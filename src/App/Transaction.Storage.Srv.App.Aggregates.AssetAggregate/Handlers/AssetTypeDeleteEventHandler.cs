@@ -1,5 +1,4 @@
 using Ardalis.Specification;
-using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Ardalis.Result;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;

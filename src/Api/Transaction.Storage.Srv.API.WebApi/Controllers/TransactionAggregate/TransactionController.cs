@@ -1,4 +1,3 @@
-
 using Ardalis.Result.AspNetCore;
 using Ardalis.Specification;
 using MediatR;

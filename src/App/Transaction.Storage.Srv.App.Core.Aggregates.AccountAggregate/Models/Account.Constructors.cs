@@ -3,7 +3,6 @@ using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
-using Mapster;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 

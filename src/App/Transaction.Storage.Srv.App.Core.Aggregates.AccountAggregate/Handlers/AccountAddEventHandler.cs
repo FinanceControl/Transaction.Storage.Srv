@@ -1,4 +1,3 @@
-using Ardalis.Result;
 using Ardalis.Specification;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
