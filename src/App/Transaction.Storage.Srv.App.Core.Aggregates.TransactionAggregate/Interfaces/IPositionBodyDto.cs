@@ -4,7 +4,7 @@ public interface IPositionBodyDto
 {
   public int? AccountId { get; }
 
-  public int Amount { get; }
+  public decimal Amount { get; }
 
   public int AssetId { get; }
 }

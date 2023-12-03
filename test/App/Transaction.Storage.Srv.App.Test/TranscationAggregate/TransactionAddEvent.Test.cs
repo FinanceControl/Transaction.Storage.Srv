@@ -51,7 +51,7 @@ public class TransactionAddEvent_Test : BaseDbTest<TransactionAddEvent_Test>
       Positions = new List<NewPositionDto>(){
         new NewPositionDto(){
           AccountId = mockAccount.Id,
-          Amount = 10,
+          Amount = 10.123M,
           AssetId = mockAsset.Id
         },
         new NewPositionDto(){

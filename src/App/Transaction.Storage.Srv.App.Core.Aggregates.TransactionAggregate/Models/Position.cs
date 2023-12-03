@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
@@ -11,7 +12,8 @@ public partial class Position : DomainEntity, IPositionDto
   public int? AccountId { get; private set; }
   public Account? Account { get; private set; }
 
-  public int Amount { get; set; }
+  [Column(TypeName = "decimal(30, 15)")]
+  public decimal Amount { get; set; }
 
   [Required]
   public int AssetId { get; private set; }
