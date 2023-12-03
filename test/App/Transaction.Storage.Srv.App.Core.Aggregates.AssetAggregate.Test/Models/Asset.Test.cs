@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Xunit.Abstractions;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Model;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Models;
 
 public class Asset_Test : LoggingTestsBase<Asset>
 {

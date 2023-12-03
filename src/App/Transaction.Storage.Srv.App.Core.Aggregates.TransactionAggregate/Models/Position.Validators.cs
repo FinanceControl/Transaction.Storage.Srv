@@ -16,6 +16,7 @@ public partial class Position
       RuleFor(at => at.AccountId).SetValidator(new IdNullableValidator<Account>(accountReadRep, nameof(AccountId)));
       RuleFor(at => at.AssetId).SetValidator(new IdValidator<Asset>(assetReadRep, nameof(AssetId)));
       RuleFor(e => e.Amount).SetValidator(at => new AmountValidator(assetReadRep, at.AssetId));
+
     }
   }
 

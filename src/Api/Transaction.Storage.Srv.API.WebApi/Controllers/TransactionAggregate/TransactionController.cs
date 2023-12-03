@@ -7,6 +7,8 @@ using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Specifications;
+using CsvHelper;
+using System.Globalization;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.TransactionAggregate;
 
@@ -71,6 +73,19 @@ public class TransactionController : ControllerBase
     if (result.IsSuccess)
     {
       return CreatedAtAction(nameof(Get), new { id = result.Value.Header.Id }, result.Value);
+    }
+
+    var res = result.ToActionResult(this);
+    return res;
+  }
+
+  [HttpPost("upload")]
+  public async Task<ActionResult<Dictionary<int, int>>> UploadMass([FromBody] TransactionUploadEvent transactionUploadEvent, CancellationToken cancellationToken)
+  {
+    var result = await mediator.Send(transactionUploadEvent, cancellationToken);
+    if (result.IsSuccess)
+    {
+      return CreatedAtAction(nameof(Get), result.Value);
     }
 
     var res = result.ToActionResult(this);
