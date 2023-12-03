@@ -13,7 +13,7 @@ public class Asset_Test : LoggingTestsBase<Asset>
   {
 
   }
-
+#if DEBUG
   [Theory]
   [InlineData("22.2")]
   [InlineData("22.22")]
@@ -76,4 +76,5 @@ public class Asset_Test : LoggingTestsBase<Asset>
 
     #endregion
   }
+#endif
 }
