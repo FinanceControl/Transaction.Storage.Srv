@@ -26,7 +26,9 @@ public partial class Asset
   {
     public DecimalSizeValidator()
     {
-      RuleFor(ds => ds).GreaterThanOrEqualTo((short)0).WithErrorCode("Asset.DecimalSize.001").WithMessage("DecimalSize must be greater or equal 0");
+      RuleFor(ds => ds)
+        .GreaterThanOrEqualTo((short)0).WithErrorCode("Asset.DecimalSize.001").WithMessage("DecimalSize must be greater or equal 0")
+        .LessThanOrEqualTo((short)15).WithErrorCode("Asset.DecimalSize.002").WithMessage("DecimalSize must be less or equal 15");
     }
   }
 }

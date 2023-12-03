@@ -10,6 +10,14 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Model
 
 public partial class Header
 {
+  public class ValidatorList : AbstractValidator<List<INewHeaderDto>>
+  {
+    public ValidatorList()
+    {
+      RuleForEach(e => e).SetValidator(new Validator());
+    }
+  }
+
   public class Validator : AbstractValidator<INewHeaderDto>
   {
     public Validator()

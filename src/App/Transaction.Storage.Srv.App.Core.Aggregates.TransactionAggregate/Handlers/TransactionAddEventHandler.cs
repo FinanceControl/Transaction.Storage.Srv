@@ -1,5 +1,7 @@
+using Ardalis.Result;
 using Ardalis.Specification;
 using Mapster;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
@@ -10,13 +12,16 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Handl
 
 public class TransactionAddEventHandler : EntityAddEventHandler<TransactionAddEvent, Header, TransactionDto>
 {
+  private readonly IReadRepositoryBase<Asset> assetRep;
 
   public TransactionAddEventHandler(IRepositoryBase<Header> headerRep,
-                                  IEntityFactory<TransactionAddEvent, Header> entityFactory) : base(headerRep, entityFactory)
+                                IEntityFactory<TransactionAddEvent, Header> entityFactory,
+                                  IReadRepositoryBase<Asset> assetRep) : base(headerRep, entityFactory)
   {
+    this.assetRep = assetRep;
   }
 
-  protected override Task<TransactionDto> ToResult(Header entity)
+  protected override Task<TransactionDto> ToResult(Header entity, CancellationToken cancellationToken)
   {
     return Task.FromResult(new TransactionDto()
     {
