@@ -32,15 +32,16 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
 
     var build_result = await _entityFactory.BuildAsync(request, cancellationToken);
     if (!build_result.IsSuccess)
-      return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping"));
+      return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping for ok result"));
 
     var new_Asset = await _repository.AddAsync(build_result.Value, cancellationToken);
 
-    return Result.Success(await ToResult(new_Asset));
+    return Result.Success(await ToResult(new_Asset, cancellationToken));
   }
 
-  protected virtual Task<TResult> ToResult(TEntity entity)
+  protected virtual Task<TResult> ToResult(TEntity entity, CancellationToken cancellationToken)
   {
     return Task.FromResult(entity.Adapt<TResult>());
   }
+
 }

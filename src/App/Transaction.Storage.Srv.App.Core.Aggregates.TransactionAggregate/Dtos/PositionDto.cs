@@ -9,4 +9,6 @@ public class PositionDto : NewPositionDto, IPositionDto
   public DateTimeOffset CreatedDateTime { get; set; }
 
   public DateTimeOffset UpdatedDateTime { get; set; }
+
+  public double AmountDouble { get; set; }
 }

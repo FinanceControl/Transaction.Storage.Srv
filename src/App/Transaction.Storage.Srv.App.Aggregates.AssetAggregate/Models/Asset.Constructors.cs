@@ -40,6 +40,14 @@ public partial class Asset
   {
   }
 
+#if DEBUG
+  public Asset(string name = "123", int assertTypeId = 0, short decimalSize = 3)
+  {
+    Name = name;
+    AssetTypeId = assertTypeId;
+    DecimalSize = decimalSize;
+  }
+#endif
   protected Asset(AssetAddEvent assetAddEventDto)
   {
     Name = assetAddEventDto.Name;

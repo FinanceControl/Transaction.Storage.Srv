@@ -4,8 +4,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 
-public class TransactionAddEvent : IRequest<Result<TransactionDto>>
+public class TransactionUploadEvent : IRequest<Result<Dictionary<int, int>>>
 {
-  public NewHeaderDto Header { get; set; }
-  public List<NewPositionDto> Positions { get; set; }
+  public required List<TransactionAddEvent> records { get; set; }
 }
