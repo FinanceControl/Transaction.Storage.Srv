@@ -3,13 +3,14 @@ using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 public partial class Asset
 {
-  public class Factory : IEntityFactory<AssetAddEvent, Asset>
+  public class Factory : IEntityFactory<AssetAddEvent, Asset>, IEntityFactory<IAssetBodyDto, Asset>
   {
     private readonly IReadRepositoryBase<AssetType> assetTypeRep;
 
@@ -33,6 +34,23 @@ public partial class Asset
 
       return Result.Success(new_assertType);
     }
+
+    public async Task<Result<Asset>> BuildAsync(IAssetBodyDto source, CancellationToken cancellationToken = default)
+    {
+      var source_result = await new Validator(assetTypeRep).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Invalid(source_result.AsErrors());
+
+      var assetType = await assetTypeRep.GetByIdAsync(source.AssetTypeId, cancellationToken);
+      Guard.Against.Null(assetType);
+
+      var new_assertType = new Asset(source)
+      {
+        AssetType = assetType
+      };
+
+      return Result.Success(new_assertType);
+    }
   }
 
 
@@ -40,7 +58,7 @@ public partial class Asset
   {
   }
 
-  protected Asset(AssetAddEvent assetAddEventDto)
+  protected Asset(IAssetBodyDto assetAddEventDto)
   {
     Name = assetAddEventDto.Name;
     AssetTypeId = assetAddEventDto.AssetTypeId;

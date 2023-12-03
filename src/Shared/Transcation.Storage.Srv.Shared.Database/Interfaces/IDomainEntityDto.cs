@@ -1,8 +1,8 @@
 namespace Transcation.Storage.Srv.Shared.Database.Interfaces;
 
-public interface IDomainEntityDto
+public interface IDomainEntityDto : IEntityBaseDto
 {
-  public int Id { get; }
+
   public DateTimeOffset CreatedDateTime { get; }
 
   public DateTimeOffset UpdatedDateTime { get; }
