@@ -40,10 +40,15 @@ public partial class Asset
   {
   }
 
-  /// <summary>
-  /// directly using ONLY FOR TESTS
-  /// </summary>
-  public Asset(AssetAddEvent assetAddEventDto)
+#if DEBUG
+  public Asset(string name = "123", int assertTypeId = 0, short decimalSize = 3)
+  {
+    Name = name;
+    AssetTypeId = assertTypeId;
+    DecimalSize = decimalSize;
+  }
+#endif
+  protected Asset(AssetAddEvent assetAddEventDto)
   {
     Name = assetAddEventDto.Name;
     AssetTypeId = assetAddEventDto.AssetTypeId;

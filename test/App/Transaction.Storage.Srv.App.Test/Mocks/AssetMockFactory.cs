@@ -8,17 +8,17 @@ public static class AssetMockFactory
 {
   private static int idx = 0;
   private static object Lock = new object();
-  public static async Task<AssetDto> Build(IServiceProvider sp)
+  public static async Task<AssetDto> Build(IServiceProvider sp, short decimalSize = 15)
   {
-    return await Build(sp, await AssetTypeMockFactory.Build(sp));
+    return await Build(sp, await AssetTypeMockFactory.Build(sp), decimalSize);
   }
 
-  public static async Task<AssetDto> Build(IServiceProvider sp, AssetTypeDto assetType)
+  public static async Task<AssetDto> Build(IServiceProvider sp, AssetTypeDto assetType, short decimalSize = 15)
   {
-    return await Build(sp, assetType.Id);
+    return await Build(sp, assetType.Id, decimalSize);
   }
 
-  public static async Task<AssetDto> Build(IServiceProvider sp, int assetTypeId)
+  public static async Task<AssetDto> Build(IServiceProvider sp, int assetTypeId, short decimalSize = 15)
   {
     int used_idx;
     lock (Lock){
@@ -27,7 +27,7 @@ public static class AssetMockFactory
     var usedEvent = new AssetAddEvent()
     {
       Name = $"Test{used_idx}_{DateTimeOffset.UtcNow}_{Thread.CurrentThread.ManagedThreadId}",
-      DecimalSize = 3,
+      DecimalSize = decimalSize,
       AssetTypeId = assetTypeId
     };
     var mediator = sp.GetRequiredService<IMediator>();

@@ -14,7 +14,6 @@ public partial class Asset : DomainEntity,IAssetDto
   public string Name { get; set; }
 
   [Display(Name = "Lenght of decimal part in int amount value")]
-  [Range(0, short.MaxValue)]
   public short DecimalSize { get; private set; }
 
   [Required]
@@ -22,14 +21,15 @@ public partial class Asset : DomainEntity,IAssetDto
   public AssetType AssetType { get; private set; }
 
 
-  public Result<int> DecimalToInt(decimal amount)
+
+  public Result checkDecimalLenght(decimal amount)
   {
-    var amount_prepared = amount * (int)Math.Pow(10, DecimalSize);
+    var amount_prepared = amount * (long)Math.Pow(10, DecimalSize);
 
     if (amount_prepared != Math.Truncate(amount_prepared))
     {
       return Result.Invalid(new ValidationError("Decimal part is too long"));
     }
-    return Result.Success((int)amount_prepared);
+    return Result.Success();
   }
 }

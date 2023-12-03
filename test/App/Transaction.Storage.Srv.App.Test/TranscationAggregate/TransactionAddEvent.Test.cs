@@ -51,7 +51,7 @@ public class TransactionAddEvent_Test : BaseDbTest<TransactionAddEvent_Test>
       Positions = new List<NewPositionDto>(){
         new NewPositionDto(){
           AccountId = mockAccount.Id,
-          Amount = 10.3M,
+          Amount = 10.123M,
           AssetId = mockAsset.Id
         },
         new NewPositionDto(){
@@ -200,7 +200,7 @@ public class TransactionAddEvent_Test : BaseDbTest<TransactionAddEvent_Test>
   }
 
   [Fact]
-  public async Task WHEN_give_invalid_event_dto_THEN_get_invalid_result()
+  public async Task WHEN_give_too_long_amount_dto_THEN_get_invalid_result()
   {
     #region Array
     Logger.LogDebug("Test ARRAY");
@@ -211,7 +211,7 @@ public class TransactionAddEvent_Test : BaseDbTest<TransactionAddEvent_Test>
     using (var array_scope = this.global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
-      mockAsset = await AssetMockFactory.Build(sp);
+      mockAsset = await AssetMockFactory.Build(sp, decimalSize: 3);
       mockAsset2 = await AssetMockFactory.Build(sp);
       mockAccount = await AccountMockFactory.Build(sp);
     }
