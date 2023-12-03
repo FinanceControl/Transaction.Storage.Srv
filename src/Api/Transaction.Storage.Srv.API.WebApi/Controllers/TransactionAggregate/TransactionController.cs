@@ -7,6 +7,8 @@ using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Specifications;
+using CsvHelper;
+using System.Globalization;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.TransactionAggregate;
 
@@ -75,5 +77,29 @@ public class TransactionController : ControllerBase
 
     var res = result.ToActionResult(this);
     return res;
+  }
+
+  [HttpPost("upload")]
+  public async Task<IActionResult> UploadFile(IFormFile file)
+  {
+    if (file == null || file.Length == 0)
+      return BadRequest("File not selected or empty.");
+
+    try
+    {
+      using (var reader = new StreamReader(file.OpenReadStream()))
+      using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+      {
+        // Read the CSV records into a list of dynamic objects
+        var records = csv.GetRecords<dynamic>().ToList();
+
+        // Do something with the parsed CSV records (Here, returning the records)
+        return Ok(records);
+      }
+    }
+    catch (Exception ex)
+    {
+      return StatusCode(StatusCodes.Status500InternalServerError, $"Error: {ex.Message}");
+    }
   }
 }

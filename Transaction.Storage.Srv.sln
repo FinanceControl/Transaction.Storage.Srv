@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Test", "test\App\Transaction.Storage.Srv.App.Test\Transaction.Storage.Srv.App.Test.csproj", "{4D907D7E-DA92-4688-B7EE-B2DCFB912587}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.csproj", "{00EEA378-E447-419F-BF62-A90F0527F410}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,10 @@ Global
 		{4D907D7E-DA92-4688-B7EE-B2DCFB912587}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D907D7E-DA92-4688-B7EE-B2DCFB912587}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D907D7E-DA92-4688-B7EE-B2DCFB912587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EEA378-E447-419F-BF62-A90F0527F410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EEA378-E447-419F-BF62-A90F0527F410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EEA378-E447-419F-BF62-A90F0527F410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EEA378-E447-419F-BF62-A90F0527F410}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -140,5 +146,6 @@ Global
 		{05386E10-AD16-4986-9FC4-0575AE7F1D1F} = {A73A3166-22EF-471B-AEBA-DC9FF00DB9E8}
 		{EAF09D71-D7AF-4594-9BCD-85A93475786C} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
 		{4D907D7E-DA92-4688-B7EE-B2DCFB912587} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
+		{00EEA378-E447-419F-BF62-A90F0527F410} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
 	EndGlobalSection
 EndGlobal

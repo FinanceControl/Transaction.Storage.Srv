@@ -29,18 +29,28 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
     //{
     //  return check_dependency_result;
     //}
+    var prepare_result = await PrepareRequest(request, cancellationToken);
+    if (!prepare_result.IsSuccess)
+    {
+      return prepare_result;
+    }
 
     var build_result = await _entityFactory.BuildAsync(request, cancellationToken);
     if (!build_result.IsSuccess)
-      return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping"));
+      return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping for ok result"));
 
     var new_Asset = await _repository.AddAsync(build_result.Value, cancellationToken);
 
-    return Result.Success(await ToResult(new_Asset));
+    return Result.Success(await ToResult(new_Asset, cancellationToken));
   }
 
-  protected virtual Task<TResult> ToResult(TEntity entity)
+  protected virtual Task<TResult> ToResult(TEntity entity, CancellationToken cancellationToken)
   {
     return Task.FromResult(entity.Adapt<TResult>());
+  }
+
+  protected virtual Task<Result> PrepareRequest(TEvent request, CancellationToken cancellationToken)
+  {
+    return Task.FromResult(Result.Success());
   }
 }

@@ -40,7 +40,10 @@ public partial class Asset
   {
   }
 
-  protected Asset(AssetAddEvent assetAddEventDto)
+  /// <summary>
+  /// directly using ONLY FOR TESTS
+  /// </summary>
+  public Asset(AssetAddEvent assetAddEventDto)
   {
     Name = assetAddEventDto.Name;
     AssetTypeId = assetAddEventDto.AssetTypeId;

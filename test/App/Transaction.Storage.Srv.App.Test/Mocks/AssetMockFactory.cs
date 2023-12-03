@@ -27,7 +27,7 @@ public static class AssetMockFactory
     var usedEvent = new AssetAddEvent()
     {
       Name = $"Test{used_idx}_{DateTimeOffset.UtcNow}_{Thread.CurrentThread.ManagedThreadId}",
-      DecimalSize = 10,
+      DecimalSize = 3,
       AssetTypeId = assetTypeId
     };
     var mediator = sp.GetRequiredService<IMediator>();
