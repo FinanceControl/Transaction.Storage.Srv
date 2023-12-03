@@ -80,26 +80,15 @@ public class TransactionController : ControllerBase
   }
 
   [HttpPost("upload")]
-  public async Task<IActionResult> UploadFile(IFormFile file)
+  public async Task<ActionResult<Dictionary<int, int>>> UploadMass([FromBody] TransactionUploadEvent transactionUploadEvent, CancellationToken cancellationToken)
   {
-    if (file == null || file.Length == 0)
-      return BadRequest("File not selected or empty.");
-
-    try
+    var result = await mediator.Send(transactionUploadEvent, cancellationToken);
+    if (result.IsSuccess)
     {
-      using (var reader = new StreamReader(file.OpenReadStream()))
-      using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-      {
-        // Read the CSV records into a list of dynamic objects
-        var records = csv.GetRecords<dynamic>().ToList();
+      return CreatedAtAction(nameof(Get), result.Value);
+    }
 
-        // Do something with the parsed CSV records (Here, returning the records)
-        return Ok(records);
-      }
-    }
-    catch (Exception ex)
-    {
-      return StatusCode(StatusCodes.Status500InternalServerError, $"Error: {ex.Message}");
-    }
+    var res = result.ToActionResult(this);
+    return res;
   }
 }

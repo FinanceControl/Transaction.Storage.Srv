@@ -49,9 +49,8 @@ public partial class Header
 
       return Result.Success(newHeader);
     }
-
-
   }
+
   protected Header()
   {
   }
