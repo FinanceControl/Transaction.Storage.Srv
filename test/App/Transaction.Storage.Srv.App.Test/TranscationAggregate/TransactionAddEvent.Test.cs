@@ -51,7 +51,7 @@ public class TransactionAddEvent_Test : BaseDbTest<TransactionAddEvent_Test>
       Positions = new List<NewPositionDto>(){
         new NewPositionDto(){
           AccountId = mockAccount.Id,
-          Amount = 10,
+          Amount = 10.123M,
           AssetId = mockAsset.Id
         },
         new NewPositionDto(){
@@ -196,6 +196,71 @@ public class TransactionAddEvent_Test : BaseDbTest<TransactionAddEvent_Test>
       }
 
     }
+    #endregion
+  }
+
+  [Fact]
+  public async Task WHEN_give_too_long_amount_dto_THEN_get_invalid_result()
+  {
+    #region Array
+    Logger.LogDebug("Test ARRAY");
+
+    AssetDto mockAsset;
+    AssetDto mockAsset2;
+    AccountDto mockAccount;
+    using (var array_scope = this.global_sp.CreateScope())
+    {
+      var sp = array_scope.ServiceProvider;
+      mockAsset = await AssetMockFactory.Build(sp, decimalSize: 3);
+      mockAsset2 = await AssetMockFactory.Build(sp);
+      mockAccount = await AccountMockFactory.Build(sp);
+    }
+
+    var usedEvent = new TransactionAddEvent()
+    {
+      Header = new NewHeaderDto()
+      {
+        Description = "Test Descr",
+        CommitDateTime = new DateTimeOffset(2020, 10, 1, 2, 33, 23, TimeSpan.Zero)
+      },
+      Positions = new List<NewPositionDto>(){
+        new NewPositionDto(){
+          AccountId = mockAccount.Id,
+          Amount = 10.3333M,
+          AssetId = mockAsset.Id
+        },
+        new NewPositionDto(){
+          Amount = -10,
+          AssetId = mockAsset2.Id
+        },
+      }
+    };
+
+    #endregion
+
+
+    #region Act
+    Logger.LogDebug("Test ACT");
+
+    Result<TransactionDto> assertedResult;
+    using (var act_scope = this.global_sp.CreateScope())
+    {
+      var sp = act_scope.ServiceProvider;
+      var mediator = sp.GetRequiredService<IMediator>();
+      assertedResult = await mediator.Send(usedEvent);
+    }
+
+    #endregion
+
+
+    #region Assert
+    Logger.LogDebug("Test ASSERT");
+
+    Assert.False(assertedResult.IsSuccess);
+    Assert.Equal(ResultStatus.Invalid, assertedResult.Status);
+    var assertedError = Assert.Single(assertedResult.ValidationErrors);
+    Logger.LogInformation(assertedError.ToString());
+
     #endregion
   }
 }

@@ -6,7 +6,7 @@ public class NewPositionDto : IPositionBodyDto
 {
   public int? AccountId { get; set; }
 
-  public int Amount { get; set; }
+  public decimal Amount { get; set; }
 
   public int AssetId { get; set; }
 }
