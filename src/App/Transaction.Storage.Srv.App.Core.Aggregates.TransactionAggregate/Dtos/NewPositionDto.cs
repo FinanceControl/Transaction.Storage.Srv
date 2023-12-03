@@ -3,7 +3,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interface
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 
-public class NewPositionDto
+public class NewPositionDto : IPositionBodyDto
 {
   public int? AccountId { get; set; }
 

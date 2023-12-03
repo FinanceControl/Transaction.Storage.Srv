@@ -5,7 +5,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Xunit.Abstractions;
 using static Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.Asset;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Model;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Models;
 
 public class DecimalSizeValidator_Test : LoggingTestsBase<Asset>
 {

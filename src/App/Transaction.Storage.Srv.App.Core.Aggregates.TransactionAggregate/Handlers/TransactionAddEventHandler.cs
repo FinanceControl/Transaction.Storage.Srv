@@ -29,13 +29,4 @@ public class TransactionAddEventHandler : EntityAddEventHandler<TransactionAddEv
       Positions = entity.Positions.Select(p => p.Adapt<PositionDto>()).ToList()
     });
   }
-
-  protected override async Task<Result> PrepareRequest(TransactionAddEvent request, CancellationToken cancellationToken)
-  {
-    foreach (var newPositionDto in request.Positions)
-    {
-      newPositionDto.Asset = await assetRep.GetByIdAsync(newPositionDto.AssetId, cancellationToken);
-    }
-    return await base.PrepareRequest(request, cancellationToken);
-  }
 }

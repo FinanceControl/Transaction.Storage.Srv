@@ -29,11 +29,6 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
     //{
     //  return check_dependency_result;
     //}
-    var prepare_result = await PrepareRequest(request, cancellationToken);
-    if (!prepare_result.IsSuccess)
-    {
-      return prepare_result;
-    }
 
     var build_result = await _entityFactory.BuildAsync(request, cancellationToken);
     if (!build_result.IsSuccess)
@@ -49,8 +44,4 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<T
     return Task.FromResult(entity.Adapt<TResult>());
   }
 
-  protected virtual Task<Result> PrepareRequest(TEvent request, CancellationToken cancellationToken)
-  {
-    return Task.FromResult(Result.Success());
-  }
 }
