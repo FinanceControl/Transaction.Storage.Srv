@@ -1,6 +1,6 @@
 using Ardalis.Specification;
 using FluentValidation;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Shared.Validators;
 public class IdValidator<TEntity> : AbstractValidator<int> where TEntity : EntityBase

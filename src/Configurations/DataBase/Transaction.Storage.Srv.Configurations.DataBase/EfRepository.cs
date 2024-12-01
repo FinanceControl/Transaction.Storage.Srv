@@ -1,6 +1,6 @@
 using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase;
 

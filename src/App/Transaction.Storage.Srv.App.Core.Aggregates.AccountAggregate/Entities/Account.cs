@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 
 public partial class Account : DomainEntity, IAccountDto
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Ardalis.Result;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;

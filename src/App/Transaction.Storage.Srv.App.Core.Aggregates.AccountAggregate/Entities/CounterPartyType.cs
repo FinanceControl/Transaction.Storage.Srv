@@ -1,9 +1,10 @@
 
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
-public class CounterPartyType : EnumEntity<CounterPartyType.Enum>, ICounterPartyTypeDto
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
+public class CounterPartyType : EnumEntity<CounterPartyType.Enum>, ICounterPartyType
 {
   public new const int NameLenght = 15;
 

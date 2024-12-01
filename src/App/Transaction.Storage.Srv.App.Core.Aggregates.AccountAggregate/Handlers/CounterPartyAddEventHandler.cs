@@ -1,17 +1,18 @@
 using Ardalis.Specification;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 
-public class CounterPartyAddEventHandler : EntityAddEventHandler<CounterPartyAddEvent, CounterParty, CounterPartyDto>
+public class CounterPartyAddEventHandler : EntityAddEventHandler<CounterPartyAddEvent, Entity.CounterParty, CounterPartyDto>
 {
 
-  public CounterPartyAddEventHandler(IRepositoryBase<CounterParty> counterPartyRep,
-                                     IEntityFactory<CounterPartyAddEvent, CounterParty> entityFactory) :
+  public CounterPartyAddEventHandler(IRepositoryBase<Entity.CounterParty> counterPartyRep,
+                                     IEntityFactory<CounterPartyAddEvent, Entity.CounterParty> entityFactory) :
                                     base(counterPartyRep, entityFactory)
   {
     

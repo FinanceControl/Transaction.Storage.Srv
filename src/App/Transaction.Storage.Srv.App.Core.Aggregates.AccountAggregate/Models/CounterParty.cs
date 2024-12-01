@@ -1,19 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Model;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model.CounterParty;
 
-public partial class CounterParty : DomainEntity, ICounterPartyDto
+
+public interface ICounterParty : IDomainModel, IBody
 {
-  private const int NameMaxLenght = 50;
+}
 
-  [MaxLength(NameMaxLenght)]
-  public string Name { get; set; }
-
-  [Required]
-  public int CounterPartyTypeId { get; private set; }
-  public CounterPartyType CounterPartyType { get; private set; }
-
-  public ICollection<Account> Accounts { get; }
+public interface IBody
+{
+  public string Name { get; }
+  public int CounterPartyTypeId { get; }
 }

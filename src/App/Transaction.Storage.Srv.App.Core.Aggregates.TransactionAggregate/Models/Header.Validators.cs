@@ -1,6 +1,6 @@
 using Ardalis.Specification;
 using FluentValidation;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;

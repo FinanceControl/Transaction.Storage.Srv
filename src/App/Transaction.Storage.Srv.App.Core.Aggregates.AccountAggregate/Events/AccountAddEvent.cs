@@ -1,7 +1,8 @@
 using Ardalis.Result;
 using MediatR;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 

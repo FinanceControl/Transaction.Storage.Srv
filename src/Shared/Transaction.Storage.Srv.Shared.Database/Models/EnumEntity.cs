@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Transcation.Storage.Srv.Shared.Database.Models;
+namespace Transaction.Storage.Srv.Shared.Database.Models;
 
 public class EnumEntity<TEnum> : EntityBase, IEquatable<EnumEntity<TEnum>>, IComparable<EnumEntity<TEnum>>
   where TEnum : struct, Enum

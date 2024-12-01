@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Shared\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj" />
+    <ProjectReference Include="..\..\..\src\Shared\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj" />
   </ItemGroup>
 
 </Project>

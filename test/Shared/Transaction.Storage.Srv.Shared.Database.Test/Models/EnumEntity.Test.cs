@@ -1,10 +1,10 @@
 using Divergic.Logging.Xunit;
 using Microsoft.Extensions.Logging;
-using Transcation.Storage.Srv.Shared.Database;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database;
+using Transaction.Storage.Srv.Shared.Database.Models;
 using Xunit.Abstractions;
 
-namespace Transcation.Storage.Srv.Shared.Database.Test.Models;
+namespace Transaction.Storage.Srv.Shared.Database.Test.Models;
 
 public class EnumEntity_Test : LoggingTestsBase<EnumEntity<EnumEntity_Test.TestEnum>>
 {

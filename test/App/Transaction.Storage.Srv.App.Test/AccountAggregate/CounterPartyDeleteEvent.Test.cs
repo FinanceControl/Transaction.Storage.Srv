@@ -3,13 +3,14 @@ using Ardalis.Specification;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Test.Mocks;
 using Transaction.Storage.Srv.App.Test.Tools;
 using Xunit.Abstractions;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Test.AccountAggregate;
 public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_Test>
@@ -24,7 +25,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     #region Array
     Logger.LogDebug("Test ARRAY");
 
-    CounterPartyDto mockEntity;
+        CounterPartyDto mockEntity;
     using (var array_scope = this.global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
@@ -42,7 +43,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     #region Act
     Logger.LogDebug("Test ACT");
 
-    Result<CounterPartyDto> assertedResult;
+        Result<CounterPartyDto> assertedResult;
     using (var act_scope = this.global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
@@ -79,7 +80,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     #region Array
     Logger.LogDebug("Test ARRAY");
 
-    CounterPartyDto mockEntity;
+        CounterPartyDto mockEntity;
     using (var array_scope = this.global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
@@ -104,7 +105,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     #region Act
     Logger.LogDebug("Test ACT");
 
-    Result<CounterPartyDto> assertedResult;
+        Result<CounterPartyDto> assertedResult;
     using (var act_scope = this.global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
@@ -125,7 +126,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     {
       var sp = act_scope.ServiceProvider;
 
-      var readRep = sp.GetRequiredService<IReadRepositoryBase<CounterParty>>();
+      var readRep = sp.GetRequiredService<IReadRepositoryBase<Core.Aggregates.AccountAggregate.Entity.CounterParty>>();
       var assertedEntity = await readRep.GetByIdAsync(usedEvent.Id);
 
       Assert.NotNull(assertedEntity);
@@ -142,7 +143,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     #region Array
     Logger.LogDebug("Test ARRAY");
 
-    CounterPartyDto mockEntity;
+        CounterPartyDto mockEntity;
     using (var array_scope = this.global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
@@ -169,7 +170,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     #region Act
     Logger.LogDebug("Test ACT");
 
-    Result<CounterPartyDto> assertedResult;
+        Result<CounterPartyDto> assertedResult;
     using (var act_scope = this.global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
@@ -191,7 +192,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     {
       var sp = act_scope.ServiceProvider;
 
-      var readAssetTypeRep = sp.GetRequiredService<IReadRepositoryBase<CounterParty>>();
+      var readAssetTypeRep = sp.GetRequiredService<IReadRepositoryBase<Core.Aggregates.AccountAggregate.Entity.CounterParty>>();
       var assertedEntity = await readAssetTypeRep.GetByIdAsync(assertedResult.Value.Id);
 
       Assert.Null(assertedEntity);

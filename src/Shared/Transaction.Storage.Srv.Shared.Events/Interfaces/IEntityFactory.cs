@@ -1,5 +1,5 @@
 using Ardalis.Result;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Shared.Events.Interfaces;
 

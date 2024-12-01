@@ -1,7 +1,7 @@
 using Divergic.Logging.Xunit;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Configs;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Xunit.Abstractions;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Models;

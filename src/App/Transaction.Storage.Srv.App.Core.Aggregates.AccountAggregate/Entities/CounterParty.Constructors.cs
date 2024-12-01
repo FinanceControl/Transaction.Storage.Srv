@@ -6,7 +6,7 @@ using Ardalis.Specification;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 
 public partial class CounterParty
 {

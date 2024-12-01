@@ -1,13 +1,14 @@
 using Ardalis.Specification;
 using FluentValidation;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model.CounterParty;
 using Transaction.Storage.Srv.Shared.Validators;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 
 public partial class CounterParty
 {
-  public class Validator : AbstractValidator<ICounterPartyBodyDto>
+  public class Validator : AbstractValidator<IBody>
   {
     public Validator(IReadRepositoryBase<CounterPartyType> counterPartyTypeRep) : this()
     {

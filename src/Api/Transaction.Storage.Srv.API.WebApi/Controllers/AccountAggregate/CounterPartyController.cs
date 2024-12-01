@@ -3,9 +3,10 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
@@ -15,9 +16,9 @@ namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 public class CounterPartyController : ControllerBase
 {
   private readonly IMediator mediator;
-  private readonly IReadRepositoryBase<CounterParty> readRepository;
+  private readonly IReadRepositoryBase<App.Core.Aggregates.AccountAggregate.Entity.CounterParty> readRepository;
 
-  public CounterPartyController(IMediator mediator, IReadRepositoryBase<CounterParty> readRepository)
+  public CounterPartyController(IMediator mediator, IReadRepositoryBase<App.Core.Aggregates.AccountAggregate.Entity.CounterParty> readRepository)
   {
     this.mediator = mediator;
     this.readRepository = readRepository;
@@ -33,7 +34,7 @@ public class CounterPartyController : ControllerBase
     var ent = await readRepository.GetByIdAsync(id, cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.Adapt<CounterPartyDto>());
+    return base.Ok(ent.Adapt<CounterPartyDto>());
   }
 
   [HttpDelete("{id}")]
@@ -55,7 +56,7 @@ public class CounterPartyController : ControllerBase
     var ent = await readRepository.ListAsync(cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.Select(e => e.Adapt<CounterPartyDto>()));
+    return Ok(ent.Select(e => e.Adapt<CounterParty>()));
   }
 
   [HttpPost()]

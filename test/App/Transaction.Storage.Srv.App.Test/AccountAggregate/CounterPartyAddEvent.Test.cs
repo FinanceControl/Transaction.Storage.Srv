@@ -3,11 +3,12 @@ using Ardalis.Specification;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Test.Tools;
 using Xunit.Abstractions;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Test.AccountAggregate;
 
@@ -37,7 +38,7 @@ public class CounterPartyAddEvent_Test : BaseDbTest<CounterPartyAddEvent_Test>
     #region Act
     Logger.LogDebug("Test ACT");
 
-    Result<CounterPartyDto> assertedResult;
+        Result<CounterPartyDto> assertedResult;
     using (var act_scope = this.global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
@@ -59,7 +60,7 @@ public class CounterPartyAddEvent_Test : BaseDbTest<CounterPartyAddEvent_Test>
     {
       var sp = act_scope.ServiceProvider;
 
-      var readRep = sp.GetRequiredService<IReadRepositoryBase<CounterParty>>();
+      var readRep = sp.GetRequiredService<IReadRepositoryBase<Core.Aggregates.AccountAggregate.Entity.CounterParty>>();
       var assertedEntity = await readRep.GetByIdAsync(assertedResult.Value.Id);
 
       Assert.NotNull(assertedEntity);

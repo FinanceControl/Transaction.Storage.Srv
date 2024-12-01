@@ -9,7 +9,7 @@
     <PackageReference Include="FluentValidation" Version="11.8.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj" />
+    <ProjectReference Include="..\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj" />
   </ItemGroup>
 
 </Project>

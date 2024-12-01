@@ -1,6 +1,6 @@
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 public class AccountDto : IAccountDto
 {
   public int Id { get; set; }

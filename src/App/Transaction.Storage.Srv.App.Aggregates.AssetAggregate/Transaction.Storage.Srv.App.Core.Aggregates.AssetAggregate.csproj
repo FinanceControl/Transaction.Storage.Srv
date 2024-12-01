@@ -16,7 +16,7 @@
     <PackageReference Include="Mapster" Version="7.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj" />
+    <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj" />
     <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Validators\Transaction.Storage.Srv.Shared.Validators.csproj" />
     <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj" />
   </ItemGroup>

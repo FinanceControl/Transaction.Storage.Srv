@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Transcation.Storage.Srv.Shared.Database.Models;
+namespace Transaction.Storage.Srv.Shared.Database.Models;
 
 public class EventLogEntity : EntityBase
 {

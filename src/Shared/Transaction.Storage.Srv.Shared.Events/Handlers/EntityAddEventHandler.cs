@@ -3,7 +3,7 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Shared.Events.Handlers;
 public class EntityAddEventHandler<TEvent, TEntity, TResult> : IRequestHandler<TEvent, Result<TResult>> where TEvent : IRequest<Result<TResult>> where TEntity : DomainEntity

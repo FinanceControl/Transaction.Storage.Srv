@@ -1,9 +1,10 @@
 using Ardalis.Specification;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
@@ -12,9 +13,9 @@ namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 [ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AccountAggregate)]
 public class CounterPartyTypeController : ControllerBase
 {
-  private readonly IReadRepositoryBase<CounterPartyType> readRepository;
+  private readonly IReadRepositoryBase<App.Core.Aggregates.AccountAggregate.Entity.CounterPartyType> readRepository;
 
-  public CounterPartyTypeController(IReadRepositoryBase<CounterPartyType> readRepository)
+  public CounterPartyTypeController(IReadRepositoryBase<App.Core.Aggregates.AccountAggregate.Entity.CounterPartyType> readRepository)
   {
     this.readRepository = readRepository;
   }

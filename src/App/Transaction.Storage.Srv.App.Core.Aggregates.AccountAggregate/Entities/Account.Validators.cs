@@ -3,7 +3,7 @@ using FluentValidation;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
 using Transaction.Storage.Srv.Shared.Validators;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 
 public partial class Account
 {

@@ -1,7 +1,0 @@
-using Transcation.Storage.Srv.Shared.Database.Interfaces;
-
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
-
-public interface ICounterPartyDto : IDomainEntityDto, ICounterPartyBodyDto
-{
-}

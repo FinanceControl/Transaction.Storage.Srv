@@ -2,7 +2,7 @@ using Ardalis.Result;
 using Ardalis.Specification;
 using Mapster;
 using MediatR;
-using Transcation.Storage.Srv.Shared.Database.Models;
+using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Shared.Events.Handlers;
 public class EntityDeleteEventHandler<TEvent, TEntity, TResult> : IRequestHandler<TEvent, Result<TResult>> where TEntity : DomainEntity where TEvent : EntityDeleteEvent<TResult>

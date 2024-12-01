@@ -1,4 +1,4 @@
-namespace Transcation.Storage.Srv.Shared.Database.Interfaces;
+namespace Transaction.Storage.Srv.Shared.Database.Interfaces;
 
 public interface IDomainEntityDto
 {

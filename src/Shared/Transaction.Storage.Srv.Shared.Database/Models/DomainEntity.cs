@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Transcation.Storage.Srv.Shared.Database.Interfaces;
+using Transaction.Storage.Srv.Shared.Database.Interfaces;
 
-namespace Transcation.Storage.Srv.Shared.Database.Models;
+namespace Transaction.Storage.Srv.Shared.Database.Models;
 
 public abstract class DomainEntity : EntityBase, IDomainEntityDto
 {

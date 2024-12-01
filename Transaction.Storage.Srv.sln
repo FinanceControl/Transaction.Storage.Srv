@@ -12,8 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BDC1B518-8969-4B89-95CA-5473284D84E3}"
+	ProjectSection(SolutionItems) = preProject
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database", "src\Shared\Transcation.Storage.Srv.Shared.Database\Transcation.Storage.Srv.Shared.Database.csproj", "{76ED9737-EA4B-41F0-94AB-D889F0A482F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Database", "src\Shared\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj", "{76ED9737-EA4B-41F0-94AB-D889F0A482F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{0830D399-4688-4E3A-AB2F-D365FA86202B}"
 EndProject
@@ -37,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Sha
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{522D4283-6CFD-4FA3-918F-60546E439E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcation.Storage.Srv.Shared.Database.Test", "test\Shared\Transcation.Storage.Srv.Shared.Database.Test\Transcation.Storage.Srv.Shared.Database.Test.csproj", "{E4DBCF71-9783-4542-B6FB-7D945DE848C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Database.Test", "test\Shared\Transaction.Storage.Srv.Shared.Database.Test\Transaction.Storage.Srv.Shared.Database.Test.csproj", "{E4DBCF71-9783-4542-B6FB-7D945DE848C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Events", "src\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj", "{00169B6E-673B-4CAA-9F22-BF31B747D2A6}"
 EndProject
@@ -52,6 +54,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Test", "test\App\Transaction.Storage.Srv.App.Test\Transaction.Storage.Srv.App.Test.csproj", "{4D907D7E-DA92-4688-B7EE-B2DCFB912587}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.csproj", "{222C332C-A13E-49C8-A1E0-5382CE95EAC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Shared.Model", "src\Shared\Transaction.Storage.Srv.Shared.Model\Transaction.Storage.Srv.Shared.Model.csproj", "{9C802A8C-4CC2-414A-8DE0-5016F4D7E757}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +126,10 @@ Global
 		{222C332C-A13E-49C8-A1E0-5382CE95EAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{222C332C-A13E-49C8-A1E0-5382CE95EAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{222C332C-A13E-49C8-A1E0-5382CE95EAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C802A8C-4CC2-414A-8DE0-5016F4D7E757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C802A8C-4CC2-414A-8DE0-5016F4D7E757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C802A8C-4CC2-414A-8DE0-5016F4D7E757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C802A8C-4CC2-414A-8DE0-5016F4D7E757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -147,5 +155,6 @@ Global
 		{EAF09D71-D7AF-4594-9BCD-85A93475786C} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
 		{4D907D7E-DA92-4688-B7EE-B2DCFB912587} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
 		{222C332C-A13E-49C8-A1E0-5382CE95EAC9} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
+		{9C802A8C-4CC2-414A-8DE0-5016F4D7E757} = {BDC1B518-8969-4B89-95CA-5473284D84E3}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Transcation.Storage.Srv.Shared.Database.Models;
+namespace Transaction.Storage.Srv.Shared.Database.Models;
 public abstract class EntityBase
 {
   [Key]
