@@ -7,7 +7,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Specifications;
 using Transaction.Storage.Srv.App.Test.Mocks;
 using Transaction.Storage.Srv.App.Test.Tools;

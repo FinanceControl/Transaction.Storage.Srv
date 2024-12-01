@@ -2,7 +2,7 @@ using Ardalis.Specification;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.TransactionAggregate;
 

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Configs;
 public class PositionConfig : IEntityTypeConfiguration<Position>

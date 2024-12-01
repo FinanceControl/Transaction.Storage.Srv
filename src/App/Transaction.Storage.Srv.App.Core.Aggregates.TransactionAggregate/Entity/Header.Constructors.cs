@@ -8,7 +8,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 
 public partial class Header
 {

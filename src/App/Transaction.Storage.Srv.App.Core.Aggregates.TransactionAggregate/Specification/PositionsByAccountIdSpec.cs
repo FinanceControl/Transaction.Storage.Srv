@@ -1,5 +1,5 @@
 using Ardalis.Specification;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Specifications;
 public class PositionsByAccountIdSpec : SingleResultSpecification<Position>

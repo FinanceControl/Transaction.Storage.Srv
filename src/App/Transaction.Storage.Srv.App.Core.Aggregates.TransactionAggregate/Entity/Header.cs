@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
 using Transaction.Storage.Srv.Shared.Database.Models;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 
 [Index(nameof(CommitDateTime), IsUnique = false)]
 public partial class Header : OldDomainEntity, IHeaderDto

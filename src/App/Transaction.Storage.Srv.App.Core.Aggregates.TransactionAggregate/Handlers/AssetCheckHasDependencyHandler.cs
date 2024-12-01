@@ -2,7 +2,7 @@ using Ardalis.Result;
 using Ardalis.Specification;
 using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Specifications;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Handlers;

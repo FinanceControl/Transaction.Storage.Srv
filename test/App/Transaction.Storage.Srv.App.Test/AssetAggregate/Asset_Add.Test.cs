@@ -35,7 +35,6 @@ public class Asset_Add_Test : BaseDbTest<Asset_Add_Test>
     var usedEvent = new AssetAddEvent()
     {
       Name = "Test1",
-      DecimalSize = 10,
       AssetTypeId = mockAssetType.Id,
     };
 
@@ -61,7 +60,6 @@ public class Asset_Add_Test : BaseDbTest<Asset_Add_Test>
 
     Assert.True(assertedResult.IsSuccess);
     Assert.Equal(usedEvent.Name, assertedResult.Value.Name);
-    Assert.Equal(usedEvent.DecimalSize, assertedResult.Value.DecimalSize);
     Assert.Equal(usedEvent.AssetTypeId, assertedResult.Value.AssetTypeId);
 
     using (var act_scope = this.global_sp.CreateScope())

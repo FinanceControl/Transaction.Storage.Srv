@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate;
