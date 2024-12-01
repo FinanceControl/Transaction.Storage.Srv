@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model.CounterParty;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;

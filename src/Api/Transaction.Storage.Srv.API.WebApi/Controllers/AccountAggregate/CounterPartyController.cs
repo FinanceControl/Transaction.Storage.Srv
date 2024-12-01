@@ -3,7 +3,6 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;

@@ -7,7 +7,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
-public class AssetDeleteEventHandler : EntityDeleteEventHandler<AssetDeleteEvent, Asset, AssetDto>
+public class AssetDeleteEventHandler : OldEntityDeleteEventHandler<AssetDeleteEvent, Asset, AssetDto>
 {
   private readonly IMediator mediator;
 

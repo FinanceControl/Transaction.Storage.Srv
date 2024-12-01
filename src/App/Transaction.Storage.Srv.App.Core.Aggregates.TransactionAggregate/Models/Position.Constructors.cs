@@ -11,7 +11,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Model
 
 public partial class Position
 {
-  public class Factory : IEntityFactory<IPositionBodyDto, Position>
+  public class Factory : IOldEntityFactory<IPositionBodyDto, Position>
   {
     private readonly IReadRepositoryBase<Asset> assetRep;
     private readonly IReadRepositoryBase<Account> accountRep;

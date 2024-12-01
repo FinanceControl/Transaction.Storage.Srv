@@ -7,7 +7,7 @@ using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
 
-public partial class Position : DomainEntity, IPositionDto
+public partial class Position : OldDomainEntity, IPositionDto
 {
   public int? AccountId { get; private set; }
   public Account? Account { get; private set; }

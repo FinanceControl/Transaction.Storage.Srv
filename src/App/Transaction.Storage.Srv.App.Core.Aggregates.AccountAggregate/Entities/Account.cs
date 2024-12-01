@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 
-public partial class Account : DomainEntity, IAccountDto
+public partial class Account : DomainEntity, IAccount
 {
   private const int NameMaxLenght = 50;
 
@@ -21,4 +21,10 @@ public partial class Account : DomainEntity, IAccountDto
 
   [Display(Name = "Are account controlled automatically")]
   public bool IsUnderManagement { get; private set; }
+
+  public DateOnly CloseDate { get; private set; }
+  
+  public DateOnly LastSyncDate { get; private set; }
+
+  public string KeepassId { get; private set; }
 }

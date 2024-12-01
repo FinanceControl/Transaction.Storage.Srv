@@ -6,7 +6,7 @@ using Transaction.Storage.Srv.Shared.Database.Models;
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
 
 [Index(nameof(CommitDateTime), IsUnique = false)]
-public partial class Header : DomainEntity, IHeaderDto
+public partial class Header : OldDomainEntity, IHeaderDto
 {
   private const int DescriptionMaxLenght = 255;
   [MaxLength(DescriptionMaxLenght)]

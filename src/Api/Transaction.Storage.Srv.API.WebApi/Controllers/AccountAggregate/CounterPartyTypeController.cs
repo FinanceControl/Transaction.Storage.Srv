@@ -1,8 +1,6 @@
 using Ardalis.Specification;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 

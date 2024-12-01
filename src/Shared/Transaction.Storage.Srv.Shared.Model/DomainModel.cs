@@ -3,9 +3,13 @@
 public interface IDomainModel
 {
   /// <summary>
-  /// Unique id of entity
+  /// Id in master system
   /// </summary>
-  public int Id { get; }
+  public int Id{get;set;}
+  /// <summary>
+  /// Guid of entity
+  /// </summary>
+  public Guid Guid { get; }
   public DateTimeOffset CreatedDateTime { get; }
   public DateTimeOffset UpdatedDateTime { get; }
 }

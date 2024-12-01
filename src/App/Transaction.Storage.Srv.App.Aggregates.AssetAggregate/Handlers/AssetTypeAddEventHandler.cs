@@ -7,10 +7,10 @@ using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
 
-public class AssetTypeAddEventHandler : EntityAddEventHandler<AssetTypeAddEvent, AssetType, AssetTypeDto>
+public class AssetTypeAddEventHandler : OldEntityAddEventHandler<AssetTypeAddEvent, AssetType, AssetTypeDto>
 {
 
-  public AssetTypeAddEventHandler(IRepositoryBase<AssetType> repository, IEntityFactory<AssetTypeAddEvent, AssetType> entityFactory) : base(repository, entityFactory)
+  public AssetTypeAddEventHandler(IRepositoryBase<AssetType> repository, IOldEntityFactory<AssetTypeAddEvent, AssetType> entityFactory) : base(repository, entityFactory)
   {
   }
 }

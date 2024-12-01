@@ -9,7 +9,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 public partial class Asset
 {
-  public class Factory : IEntityFactory<AssetAddEvent, Asset>
+  public class Factory : IOldEntityFactory<AssetAddEvent, Asset>
   {
     private readonly IReadRepositoryBase<AssetType> assetTypeRep;
 

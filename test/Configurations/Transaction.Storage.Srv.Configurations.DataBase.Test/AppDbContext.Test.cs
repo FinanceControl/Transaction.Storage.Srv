@@ -1,11 +1,8 @@
 using Ardalis.Specification;
-using Divergic.Logging.Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.Configurations.DataBase.Test.Tools;
 
 using Xunit.Abstractions;

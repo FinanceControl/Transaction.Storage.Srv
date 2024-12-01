@@ -1,9 +1,6 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Test.Mocks;

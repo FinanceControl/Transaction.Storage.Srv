@@ -1,13 +1,13 @@
 using Ardalis.Specification;
 using FluentValidation;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Shared.Validators;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 
 public partial class Account
 {
-  public class Validator : AbstractValidator<IAccountBodyDto>
+  public class Validator : AbstractValidator<IAccountBody>
   {
     public Validator(IReadRepositoryBase<CounterParty> counterPartyRep) : this()
     {

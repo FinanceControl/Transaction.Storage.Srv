@@ -1,7 +1,5 @@
 using Ardalis.Specification;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;

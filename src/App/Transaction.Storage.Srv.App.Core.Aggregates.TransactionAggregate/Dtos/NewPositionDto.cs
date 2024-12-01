@@ -1,4 +1,3 @@
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Dtos;

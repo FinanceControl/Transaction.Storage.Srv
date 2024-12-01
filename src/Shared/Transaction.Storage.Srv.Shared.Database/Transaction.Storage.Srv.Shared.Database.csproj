@@ -9,5 +9,8 @@
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="InsonusK.Shared.Validation" Version="1.1.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Transaction.Storage.Srv.Shared.Model\Transaction.Storage.Srv.Shared.Model.csproj" />
+  </ItemGroup>
 
 </Project>

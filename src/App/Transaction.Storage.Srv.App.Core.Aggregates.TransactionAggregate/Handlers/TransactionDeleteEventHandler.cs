@@ -6,7 +6,7 @@ using Transaction.Storage.Srv.Shared.Events.Handlers;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 
-public class TransactionDeleteEventHandler : EntityDeleteEventHandler<TransactionDeleteEvent, Header, TransactionDto>
+public class TransactionDeleteEventHandler : OldEntityDeleteEventHandler<TransactionDeleteEvent, Header, TransactionDto>
 {
 
   public TransactionDeleteEventHandler(IRepositoryBase<Header> hearderRep) : base(hearderRep)

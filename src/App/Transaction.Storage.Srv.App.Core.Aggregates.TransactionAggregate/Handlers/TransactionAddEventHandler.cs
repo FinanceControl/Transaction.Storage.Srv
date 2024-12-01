@@ -1,4 +1,3 @@
-using Ardalis.Result;
 using Ardalis.Specification;
 using Mapster;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
@@ -10,12 +9,12 @@ using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Handlers;
 
-public class TransactionAddEventHandler : EntityAddEventHandler<TransactionAddEvent, Header, TransactionDto>
+public class TransactionAddEventHandler : OldEntityAddEventHandler<TransactionAddEvent, Header, TransactionDto>
 {
   private readonly IReadRepositoryBase<Asset> assetRep;
 
   public TransactionAddEventHandler(IRepositoryBase<Header> headerRep,
-                                IEntityFactory<TransactionAddEvent, Header> entityFactory,
+                                IOldEntityFactory<TransactionAddEvent, Header> entityFactory,
                                   IReadRepositoryBase<Asset> assetRep) : base(headerRep, entityFactory)
   {
     this.assetRep = assetRep;

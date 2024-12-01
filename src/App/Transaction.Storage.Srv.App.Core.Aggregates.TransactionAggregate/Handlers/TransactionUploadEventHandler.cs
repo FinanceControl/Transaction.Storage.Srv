@@ -10,9 +10,9 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Handl
 public class TransactionUploadEventHandler : IRequestHandler<TransactionUploadEvent, Result<Dictionary<int, int>>>
 {
   private readonly IRepositoryBase<Header> _repository;
-  private readonly IEntityFactory<TransactionAddEvent, Header> _entityFactory;
+  private readonly IOldEntityFactory<TransactionAddEvent, Header> _entityFactory;
 
-  public TransactionUploadEventHandler(IRepositoryBase<Header> entityRep, IEntityFactory<TransactionAddEvent, Header> entityFactory)
+  public TransactionUploadEventHandler(IRepositoryBase<Header> entityRep, IOldEntityFactory<TransactionAddEvent, Header> entityFactory)
   {
     this._repository = entityRep;
     this._entityFactory = entityFactory;

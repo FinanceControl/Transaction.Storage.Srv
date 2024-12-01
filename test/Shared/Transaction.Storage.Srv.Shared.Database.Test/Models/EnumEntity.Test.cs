@@ -1,6 +1,5 @@
 using Divergic.Logging.Xunit;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.Shared.Database;
 using Transaction.Storage.Srv.Shared.Database.Models;
 using Xunit.Abstractions;
 

@@ -12,13 +12,13 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Model
 
 public partial class Header
 {
-  public class Factory : IEntityFactory<TransactionAddEvent, Header>
+  public class Factory : IOldEntityFactory<TransactionAddEvent, Header>
   {
-    private readonly IEntityFactory<IPositionBodyDto, Position> posFactory;
+    private readonly IOldEntityFactory<IPositionBodyDto, Position> posFactory;
     private readonly IReadRepositoryBase<Account> accountReadRep;
     private readonly IReadRepositoryBase<Asset> assetReadRep;
 
-    public Factory(IEntityFactory<IPositionBodyDto, Position> posFactory,
+    public Factory(IOldEntityFactory<IPositionBodyDto, Position> posFactory,
                       IReadRepositoryBase<Account> accountReadRep,
                       IReadRepositoryBase<Asset> assetReadRep)
     {

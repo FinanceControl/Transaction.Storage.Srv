@@ -1,7 +1,7 @@
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
-public class AccountDto : IAccountDto
+public class AccountDto : IAccount
 {
   public int Id { get; set; }
   public string Name { get; set; }
@@ -14,4 +14,12 @@ public class AccountDto : IAccountDto
   public DateTimeOffset UpdatedDateTime { get; set; }
 
   public DateTimeOffset CreatedDateTime { get; set; }
+
+  public Guid Guid { get; set; }
+
+  public DateOnly CloseDate { get; set; }
+
+  public DateOnly LastSyncDate { get; set; }
+
+  public string KeepassId { get; set; }
 }

@@ -1,13 +1,13 @@
 using Transaction.Storage.Srv.Shared.Model;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model.CounterParty;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 
 
-public interface ICounterParty : IDomainModel, IBody
+public interface ICounterParty : IDomainModel, ICounterPartyBody
 {
 }
 
-public interface IBody
+public interface ICounterPartyBody
 {
   public string Name { get; }
   public int CounterPartyTypeId { get; }

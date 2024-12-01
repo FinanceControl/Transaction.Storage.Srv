@@ -1,10 +1,9 @@
 
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Interfaces;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-public class CounterPartyType : EnumEntity<CounterPartyType.Enum>, ICounterPartyType
+public class CounterPartyType : EnumEntity<ICounterPartyType.Enum>, ICounterPartyType
 {
   public new const int NameLenght = 15;
 
@@ -12,16 +11,11 @@ public class CounterPartyType : EnumEntity<CounterPartyType.Enum>, ICounterParty
   {
   }
 
-  public CounterPartyType(Enum Id) : base(Id)
+  public CounterPartyType(ICounterPartyType.Enum Id) : base(Id)
   {
   }
 
-  public enum Enum
-  {
-    LegalEntity = 1,
-    Individual = 2,
-    Storage = 3
-  }
+  
 
   public ICollection<CounterParty> CounterParties { get; }
 }
