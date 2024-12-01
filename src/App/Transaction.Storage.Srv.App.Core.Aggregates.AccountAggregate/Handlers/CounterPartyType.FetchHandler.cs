@@ -12,7 +12,7 @@ public class CounterPartyTypeFetchHandler : IRequestHandler<CounterPartyTypeFetc
 {
     private readonly IReadRepositoryBase<CounterPartyType> _rep;
     public CounterPartyTypeFetchHandler(IReadRepositoryBase<CounterPartyType> rep){
-        this._rep = rep;
+        _rep = rep;
     }
     public async Task<Result<IEnumerable<CounterPartyTypeDto>>> Handle(CounterPartyTypeFetchEvent request, CancellationToken cancellationToken)
     {

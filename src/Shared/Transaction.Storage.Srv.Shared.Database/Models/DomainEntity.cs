@@ -13,7 +13,7 @@ public abstract class OldDomainEntity : EntityBase, IDomainEntityDto
   {
     get => _createdDateTime; set
     {
-      if (this.Id != 0)
+      if (Id != 0)
         throw new ApplicationException("Cann't set up CreatedDateTime for exist entity");
       _createdDateTime = value;
     }
@@ -48,7 +48,7 @@ public abstract class DomainEntity : ConstantDomainEntity, IDomainModel
   {
     get => _createdDateTime; set
     {
-      if (this.Id != 0)
+      if (Id != 0)
         throw new ApplicationException("Cann't set up CreatedDateTime for exist entity");
       _createdDateTime = value;
     }

@@ -4,13 +4,18 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
 
 public class AssetTypeAddEventHandler : EntityAddEventHandler<AssetTypeAddEvent, AssetType, AssetTypeDto>
 {
 
-  public AssetTypeAddEventHandler(IRepositoryBase<AssetType> repository, IEntityFactory<AssetTypeAddEvent, AssetType> entityFactory) : base(repository, entityFactory)
+  public AssetTypeAddEventHandler(
+        IRepositoryBase<AssetType> repository,
+        IEntityFactory<AssetTypeAddEvent, AssetType> entityFactory,
+        ILogger<AssetTypeAddEventHandler> logger)
+      : base(repository, entityFactory, logger)
   {
   }
 }

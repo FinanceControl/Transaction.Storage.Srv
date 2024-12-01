@@ -24,7 +24,7 @@ public class Asset_Delete_Test : BaseDbTest<Asset_Delete_Test>
     Logger.LogDebug("Test ARRAY");
 
     AssetDto mockEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockEntity = await AssetMockFactory.Build(sp);
@@ -42,7 +42,7 @@ public class Asset_Delete_Test : BaseDbTest<Asset_Delete_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AssetDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -60,7 +60,7 @@ public class Asset_Delete_Test : BaseDbTest<Asset_Delete_Test>
     Assert.Equal(mockEntity.DecimalSize, assertedResult.Value.DecimalSize);
     Assert.Equal(mockEntity.AssetTypeId, assertedResult.Value.AssetTypeId);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 

@@ -26,7 +26,7 @@ public class Asset_Add_Test : BaseDbTest<Asset_Add_Test>
     Logger.LogDebug("Test ARRAY");
 
     AssetTypeDto mockAssetType;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockAssetType = await AssetTypeMockFactory.Build(sp);
@@ -45,7 +45,7 @@ public class Asset_Add_Test : BaseDbTest<Asset_Add_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AssetDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -62,7 +62,7 @@ public class Asset_Add_Test : BaseDbTest<Asset_Add_Test>
     Assert.Equal(usedEvent.Name, assertedResult.Value.Name);
     Assert.Equal(usedEvent.AssetTypeId, assertedResult.Value.AssetTypeId);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 

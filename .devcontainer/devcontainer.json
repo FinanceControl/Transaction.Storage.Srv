@@ -22,7 +22,9 @@
 				"fernandoescolar.vscode-solution-explorer",
 				"ms-dotnettools.csharp",
 				"mhutchie.git-graph",
-				"mutantdino.resourcemonitor"
+				"mutantdino.resourcemonitor",
+				"ms-dotnettools.csdevkit",
+				"Gruntfuggly.todo-tree"
 			]
 		}
 	},

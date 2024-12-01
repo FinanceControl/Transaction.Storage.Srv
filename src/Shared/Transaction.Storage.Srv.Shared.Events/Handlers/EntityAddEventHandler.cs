@@ -4,11 +4,12 @@ using Mapster;
 using MediatR;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Shared.Database.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Transaction.Storage.Srv.Shared.Events.Handlers;
-public class OldEntityAddEventHandler<TEvent, TEntity, TResult> : 
-  IRequestHandler<TEvent, Result<TResult>> 
-  where TEvent : IRequest<Result<TResult>> 
+public class OldEntityAddEventHandler<TEvent, TEntity, TResult> :
+  IRequestHandler<TEvent, Result<TResult>>
+  where TEvent : IRequest<Result<TResult>>
   where TEntity : OldDomainEntity
 {
   private readonly IRepositoryBase<TEntity> _repository;
@@ -17,9 +18,9 @@ public class OldEntityAddEventHandler<TEvent, TEntity, TResult> :
 
   public OldEntityAddEventHandler(IRepositoryBase<TEntity> entityRep, IOldEntityFactory<TEvent, TEntity> entityFactory)
   {
-    this._repository = entityRep;
-    this._entityFactory = entityFactory;
-    this.specification = specification;
+    _repository = entityRep;
+    _entityFactory = entityFactory;
+    specification = specification;
   }
   //protected virtual Task<Result> CheckDependency(TEvent request, CancellationToken cancellationToken)
   //{
@@ -49,40 +50,38 @@ public class OldEntityAddEventHandler<TEvent, TEntity, TResult> :
 
 }
 
-public class EntityAddEventHandler<TEvent, TEntity, TResult> : 
-  IRequestHandler<TEvent, Result<TResult>> 
-  where TEvent : IRequest<Result<TResult>> 
+public class EntityAddEventHandler<TEvent, TEntity, TResult> :
+  IRequestHandler<TEvent, Result<TResult>>
+  where TEvent : IRequest<Result<TResult>>
   where TEntity : ConstantDomainEntity
 {
+  private readonly ILogger<EntityAddEventHandler<TEvent, TEntity, TResult>> _logger;
   private readonly IRepositoryBase<TEntity> _repository;
   private readonly IEntityFactory<TEvent, TEntity> _entityFactory;
-  private readonly ISpecification<TEntity, TResult>? specification;
 
-  public EntityAddEventHandler(IRepositoryBase<TEntity> entityRep, IEntityFactory<TEvent, TEntity> entityFactory)
+  public EntityAddEventHandler(IRepositoryBase<TEntity> entityRep, 
+                               IEntityFactory<TEvent, TEntity> entityFactory, 
+                               ILogger<EntityAddEventHandler<TEvent, TEntity, TResult>> logger)
   {
-    this._repository = entityRep;
-    this._entityFactory = entityFactory;
-    this.specification = specification;
+    _logger = logger;
+    _repository = entityRep;
+    _entityFactory = entityFactory;
   }
-  //protected virtual Task<Result> CheckDependency(TEvent request, CancellationToken cancellationToken)
-  //{
-  //  return Task.FromResult(Result.Success());
-  //}
+
   public async Task<Result<TResult>> Handle(TEvent request, CancellationToken cancellationToken)
   {
-    //var check_dependency_result = await CheckDependency(request, cancellationToken);
-    //if (!check_dependency_result.IsSuccess)
-    //{
-    //  return check_dependency_result;
-    //}
-
+    _logger.LogInformation("Create and validate {TEventType}: {TEvent}", typeof(TEvent).Name, request);
     var build_result = await _entityFactory.BuildAsync(request, cancellationToken);
+
     if (!build_result.IsSuccess)
       return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping for ok result"));
 
+    _logger.LogInformation("Add entity {TEntityType}: {TEntity}", typeof(TEntity).Name, build_result.Value);
     var new_Asset = await _repository.AddAsync(build_result.Value, cancellationToken);
 
-    return Result.Success(await ToResult(new_Asset, cancellationToken));
+    var result = await ToResult(new_Asset, cancellationToken);
+    _logger.LogInformation("Add return resut {TResultType}: {TResut}", typeof(TResult).Name, result);
+    return Result.Success(result);
   }
 
   protected virtual Task<TResult> ToResult(TEntity entity, CancellationToken cancellationToken)

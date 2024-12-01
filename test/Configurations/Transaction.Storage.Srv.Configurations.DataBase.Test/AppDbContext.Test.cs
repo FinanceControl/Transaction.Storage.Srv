@@ -49,7 +49,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
     Logger.LogDebug("Test ACT");
 
     DateTimeOffset fromDt = DateTimeOffset.UtcNow;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
@@ -68,7 +68,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
     #region Assert
     Logger.LogDebug("Test ASSERT");
 
-    using (var assert_scope = this.global_sp.CreateScope())
+    using (var assert_scope = global_sp.CreateScope())
     {
       var sp = assert_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
@@ -93,7 +93,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
 
     CounterParty used_CP;
     DateTimeOffset fromCreatedDt = DateTimeOffset.UtcNow;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
@@ -114,7 +114,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
 
 
     DateTimeOffset fromDt = DateTimeOffset.UtcNow;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
@@ -130,7 +130,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
 
     #region Assert
     Logger.LogDebug("Test ASSERT");
-    using (var assert_scope = this.global_sp.CreateScope())
+    using (var assert_scope = global_sp.CreateScope())
     {
       var sp = assert_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();

@@ -32,7 +32,7 @@ public class Module_Test : BaseDbTest<AppDbContext>
 
     List<CounterPartyType> assertedResult;
     List<CounterPartyType> assertedResult2;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<AppDbContext>();

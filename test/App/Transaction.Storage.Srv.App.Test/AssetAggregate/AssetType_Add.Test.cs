@@ -38,7 +38,7 @@ public class AssetType_Add_Test : BaseDbTest<AssetType_Add_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AssetTypeDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -56,7 +56,7 @@ public class AssetType_Add_Test : BaseDbTest<AssetType_Add_Test>
     Assert.Equal(usedEvent.IsInflationProtected, assertedResult.Value.IsInflationProtected);
     Assert.Equal(usedEvent.IsUnderManagement, assertedResult.Value.IsUnderManagement);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 

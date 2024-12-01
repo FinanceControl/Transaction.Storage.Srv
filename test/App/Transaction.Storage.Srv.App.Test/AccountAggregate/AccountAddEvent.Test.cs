@@ -27,7 +27,7 @@ public class AccountAddEvent_Test : BaseDbTest<AccountAddEvent_Test>
     Logger.LogDebug("Test ARRAY");
 
         CounterPartyDto mockEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockEntity = await CounterPartyMockFactory.Build(sp);
@@ -48,7 +48,7 @@ public class AccountAddEvent_Test : BaseDbTest<AccountAddEvent_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AccountDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -67,7 +67,7 @@ public class AccountAddEvent_Test : BaseDbTest<AccountAddEvent_Test>
     Assert.Equal(usedEvent.IsUnderManagement, assertedResult.Value.IsUnderManagement);
     Assert.Equal(usedEvent.CounterPartyId, assertedResult.Value.CounterPartyId);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 

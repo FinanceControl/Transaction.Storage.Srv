@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Entities;
 using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase;
@@ -21,8 +20,7 @@ public partial class AppDbContext : DbContext
   public DbSet<Account> Accounts { get; set; }
   public DbSet<CounterParty> CounterParties { get; set; }
   public DbSet<CounterPartyType> CounterPartyTypes { get; set; }
-  public DbSet<Header> Headers { get; set; }
-  public DbSet<Position> Positions { get; set; }
+
 
   public override int SaveChanges()
   {

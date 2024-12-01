@@ -37,7 +37,7 @@ public class CounterPartyAddEvent_Test : BaseDbTest<CounterPartyAddEvent_Test>
     Logger.LogDebug("Test ACT");
 
         Result<CounterPartyDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -54,7 +54,7 @@ public class CounterPartyAddEvent_Test : BaseDbTest<CounterPartyAddEvent_Test>
     Assert.Equal(usedEvent.Name, assertedResult.Value.Name);
     Assert.Equal(usedEvent.CounterPartyTypeId, assertedResult.Value.CounterPartyTypeId);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 

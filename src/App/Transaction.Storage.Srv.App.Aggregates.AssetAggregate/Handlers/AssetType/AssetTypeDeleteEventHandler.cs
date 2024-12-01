@@ -18,7 +18,7 @@ public class AssetTypeDeleteEventHandler : EntityDeleteEventHandler<AssetTypeDel
   }
   protected override async Task<Result> CheckDependency(AssetTypeDeleteEvent request, CancellationToken cancellationToken)
   {
-    var assets_exist = await this.assetRep.AnyAsync(new AssetOfTypeSpec(request.Id), cancellationToken);
+    var assets_exist = await assetRep.AnyAsync(new AssetOfTypeSpec(request.Id), cancellationToken);
     if (assets_exist)
       return Result.Conflict("Asset for this type exist");
     return await base.CheckDependency(request, cancellationToken);

@@ -23,8 +23,8 @@ public partial class AssetType
   }
   protected AssetType(AssetTypeAddEvent newAssetTypeAddEvent)
   {
-    this.Name = newAssetTypeAddEvent.Name;
-    this.IsInflationProtected = newAssetTypeAddEvent.IsInflationProtected;
-    this.IsUnderManagement = newAssetTypeAddEvent.IsUnderManagement;
+    Name = newAssetTypeAddEvent.Name;
+    IsInflationProtected = newAssetTypeAddEvent.IsInflationProtected;
+    IsUnderManagement = newAssetTypeAddEvent.IsUnderManagement;
   }
 }

@@ -24,7 +24,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Logger.LogDebug("Test ARRAY");
 
     AssetTypeDto mockAssetType;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockAssetType = await AssetTypeMockFactory.Build(sp);
@@ -42,7 +42,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AssetTypeDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -60,7 +60,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Assert.Equal(mockAssetType.IsInflationProtected, assertedResult.Value.IsInflationProtected);
     Assert.Equal(mockAssetType.IsUnderManagement, assertedResult.Value.IsUnderManagement);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 
@@ -80,14 +80,14 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Logger.LogDebug("Test ARRAY");
 
     AssetTypeDto mockAssetType;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockAssetType = await AssetTypeMockFactory.Build(sp);
     }
 
     AssetDto mockAsset;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockAsset = await AssetMockFactory.Build(sp, mockAssetType);
@@ -105,7 +105,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AssetTypeDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -121,7 +121,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Assert.False(assertedResult.IsSuccess);
     Assert.Equal(ResultStatus.Conflict, assertedResult.Status);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 
@@ -144,14 +144,14 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Logger.LogDebug("Test ARRAY");
 
     AssetTypeDto mockAssetType;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockAssetType = await AssetTypeMockFactory.Build(sp);
     }
 
     AssetDto mockAsset;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockAsset = await AssetMockFactory.Build(sp, mockAssetType);
@@ -170,7 +170,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Logger.LogDebug("Test ACT");
 
     Result<AssetTypeDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -188,7 +188,7 @@ public class AssetType_Delete_Test : BaseDbTest<AssetType_Delete_Test>
     Assert.Equal(mockAssetType.IsInflationProtected, assertedResult.Value.IsInflationProtected);
     Assert.Equal(mockAssetType.IsUnderManagement, assertedResult.Value.IsUnderManagement);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 

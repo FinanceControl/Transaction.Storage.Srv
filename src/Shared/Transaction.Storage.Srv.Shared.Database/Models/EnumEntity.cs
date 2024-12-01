@@ -27,7 +27,7 @@ public class EnumEntity<TEnum> : EntityBase, IEquatable<EnumEntity<TEnum>>, ICom
   [MaxLength(NameLenght)]
   public string Name
   {
-    get => this.__name;
+    get => __name;
     set
     {
       try
@@ -47,7 +47,7 @@ public class EnumEntity<TEnum> : EntityBase, IEquatable<EnumEntity<TEnum>>, ICom
 
   public EnumEntity(TEnum Id)
   {
-    this.EnumId = Id;
+    EnumId = Id;
   }
 
   public EnumEntity(string Name)
@@ -67,7 +67,7 @@ public class EnumEntity<TEnum> : EntityBase, IEquatable<EnumEntity<TEnum>>, ICom
 
   public int CompareTo(EnumEntity<TEnum> other)
   {
-    return this.EnumId.CompareTo(other.EnumId);
+    return EnumId.CompareTo(other.EnumId);
   }
 
   public bool Equals(EnumEntity<TEnum>? other)
@@ -80,11 +80,11 @@ public class EnumEntity<TEnum> : EntityBase, IEquatable<EnumEntity<TEnum>>, ICom
     // check if it's not null and is same value
     if (other is null)
       return false;
-    return this.EnumId.Equals(other.EnumId);
+    return EnumId.Equals(other.EnumId);
   }
 
   public override int GetHashCode()
   {
-    return this.EnumId.GetHashCode();
+    return EnumId.GetHashCode();
   }
 }

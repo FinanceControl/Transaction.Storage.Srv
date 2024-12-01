@@ -25,7 +25,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Logger.LogDebug("Test ARRAY");
 
         CounterPartyDto mockEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockEntity = await CounterPartyMockFactory.Build(sp);
@@ -43,7 +43,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Logger.LogDebug("Test ACT");
 
         Result<CounterPartyDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -60,7 +60,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Assert.Equal(mockEntity.Name, assertedResult.Value.Name);
     Assert.Equal(mockEntity.CounterPartyTypeId, assertedResult.Value.CounterPartyTypeId);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 
@@ -80,14 +80,14 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Logger.LogDebug("Test ARRAY");
 
         CounterPartyDto mockEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockEntity = await CounterPartyMockFactory.Build(sp);
     }
 
     AccountDto mockSubEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockSubEntity = await AccountMockFactory.Build(sp, mockEntity);
@@ -105,7 +105,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Logger.LogDebug("Test ACT");
 
         Result<CounterPartyDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -121,7 +121,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Assert.False(assertedResult.IsSuccess);
     Assert.Equal(ResultStatus.Conflict, assertedResult.Status);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 
@@ -143,14 +143,14 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Logger.LogDebug("Test ARRAY");
 
         CounterPartyDto mockEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockEntity = await CounterPartyMockFactory.Build(sp);
     }
 
     AccountDto mockSubEntity;
-    using (var array_scope = this.global_sp.CreateScope())
+    using (var array_scope = global_sp.CreateScope())
     {
       var sp = array_scope.ServiceProvider;
       mockSubEntity = await AccountMockFactory.Build(sp, mockEntity);
@@ -170,7 +170,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Logger.LogDebug("Test ACT");
 
         Result<CounterPartyDto> assertedResult;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var mediator = sp.GetRequiredService<IMediator>();
@@ -187,7 +187,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     Assert.Equal(mockEntity.Name, assertedResult.Value.Name);
     Assert.Equal(mockEntity.CounterPartyTypeId, assertedResult.Value.CounterPartyTypeId);
 
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
 
