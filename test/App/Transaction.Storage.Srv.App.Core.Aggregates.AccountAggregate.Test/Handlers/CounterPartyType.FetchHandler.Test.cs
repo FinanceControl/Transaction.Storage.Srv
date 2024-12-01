@@ -7,7 +7,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Handlers;
 public class CounterPartyTypeFetchHandler_Test : LoggingTestsBase<CounterPartyTypeFetchHandler_Test>
 {
 

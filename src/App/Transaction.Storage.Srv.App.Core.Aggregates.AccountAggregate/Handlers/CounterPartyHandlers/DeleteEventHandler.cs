@@ -6,13 +6,13 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Specification
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
 
-public class CounterPartyDeleteEventHandler : EntityDeleteEventHandler<CounterPartyDeleteEvent, CounterParty, CounterPartyDto>
+public class DeleteEventHandler : EntityDeleteEventHandler<CounterPartyDeleteEvent, CounterParty, CounterPartyDto>
 {
   private readonly IReadRepositoryBase<Account> _accountRep;
 
-  public CounterPartyDeleteEventHandler(IReadRepositoryBase<Account> account, IRepositoryBase<CounterParty> counterPartyRep) : base(counterPartyRep)
+  public DeleteEventHandler(IReadRepositoryBase<Account> account, IRepositoryBase<CounterParty> counterPartyRep) : base(counterPartyRep)
   {
     _accountRep = account;
   }

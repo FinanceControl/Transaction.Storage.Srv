@@ -52,7 +52,7 @@ public static class Module
         logger?.LogInformation("PG host: {0}, db: {1}", connectionStringSource["Host"], connectionStringSource["Database"]);
         builder.UseNpgsql(connectionStringSource.ConnectionString);
       });
-
+    
     logger?.LogInformation("Migration - begin");
     sc.BuildServiceProvider().GetService<AppDbContext>()!.Database.Migrate();
     logger?.LogInformation("Migration - done");

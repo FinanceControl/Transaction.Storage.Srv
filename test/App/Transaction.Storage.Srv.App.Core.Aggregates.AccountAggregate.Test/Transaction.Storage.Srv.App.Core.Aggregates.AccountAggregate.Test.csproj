@@ -26,6 +26,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj" />
+    <ProjectReference Include="..\..\..\src\Configurations\DataBase\Transaction.Storage.Srv.Configurations.DataBase\Transaction.Storage.Srv.Configurations.DataBase.csproj" />
+    <ProjectReference Include="..\..\tools\Transaction.Storage.Srv.Test.Tools\Transaction.Storage.Srv.Test.Tools.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Content Include="./appsettings.test.json">
+     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

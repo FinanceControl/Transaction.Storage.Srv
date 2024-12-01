@@ -2,6 +2,7 @@ using Ardalis.Specification;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Configurations.DataBase.Test.Tools;
 using Xunit.Abstractions;
 
@@ -47,17 +48,17 @@ public class Module_Test : BaseDbTest<AppDbContext>
     #region Assert
     Logger.LogDebug("Test ASSERT");
 
-    Assert.Equal(Enum.GetNames<CounterPartyType.Enum>().Count(), assertedResult.Count);
+    Assert.Equal(Enum.GetNames<ICounterPartyType.Enum>().Count(), assertedResult.Count);
     foreach (var cpt in assertedResult)
     {
-      var expected_name = Enum.GetName<CounterPartyType.Enum>(cpt.EnumId);
+      var expected_name = Enum.GetName<ICounterPartyType.Enum>(cpt.EnumId);
       Assert.Equal(expected_name, cpt.Name);
     }
 
-    Assert.Equal(Enum.GetNames<CounterPartyType.Enum>().Count(), assertedResult2.Count);
+    Assert.Equal(Enum.GetNames<ICounterPartyType.Enum>().Count(), assertedResult2.Count);
     foreach (var cpt in assertedResult2)
     {
-      var expected_name = Enum.GetName<CounterPartyType.Enum>(cpt.EnumId);
+      var expected_name = Enum.GetName<ICounterPartyType.Enum>(cpt.EnumId);
       Assert.Equal(expected_name, cpt.Name);
     }
     #endregion

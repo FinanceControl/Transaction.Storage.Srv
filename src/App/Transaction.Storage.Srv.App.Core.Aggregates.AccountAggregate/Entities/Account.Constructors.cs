@@ -46,5 +46,6 @@ public partial class Account
     CounterPartyId = addEventDto.CounterPartyId;
     Description = addEventDto.Description;
     IsUnderManagement = addEventDto.IsUnderManagement;
+    KeepassId = addEventDto.KeepassId;
   }
 }
