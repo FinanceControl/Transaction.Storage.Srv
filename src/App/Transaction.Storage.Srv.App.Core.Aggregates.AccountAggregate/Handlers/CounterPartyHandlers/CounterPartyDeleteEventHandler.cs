@@ -1,10 +1,10 @@
 using Ardalis.Result;
 using Ardalis.Specification;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Specifications;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
 

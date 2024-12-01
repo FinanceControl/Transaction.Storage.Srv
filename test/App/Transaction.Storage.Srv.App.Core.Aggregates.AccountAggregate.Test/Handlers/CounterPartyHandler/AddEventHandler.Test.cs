@@ -1,14 +1,9 @@
 using Ardalis.Specification;
-using Divergic.Logging.Xunit;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
-using Transaction.Storage.Srv.Configurations.DataBase;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
@@ -28,7 +23,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         #region Array
         Logger.LogDebug("Test ARRAY");
 
-        var handler = new AddEventHandler(global_sp.GetRequiredService<IRepositoryBase<Entity.CounterParty>>(), global_sp.GetRequiredService<IEntityFactory<CounterPartyAddEvent, Entity.CounterParty>>());
+        var handler = new AccountAggregate.Handlers.CounterPartyHandlers.CounterPartyAddEventHandler(global_sp.GetRequiredService<IRepositoryBase<CounterParty>>(), global_sp.GetRequiredService<IEntityFactory<CounterPartyAddEvent, CounterParty>>());
         var request = new CounterPartyAddEvent
         {
             Name = "Test CounterParty",

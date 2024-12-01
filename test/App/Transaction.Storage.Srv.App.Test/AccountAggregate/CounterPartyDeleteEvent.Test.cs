@@ -3,13 +3,13 @@ using Ardalis.Specification;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.App.Test.Mocks;
 using Transaction.Storage.Srv.App.Test.Tools;
 using Xunit.Abstractions;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
 
 namespace Transaction.Storage.Srv.App.Test.AccountAggregate;
 public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_Test>

@@ -1,16 +1,10 @@
 using Ardalis.Specification;
-using Divergic.Logging.Xunit;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Mocks;
-using Transaction.Storage.Srv.Configurations.DataBase;
-using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
@@ -64,4 +58,6 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
 
         #endregion
     }
+
+    //todo: add test when counterpary has dependency you cann't delete it
 }

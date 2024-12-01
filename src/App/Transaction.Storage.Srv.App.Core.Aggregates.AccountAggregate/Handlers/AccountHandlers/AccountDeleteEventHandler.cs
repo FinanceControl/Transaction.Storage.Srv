@@ -1,23 +1,22 @@
 using Ardalis.Result;
 using Ardalis.Specification;
-using MediatR;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.AccountHandlers;
 
-public class DeleteEventHandler : EntityDeleteEventHandler<AccountDeleteEvent, Account, AccountDto>
+public class AccountDeleteEventHandler : EntityDeleteEventHandler<AccountDeleteEvent, Account, AccountDto>
 {
-  private readonly IMediator mediator;
+  //private readonly IMediator mediator;
 
-  public DeleteEventHandler(IRepositoryBase<Account> AccountRep, IMediator mediator) : base(AccountRep)
+  public AccountDeleteEventHandler(IRepositoryBase<Account> AccountRep) : base(AccountRep)
   {
-    this.mediator = mediator;
+    //this.mediator = mediator;
   }
   protected override async Task<Result> CheckDependency(AccountDeleteEvent request,
-                                                       CancellationToken cancellationToken)
+                                                        CancellationToken cancellationToken)
   {
     //var checkEv = new AccountCheckDependencyEvent() { Id = request.Id };
 

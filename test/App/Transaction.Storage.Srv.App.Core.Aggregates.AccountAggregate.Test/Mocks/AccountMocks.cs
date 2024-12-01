@@ -2,9 +2,8 @@ using Ardalis.Specification;
 using Microsoft.Extensions.DependencyInjection;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.AccountHandlers;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Mocks;
@@ -21,7 +20,7 @@ class AccountMocks
         if (counterPartyId == -1){
             counterPartyId = (await new CounterPartyMocks(_sp).AddAsync()).Id;
         }
-        var handler = new AddEventHandler(_sp.GetRequiredService<IRepositoryBase<Account>>(), _sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>());
+        var handler = new AccountAddEventHandler(_sp.GetRequiredService<IRepositoryBase<Account>>(), _sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>());
         var request = new AccountAddEvent
         {
             Name = name,

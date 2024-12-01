@@ -2,9 +2,8 @@ using Ardalis.Specification;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.AccountHandlers;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Mocks;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Test.Tools;
@@ -26,7 +25,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         Logger.LogDebug("Test ARRAY");
         var counterPartyMock = await new CounterPartyMocks(global_sp).AddAsync();
 
-        var handler = new AddEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>(), global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>());
+        var handler = new AccountAddEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>(), global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>());
         var request = new AccountAddEvent
         {
             Name = "Test Account",

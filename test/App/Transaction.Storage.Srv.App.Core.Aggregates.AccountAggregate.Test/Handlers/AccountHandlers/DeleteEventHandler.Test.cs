@@ -1,16 +1,10 @@
 using Ardalis.Specification;
-using Divergic.Logging.Xunit;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NSubstitute;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.AccountHandlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Mocks;
-using Transaction.Storage.Srv.Configurations.DataBase;
-using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
@@ -33,7 +27,7 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
         var existAccount1 = await accountMocks.AddAsync("Exist 1",existCounterPartyId);
         var existAccount2 = await accountMocks.AddAsync("Exist 2",existCounterPartyId);
         
-        var handler = new DeleteEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>(), global_sp.GetRequiredService<IMediator>());
+        var handler = new AccountDeleteEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>());
 
         var request = new AccountDeleteEvent
         {
@@ -65,4 +59,6 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
 
         #endregion
     }
+
+    //TODO: add test when account has dependency you cannot delete without force
 }

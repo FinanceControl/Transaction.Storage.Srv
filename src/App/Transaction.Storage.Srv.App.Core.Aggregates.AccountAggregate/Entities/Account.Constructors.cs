@@ -3,7 +3,7 @@ using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
@@ -34,6 +34,7 @@ public partial class Account
 
       return Result.Success(new_account);
     }
+
   }
 
   protected Account()

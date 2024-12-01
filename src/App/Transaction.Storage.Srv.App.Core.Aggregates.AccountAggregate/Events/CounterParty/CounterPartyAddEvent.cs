@@ -3,7 +3,7 @@ using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
 
 
 public class CounterPartyAddEvent : IRequest<Result<CounterPartyDto>>, ICounterPartyBody 
