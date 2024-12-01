@@ -1,6 +1,6 @@
 using FluentValidation;
 using Transaction.Storage.Srv.Shared.Validators;
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 public partial class AssetType
 {

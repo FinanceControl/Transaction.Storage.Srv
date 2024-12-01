@@ -1,4 +1,4 @@
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 public class AssetDto : IAssetDto

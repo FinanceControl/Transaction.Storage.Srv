@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 

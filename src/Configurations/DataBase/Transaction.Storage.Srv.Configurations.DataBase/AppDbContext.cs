@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models;
 using Transaction.Storage.Srv.Shared.Database.Models;
 

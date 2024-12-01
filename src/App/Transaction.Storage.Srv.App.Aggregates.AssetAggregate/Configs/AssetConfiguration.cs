@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Configs;
 public class AssetConfiguration : IEntityTypeConfiguration<Asset>

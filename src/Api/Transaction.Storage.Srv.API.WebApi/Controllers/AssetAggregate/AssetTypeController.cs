@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AssetAggregate;
 

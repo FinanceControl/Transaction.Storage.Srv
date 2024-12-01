@@ -1,8 +1,8 @@
 using Divergic.Logging.Xunit;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Xunit.Abstractions;
-using static Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.Asset;
+using static Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity.Asset;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Models;
 

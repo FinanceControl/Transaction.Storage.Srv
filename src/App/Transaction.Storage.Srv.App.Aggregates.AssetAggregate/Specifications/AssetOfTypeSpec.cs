@@ -1,5 +1,5 @@
 using Ardalis.Specification;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Specifications;
 public class AssetOfTypeSpec : Specification<Asset>

@@ -3,9 +3,10 @@ using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 public partial class Asset
 {

@@ -1,9 +1,9 @@
 using Ardalis.Specification;
 using FluentValidation;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Interfaces;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
 using Transaction.Storage.Srv.Shared.Validators;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 public partial class Asset
 {

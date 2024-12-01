@@ -1,11 +1,14 @@
 ﻿namespace Transaction.Storage.Srv.Shared.Model;
 
-public interface IDomainModel
-{
+public interface IConstantDomainModel{
   /// <summary>
   /// Id in master system
   /// </summary>
   public int Id{get;set;}
+}
+
+public interface IDomainModel: IConstantDomainModel
+{
   /// <summary>
   /// Guid of entity
   /// </summary>

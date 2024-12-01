@@ -2,7 +2,7 @@ using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 public partial class AssetType
 {
   public class Factory : IOldEntityFactory<AssetTypeAddEvent, AssetType>
