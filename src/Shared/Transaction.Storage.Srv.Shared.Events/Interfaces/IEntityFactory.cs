@@ -7,7 +7,7 @@ public interface IOldEntityFactory<TSource, TEntity> where TEntity : OldDomainEn
 {
   Task<Result<TEntity>> BuildAsync(TSource source, CancellationToken cancellationToken = default);
 }
-public interface IEntityFactory<TSource, TEntity> where TEntity : DomainEntity
+public interface IEntityFactory<TSource, TEntity> where TEntity : ConstantDomainEntity
 {
   Task<Result<TEntity>> BuildAsync(TSource source, CancellationToken cancellationToken = default);
 }

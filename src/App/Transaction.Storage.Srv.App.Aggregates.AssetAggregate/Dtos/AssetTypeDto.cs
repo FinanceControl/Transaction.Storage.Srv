@@ -10,8 +10,4 @@ public class AssetTypeDto : IAssetTypeDto
   public bool IsInflationProtected { get; set; }
 
   public bool IsUnderManagement { get; set; }
-
-  public DateTimeOffset CreatedDateTime { get; set; }
-
-  public DateTimeOffset UpdatedDateTime { get; set; }
 }

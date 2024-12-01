@@ -4,7 +4,7 @@ using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
-public partial class AssetType : OldDomainEntity, IAssetTypeDto
+public partial class AssetType : ConstantDomainEntity, IAssetTypeDto
 {
   private const int NameMaxLenght = 50;
   [MaxLength(NameMaxLenght)]

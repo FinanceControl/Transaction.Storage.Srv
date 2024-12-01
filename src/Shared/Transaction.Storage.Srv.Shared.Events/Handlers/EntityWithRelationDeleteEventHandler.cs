@@ -36,7 +36,7 @@ public class OldEntityDeleteEventHandler<TEvent, TEntity, TResult> : IRequestHan
   }
 }
 
-public class EntityDeleteEventHandler<TEvent, TEntity, TResult> : IRequestHandler<TEvent, Result<TResult>> where TEntity : DomainEntity where TEvent : EntityDeleteEvent<TResult>
+public class EntityDeleteEventHandler<TEvent, TEntity, TResult> : IRequestHandler<TEvent, Result<TResult>> where TEntity : ConstantDomainEntity where TEvent : EntityDeleteEvent<TResult>
 {
   private readonly IRepositoryBase<TEntity> assetRep;
 

@@ -9,8 +9,8 @@ public static class Module
 {
   public static IServiceCollection Register(this IServiceCollection sc)
   {
-    sc.AddScoped<IOldEntityFactory<AssetAddEvent, Asset>, Asset.Factory>();
-    sc.AddScoped<IOldEntityFactory<AssetTypeAddEvent, AssetType>, AssetType.Factory>();
+    sc.AddScoped<IEntityFactory<AssetAddEvent, Asset>, Asset.Factory>();
+    sc.AddScoped<IEntityFactory<AssetTypeAddEvent, AssetType>, AssetType.Factory>();
     sc.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
     return sc;
   }

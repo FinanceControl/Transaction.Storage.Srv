@@ -16,8 +16,6 @@ public partial class Asset
 
     public Validator()
     {
-
-      RuleFor(at => at.DecimalSize).SetValidator(new DecimalSizeValidator());
       RuleFor(e => e.Name).SetValidator(new NameValidator(NameMaxLenght));
     }
   }

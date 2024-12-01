@@ -8,6 +8,5 @@ public interface IAssetDto : IAssetBodyDto, IConstantDomainModel
 public interface IAssetBodyDto
 {
   public string Name { get; }
-  public short DecimalSize { get; }
   public int AssetTypeId { get; }
 }

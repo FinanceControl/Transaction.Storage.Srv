@@ -1,9 +1,6 @@
 ﻿namespace Transaction.Storage.Srv.Shared.Model;
 
 public interface IConstantDomainModel{
-  /// <summary>
-  /// Id in master system
-  /// </summary>
   public int Id{get;set;}
 }
 

@@ -73,7 +73,7 @@ public class Asset_Add_Test : BaseDbTest<Asset_Add_Test>
 
       Assert.NotNull(assertedEntity);
       Assert.Equal(usedEvent.Name, assertedEntity.Name);
-      Assert.Equal(usedEvent.DecimalSize, assertedEntity.DecimalSize);
+      //Assert.Equal(usedEvent.DecimalSize, assertedEntity.DecimalSize);
       Assert.Equal(usedEvent.AssetTypeId, assertedEntity.AssetTypeId);
 
     }

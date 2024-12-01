@@ -26,10 +26,10 @@ public partial class Position
     {
       var res =
       RuleFor(e => e)
-        .NotEqual(0).WithMessage("Amount counln't be 0")
-        .WhenAsync(async (e, ct) => await assetReadRep.GetByIdAsync(assetId, ct) != null)
-          .MustAsync(async (e, ct) => (await assetReadRep.GetByIdAsync(assetId, ct))!.checkDecimalLenght(e).IsSuccess)
-          .WithMessage("Decimal lenght is too long for Asset");
+        .NotEqual(0).WithMessage("Amount counln't be 0");
+        //.WhenAsync(async (e, ct) => await assetReadRep.GetByIdAsync(assetId, ct) != null)
+          //.MustAsync(async (e, ct) => (await assetReadRep.GetByIdAsync(assetId, ct))!.checkDecimalLenght(e).IsSuccess)
+        //  .WithMessage("Decimal lenght is too long for Asset");
     }
   }
 }

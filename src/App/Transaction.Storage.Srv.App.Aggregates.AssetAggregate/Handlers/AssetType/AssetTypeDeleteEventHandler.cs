@@ -8,7 +8,7 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
-public class AssetTypeDeleteEventHandler : OldEntityDeleteEventHandler<AssetTypeDeleteEvent, AssetType, AssetTypeDto>
+public class AssetTypeDeleteEventHandler : EntityDeleteEventHandler<AssetTypeDeleteEvent, AssetType, AssetTypeDto>
 {
   private readonly IRepositoryBase<Asset> assetRep;
 

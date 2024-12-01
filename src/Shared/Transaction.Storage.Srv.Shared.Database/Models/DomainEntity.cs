@@ -36,7 +36,7 @@ public abstract class OldDomainEntity : EntityBase, IDomainEntityDto
   internal void ClearDomainEvents() => _domainEvents.Clear();
 }
 
-public abstract class DomainEntity : EntityBase, IDomainModel
+public abstract class DomainEntity : ConstantDomainEntity, IDomainModel
 {
 
   [Required]
@@ -59,6 +59,10 @@ public abstract class DomainEntity : EntityBase, IDomainModel
 
   [Timestamp]
   public byte[]? Version { get; set; }
+}
+
+public abstract class ConstantDomainEntity : EntityBase, IConstantDomainModel
+{
 
   private List<EventLogEntity> _domainEvents = new();
 

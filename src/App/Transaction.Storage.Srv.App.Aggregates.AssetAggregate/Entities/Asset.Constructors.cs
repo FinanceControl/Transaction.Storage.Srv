@@ -10,7 +10,7 @@ namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 
 public partial class Asset
 {
-  public class Factory : IOldEntityFactory<AssetAddEvent, Asset>
+  public class Factory : IEntityFactory<AssetAddEvent, Asset>
   {
     private readonly IReadRepositoryBase<AssetType> assetTypeRep;
 
@@ -42,18 +42,16 @@ public partial class Asset
   }
 
 #if DEBUG
-  public Asset(string name = "123", int assertTypeId = 0, short decimalSize = 3)
+  public Asset(string name = "123", int assertTypeId = 0)
   {
     Name = name;
     AssetTypeId = assertTypeId;
-    DecimalSize = decimalSize;
   }
 #endif
   protected Asset(AssetAddEvent assetAddEventDto)
   {
     Name = assetAddEventDto.Name;
     AssetTypeId = assetAddEventDto.AssetTypeId;
-    DecimalSize = assetAddEventDto.DecimalSize;
   }
 
   public static implicit operator List<object>(Asset v)

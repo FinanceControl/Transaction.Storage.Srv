@@ -8,11 +8,11 @@ using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.Counte
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
 
-public class DeleteEventHandler : EntityDeleteEventHandler<CounterPartyDeleteEvent, CounterParty, CounterPartyDto>
+public class CounterPartyDeleteEventHandler : EntityDeleteEventHandler<CounterPartyDeleteEvent, CounterParty, CounterPartyDto>
 {
   private readonly IReadRepositoryBase<Account> _accountRep;
 
-  public DeleteEventHandler(IReadRepositoryBase<Account> account, IRepositoryBase<CounterParty> counterPartyRep) : base(counterPartyRep)
+  public CounterPartyDeleteEventHandler(IReadRepositoryBase<Account> account, IRepositoryBase<CounterParty> counterPartyRep) : base(counterPartyRep)
   {
     _accountRep = account;
   }

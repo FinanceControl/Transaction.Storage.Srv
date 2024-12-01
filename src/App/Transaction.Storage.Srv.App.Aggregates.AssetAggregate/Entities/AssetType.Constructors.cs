@@ -5,7 +5,7 @@ using Transaction.Storage.Srv.Shared.Events.Interfaces;
 namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 public partial class AssetType
 {
-  public class Factory : IOldEntityFactory<AssetTypeAddEvent, AssetType>
+  public class Factory : IEntityFactory<AssetTypeAddEvent, AssetType>
   {
     public Task<Result<AssetType>> BuildAsync(AssetTypeAddEvent source, CancellationToken cancellationToken = default)
     {

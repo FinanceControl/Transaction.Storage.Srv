@@ -52,7 +52,7 @@ public class OldEntityAddEventHandler<TEvent, TEntity, TResult> :
 public class EntityAddEventHandler<TEvent, TEntity, TResult> : 
   IRequestHandler<TEvent, Result<TResult>> 
   where TEvent : IRequest<Result<TResult>> 
-  where TEntity : DomainEntity
+  where TEntity : ConstantDomainEntity
 {
   private readonly IRepositoryBase<TEntity> _repository;
   private readonly IEntityFactory<TEvent, TEntity> _entityFactory;

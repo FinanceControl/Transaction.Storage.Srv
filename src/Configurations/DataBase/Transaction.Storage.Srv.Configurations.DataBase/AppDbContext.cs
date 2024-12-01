@@ -36,8 +36,8 @@ public partial class AppDbContext : DbContext
   }
   private void OnBeforeSaving()
   {
-    var allEntites = ChangeTracker.Entries<OldDomainEntity>();
-    var entityTuples = ChangeTracker.Entries<OldDomainEntity>()
+    var allEntites = ChangeTracker.Entries<DomainEntity>();
+    var entityTuples = ChangeTracker.Entries<DomainEntity>()
        .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
        .Select(e => new { state = e.State, entity = e.Entity })
        .ToArray();

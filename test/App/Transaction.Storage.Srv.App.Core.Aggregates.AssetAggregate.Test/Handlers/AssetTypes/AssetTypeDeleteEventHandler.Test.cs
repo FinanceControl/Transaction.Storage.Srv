@@ -1,14 +1,14 @@
 using Ardalis.Specification;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Mocks;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Mocks;
 using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
-namespace Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Test.Handlers.CounterPartyHandlers;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Handlers.AssetTypes;
 public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
 {
 
@@ -22,13 +22,13 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
     {
         #region Array
         Logger.LogDebug("Test ARRAY");
-        var counterPartyMocks = new CounterPartyMocks(global_sp);
+        var counterPartyMocks = new AssetTypeMocks(global_sp);
         var existCounterParty1 = await counterPartyMocks.AddAsync("Exist 1");
         var existCounterParty2 = await counterPartyMocks.AddAsync("Exist 2");
         
-        var handler = new CounterPartyDeleteEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>(), global_sp.GetRequiredService<IRepositoryBase<CounterParty>>());
+        var handler = new AssetTypeDeleteEventHandler(global_sp.GetRequiredService<IRepositoryBase<AssetType>>(), global_sp.GetRequiredService<IRepositoryBase<Asset>>());
 
-        var request = new CounterPartyDeleteEvent
+        var request = new AssetTypeDeleteEvent
         {
             Id= existCounterParty1.Id
         };
@@ -49,11 +49,11 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
 
         Assert.True(result.IsSuccess);
 
-        var savedEntity = await global_sp.GetRequiredService<IReadRepositoryBase<CounterParty>>().ListAsync(cancellationToken);
+        var savedEntity = await global_sp.GetRequiredService<IReadRepositoryBase<AssetType>>().ListAsync(cancellationToken);
         Assert.Single(savedEntity);
 
         var counterParty = savedEntity.First();
-        Assert.Equal("Exist 2", counterParty.Name);
+        Assert.Equal(existCounterParty2.Name, counterParty.Name);
         Assert.Equal(existCounterParty2.Id, counterParty.Id);
 
         #endregion

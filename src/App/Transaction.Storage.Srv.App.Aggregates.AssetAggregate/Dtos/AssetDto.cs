@@ -7,8 +7,4 @@ public class AssetDto : IAssetDto
   public string Name { get; set; }
   public short DecimalSize { get; set; }
   public int AssetTypeId { get; set; }
-
-  public DateTimeOffset CreatedDateTime { get; set; }
-
-  public DateTimeOffset UpdatedDateTime { get; set; }
 }
