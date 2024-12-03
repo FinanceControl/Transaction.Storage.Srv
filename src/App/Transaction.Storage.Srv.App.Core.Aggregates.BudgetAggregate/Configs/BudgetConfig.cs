@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Transaction.Storage.App.Core.Aggregates.BudgetAggregate.Entities;
+using Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Entity;
 
 namespace Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Configs;
 public class AccountConfig : IEntityTypeConfiguration<Budget>

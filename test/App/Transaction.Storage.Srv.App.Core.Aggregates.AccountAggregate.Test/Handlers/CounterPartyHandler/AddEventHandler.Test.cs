@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Model;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Test.Tools;
@@ -23,7 +24,10 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         #region Array
         Logger.LogDebug("Test ARRAY");
 
-        var handler = new AccountAggregate.Handlers.CounterPartyHandlers.CounterPartyAddEventHandler(global_sp.GetRequiredService<IRepositoryBase<CounterParty>>(), global_sp.GetRequiredService<IEntityFactory<CounterPartyAddEvent, CounterParty>>());
+        var handler = new CounterPartyAddEventHandler(
+                                        global_sp.GetRequiredService<IRepositoryBase<CounterParty>>(), 
+                                        global_sp.GetRequiredService<IEntityFactory<CounterPartyAddEvent, CounterParty>>(),
+                                        Output.BuildLoggerFor<CounterPartyAddEventHandler>());
         var request = new CounterPartyAddEvent
         {
             Name = "Test CounterParty",

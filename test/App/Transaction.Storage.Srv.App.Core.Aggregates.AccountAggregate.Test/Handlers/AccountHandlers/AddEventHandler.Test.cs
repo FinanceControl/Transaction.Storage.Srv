@@ -25,7 +25,10 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         Logger.LogDebug("Test ARRAY");
         var counterPartyMock = await new CounterPartyMocks(global_sp).AddAsync();
 
-        var handler = new AccountAddEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>(), global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>());
+        var handler = new AccountAddEventHandler(
+                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(), 
+                                            global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),
+                                            Output.BuildLoggerFor<AccountAddEventHandler>());
         var request = new AccountAddEvent
         {
             Name = "Test Account",

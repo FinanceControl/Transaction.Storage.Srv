@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Handlers;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Test.Mocks;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Test.Tools;
@@ -23,9 +24,10 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         #region Array
         Logger.LogDebug("Test ARRAY");
         var assetTypesMockId = (await new AssetTypeMocks(global_sp).AddAsync()).Id;
-        var handler = new AssetAggregate.Handlers.AssetAddEventHandler(
-                                                                global_sp.GetRequiredService<IRepositoryBase<Asset>>(), 
-                                                                global_sp.GetRequiredService<IEntityFactory<AssetAddEvent, Asset>>());
+        var handler = new AssetAddEventHandler(
+                                        global_sp.GetRequiredService<IRepositoryBase<Asset>>(), 
+                                        global_sp.GetRequiredService<IEntityFactory<AssetAddEvent, Asset>>(),
+                                        Output.BuildLoggerFor<AssetAddEventHandler>());
         var request = new AssetAddEvent
         {
             Name = "Test Asset",

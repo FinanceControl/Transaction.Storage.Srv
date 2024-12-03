@@ -1,5 +1,7 @@
 using Ardalis.Specification;
+using Castle.Core.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Handlers.CounterPartyHandlers;
@@ -17,7 +19,10 @@ class CounterPartyMocks
     }
     public async Task<CounterPartyDto> AddAsync(string name = "Mock CounterParty")
     {
-        var handler = new CounterPartyAddEventHandler(_sp.GetRequiredService<IRepositoryBase<Entity.CounterParty>>(), _sp.GetRequiredService<IEntityFactory<CounterPartyAddEvent, Entity.CounterParty>>());
+        var handler = new CounterPartyAddEventHandler(
+                                _sp.GetRequiredService<IRepositoryBase<Entity.CounterParty>>(), 
+                                _sp.GetRequiredService<IEntityFactory<CounterPartyAddEvent, Entity.CounterParty>>(),
+                                _sp.GetRequiredService<ILogger<CounterPartyAddEventHandler>>());
         var request = new CounterPartyAddEvent
         {
             Name = name,

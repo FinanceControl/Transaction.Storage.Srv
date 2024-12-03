@@ -23,6 +23,7 @@ public abstract class BaseDbTest<T> : LoggingTestsBase<T>, IDisposable
       next_number = number++;
     }
     setupConfigBuider(dbSuffix + next_number.ToString(), _configurationBuilder);
+
     return _configurationBuilder.Build();
   }
 

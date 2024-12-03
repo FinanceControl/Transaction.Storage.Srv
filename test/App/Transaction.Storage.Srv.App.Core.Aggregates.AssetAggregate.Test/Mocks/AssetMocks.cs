@@ -1,5 +1,7 @@
 using Ardalis.Specification;
+using Castle.Core.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
@@ -18,7 +20,8 @@ class AssetMocks
     {
         var handler = new AssetAddEventHandler(
                                         _sp.GetRequiredService<IRepositoryBase<Asset>>(), 
-                                        _sp.GetRequiredService<IEntityFactory<AssetAddEvent, Asset>>());
+                                        _sp.GetRequiredService<IEntityFactory<AssetAddEvent, Asset>>(),
+                                        _sp.GetRequiredService<ILogger<AssetAddEventHandler>>());
         var request = new AssetAddEvent
         {
             Name = name,

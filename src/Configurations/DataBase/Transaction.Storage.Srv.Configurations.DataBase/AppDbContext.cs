@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
 using Transaction.Storage.Srv.Shared.Database.Models;
@@ -14,7 +15,7 @@ public partial class AppDbContext : DbContext
   {
     this.logger = logger;
   }
-
+  public DbSet<Budget> Budgets{get;set;}
   public DbSet<AssetType> AssetTypes { get; set; }
   public DbSet<Asset> Assets { get; set; }
   public DbSet<Account> Accounts { get; set; }

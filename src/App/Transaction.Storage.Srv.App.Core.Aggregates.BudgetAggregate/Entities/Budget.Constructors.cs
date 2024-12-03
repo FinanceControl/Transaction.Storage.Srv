@@ -1,11 +1,10 @@
-using System.ComponentModel.DataAnnotations;
 using Ardalis.Result;
-using Transaction.Storage.App.Core.Aggregates.BudgetAggregate.Events;
+using Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Events;
 using Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Models;
 using Transaction.Storage.Srv.Shared.Database.Models;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
-namespace Transaction.Storage.App.Core.Aggregates.BudgetAggregate.Entities;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Entity;
 
 public partial class Budget : DomainEntity, IBudget
 {

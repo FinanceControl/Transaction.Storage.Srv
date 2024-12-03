@@ -1,6 +1,6 @@
 using Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Models;
 
-namespace Transaction.Storage.App.Core.Aggregates.BudgetAggregate.Dto;
+namespace Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Dto;
 public class NewBudgetDto : INewBudget
 {
     public string Name {get;set;}

@@ -1,5 +1,7 @@
 using Ardalis.Specification;
+using Castle.Core.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
 using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
@@ -20,7 +22,10 @@ class AccountMocks
         if (counterPartyId == -1){
             counterPartyId = (await new CounterPartyMocks(_sp).AddAsync()).Id;
         }
-        var handler = new AccountAddEventHandler(_sp.GetRequiredService<IRepositoryBase<Account>>(), _sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>());
+        var handler = new AccountAddEventHandler(
+                                _sp.GetRequiredService<IRepositoryBase<Account>>(), 
+                                _sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),
+                                _sp.GetRequiredService<ILogger<AccountAddEventHandler>>());
         var request = new AccountAddEvent
         {
             Name = name,
