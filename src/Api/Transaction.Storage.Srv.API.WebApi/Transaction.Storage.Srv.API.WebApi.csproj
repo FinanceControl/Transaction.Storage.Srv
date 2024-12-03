@@ -16,7 +16,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\App\Transaction.Storage.Srv.App\Transaction.Storage.Srv.App.csproj" />
-    <ProjectReference Include="..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.csproj" />    
+    <ProjectReference Include="..\..\App\Components\Transaction.Storage.Srv.App.Component.TransactionComponent\Transaction.Storage.Srv.App.Component.TransactionComponent.csproj" />
+    <ProjectReference Include="..\..\App\Components\Transaction.Storage.Srv.App.Component.CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj" />
+    <ProjectReference Include="..\..\App\Components\Transaction.Storage.Srv.App.Component.BudgetComponent\Transaction.Storage.Srv.App.Component.BudgetComponent.csproj" />
+    <ProjectReference Include="..\..\App\Components\Transaction.Storage.Srv.App.Component.AssetComponent\Transaction.Storage.Srv.App.Component.AssetComponent.csproj" />
+    <ProjectReference Include="..\..\App\Components\Transaction.Storage.Srv.App.Component.AccountComponent\Transaction.Storage.Srv.App.Component.AccountComponent.csproj" />  
   </ItemGroup>
 
 </Project>

@@ -53,25 +53,25 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{29F5A558-1197-408F-B514-E13FDF6220D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.CategoryComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Component.CategoryComponent.Test\Transaction.Storage.Srv.App.Component.CategoryComponent.Test.csproj", "{1B1B4152-655A-4092-B28E-750CA5D77684}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.CategoryComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent.Test\Transaction.Storage.Srv.App.Components.CategoryComponent.Test.csproj", "{1B1B4152-655A-4092-B28E-750CA5D77684}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{CEA7C67C-C135-49B5-B240-FD48E068A2BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.AccountComponent", "src\App\Components\Transaction.Storage.Srv.App.Component.AccountComponent\Transaction.Storage.Srv.App.Component.AccountComponent.csproj", "{03FA89E4-D7FF-46EE-851C-E85F28E8FF0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.AccountComponent", "src\App\Components\Transaction.Storage.Srv.App.Components.AccountComponent\Transaction.Storage.Srv.App.Components.AccountComponent.csproj", "{03FA89E4-D7FF-46EE-851C-E85F28E8FF0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.AssetComponent", "src\App\Components\Transaction.Storage.Srv.App.Component.AssetComponent\Transaction.Storage.Srv.App.Component.AssetComponent.csproj", "{8896A512-AFDD-44C8-804C-C22D83276DCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.AssetComponent", "src\App\Components\Transaction.Storage.Srv.App.Components.AssetComponent\Transaction.Storage.Srv.App.Components.AssetComponent.csproj", "{8896A512-AFDD-44C8-804C-C22D83276DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.BudgetComponent", "src\App\Components\Transaction.Storage.Srv.App.Component.BudgetComponent\Transaction.Storage.Srv.App.Component.BudgetComponent.csproj", "{057EC80E-C0EB-4387-A1EE-F2BF34EC014C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.BudgetComponent", "src\App\Components\Transaction.Storage.Srv.App.Components.BudgetComponent\Transaction.Storage.Srv.App.Components.BudgetComponent.csproj", "{057EC80E-C0EB-4387-A1EE-F2BF34EC014C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.CategoryComponent", "src\App\Components\Transaction.Storage.Srv.App.Component.CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj", "{BAD6C9EF-55DF-4888-96E9-0FA7708F152C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.CategoryComponent", "src\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent\Transaction.Storage.Srv.App.Components.CategoryComponent.csproj", "{BAD6C9EF-55DF-4888-96E9-0FA7708F152C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.TransactionComponent", "src\App\Components\Transaction.Storage.Srv.App.Component.TransactionComponent\Transaction.Storage.Srv.App.Component.TransactionComponent.csproj", "{632F6B43-AD68-4ACD-A6BA-B98A8EECE26C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.TransactionComponent", "src\App\Components\Transaction.Storage.Srv.App.Components.TransactionComponent\Transaction.Storage.Srv.App.Components.TransactionComponent.csproj", "{632F6B43-AD68-4ACD-A6BA-B98A8EECE26C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.AccountComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Component.AccountComponent.Test\Transaction.Storage.Srv.App.Component.AccountComponent.Test.csproj", "{59F56031-F5CE-4231-93EB-8D78BC0D4FFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.AccountComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.AccountComponent.Test\Transaction.Storage.Srv.App.Components.AccountComponent.Test.csproj", "{59F56031-F5CE-4231-93EB-8D78BC0D4FFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.AssetComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Component.AssetComponent.Test\Transaction.Storage.Srv.App.Component.AssetComponent.Test.csproj", "{D1035394-E5D7-4D09-A965-7E62FB955606}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.AssetComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.AssetComponent.Test\Transaction.Storage.Srv.App.Components.AssetComponent.Test.csproj", "{D1035394-E5D7-4D09-A965-7E62FB955606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.BudgetComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Component.BudgetComponent.Test\Transaction.Storage.Srv.App.Component.BudgetComponent.Test.csproj", "{60C11CB6-9A26-4599-83D7-BDB3F8BB0E0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.BudgetComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.BudgetComponent.Test\Transaction.Storage.Srv.App.Components.BudgetComponent.Test.csproj", "{60C11CB6-9A26-4599-83D7-BDB3F8BB0E0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Test.Tools;
 using Xunit.Abstractions;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
 
 namespace Transaction.Storage.Srv.App.Test.AccountAggregate;
 
@@ -58,7 +58,7 @@ public class CounterPartyAddEvent_Test : BaseDbTest<CounterPartyAddEvent_Test>
     {
       var sp = act_scope.ServiceProvider;
 
-      var readRep = sp.GetRequiredService<IReadRepositoryBase<Core.Aggregates.AccountAggregate.Entity.CounterParty>>();
+      var readRep = sp.GetRequiredService<IReadRepositoryBase<Components.AccountComponent.Entity.CounterParty>>();
       var assertedEntity = await readRep.GetByIdAsync(assertedResult.Value.Id);
 
       Assert.NotNull(assertedEntity);

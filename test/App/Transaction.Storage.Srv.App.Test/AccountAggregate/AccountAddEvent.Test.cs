@@ -3,12 +3,12 @@ using Ardalis.Specification;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Test.Mocks;
 using Transaction.Storage.Srv.App.Test.Tools;
 using Xunit.Abstractions;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.AccountEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
 
 namespace Transaction.Storage.Srv.App.Test.AccountAggregate;
 

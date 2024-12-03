@@ -6,9 +6,9 @@ namespace Transaction.Storage.Srv.API.WebApi;
 public static class SwaggerGenOptionsInit
 {
   public const string Version = "v1.0";
-  public const string AssetAggregate = nameof(App.Core.Aggregates.AssetAggregate);
-  public const string AccountAggregate = nameof(App.Core.Aggregates.AccountAggregate);
-  public const string TransactionAggregate = nameof(App.Core.Aggregates.TransactionAggregate);
+  public const string AssetAggregate = nameof(App.Components.AssetComponent);
+  public const string AccountAggregate = nameof(App.Components.AccountComponent);
+  public const string TransactionAggregate = nameof(App.Components.TransactionComponent);
 
   public static void Init(this SwaggerGenOptions options)
   {

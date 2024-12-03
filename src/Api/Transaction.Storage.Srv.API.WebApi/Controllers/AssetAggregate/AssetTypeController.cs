@@ -3,9 +3,9 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Dtos;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Events;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AssetAggregate;
 

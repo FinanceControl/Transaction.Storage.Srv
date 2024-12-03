@@ -3,9 +3,9 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
@@ -15,9 +15,9 @@ namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 public class CounterPartyController : ControllerBase
 {
   private readonly IMediator mediator;
-  private readonly IReadRepositoryBase<App.Core.Aggregates.AccountAggregate.Entity.CounterParty> readRepository;
+  private readonly IReadRepositoryBase<CounterParty> readRepository;
 
-  public CounterPartyController(IMediator mediator, IReadRepositoryBase<App.Core.Aggregates.AccountAggregate.Entity.CounterParty> readRepository)
+  public CounterPartyController(IMediator mediator, IReadRepositoryBase<CounterParty> readRepository)
   {
     this.mediator = mediator;
     this.readRepository = readRepository;

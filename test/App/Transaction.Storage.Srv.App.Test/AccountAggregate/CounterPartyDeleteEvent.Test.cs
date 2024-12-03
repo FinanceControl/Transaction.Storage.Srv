@@ -3,13 +3,13 @@ using Ardalis.Specification;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Entity;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Entity;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 using Transaction.Storage.Srv.App.Test.Mocks;
 using Transaction.Storage.Srv.App.Test.Tools;
 using Xunit.Abstractions;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
 
 namespace Transaction.Storage.Srv.App.Test.AccountAggregate;
 public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_Test>
@@ -125,7 +125,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     {
       var sp = act_scope.ServiceProvider;
 
-      var readRep = sp.GetRequiredService<IReadRepositoryBase<Core.Aggregates.AccountAggregate.Entity.CounterParty>>();
+      var readRep = sp.GetRequiredService<IReadRepositoryBase<Components.AccountComponent.Entity.CounterParty>>();
       var assertedEntity = await readRep.GetByIdAsync(usedEvent.Id);
 
       Assert.NotNull(assertedEntity);
@@ -191,7 +191,7 @@ public class CounterPartyDeleteEvent_Test : BaseDbTest<CounterPartyDeleteEvent_T
     {
       var sp = act_scope.ServiceProvider;
 
-      var readAssetTypeRep = sp.GetRequiredService<IReadRepositoryBase<Core.Aggregates.AccountAggregate.Entity.CounterParty>>();
+      var readAssetTypeRep = sp.GetRequiredService<IReadRepositoryBase<Components.AccountComponent.Entity.CounterParty>>();
       var assertedEntity = await readAssetTypeRep.GetByIdAsync(assertedResult.Value.Id);
 
       Assert.Null(assertedEntity);

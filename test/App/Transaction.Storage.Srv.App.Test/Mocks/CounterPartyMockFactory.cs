@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dto;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
 
 namespace Transaction.Storage.Srv.App.Test.Mocks;
 public static class CounterPartyMockFactory
