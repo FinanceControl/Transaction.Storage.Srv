@@ -11,8 +11,11 @@
     <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj" />
     <ProjectReference Include="..\..\Configurations\DataBase\Transaction.Storage.Srv.Configurations.DataBase\Transaction.Storage.Srv.Configurations.DataBase.csproj" />
-    <ProjectReference Include="..\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Component.AccountComponent\Transaction.Storage.Srv.App.Component.AccountComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Component.AssetComponent\Transaction.Storage.Srv.App.Component.AssetComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Component.BudgetComponent\Transaction.Storage.Srv.App.Component.BudgetComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Component.CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Component.TransactionComponent\Transaction.Storage.Srv.App.Component.TransactionComponent.csproj" />
   </ItemGroup>
 </Project>

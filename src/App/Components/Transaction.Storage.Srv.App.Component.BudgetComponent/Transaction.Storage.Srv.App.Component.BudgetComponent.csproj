@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -13,9 +13,9 @@
     <PackageReference Include="Mapster" Version="7.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj" />
-    <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Validators\Transaction.Storage.Srv.Shared.Validators.csproj" />
-    <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj" />
-    <ProjectReference Include="..\..\Shared\Transaction.Storage.Srv.Shared.Model\Transaction.Storage.Srv.Shared.Model.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Transaction.Storage.Srv.Shared.Model\Transaction.Storage.Srv.Shared.Model.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj" />
   </ItemGroup>
+
 </Project>

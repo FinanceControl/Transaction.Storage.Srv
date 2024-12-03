@@ -20,14 +20,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\tools\Transaction.Storage.Srv.Test.Tools\Transaction.Storage.Srv.Test.Tools.csproj" />
-    <ProjectReference Include="..\..\..\src\App\Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="./appsettings.test.json">
-     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
 </Project>

@@ -13,9 +13,9 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj" />
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj" />
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.csproj" />
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Component.AssetComponent\Transaction.Storage.Srv.App.Component.AssetComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Component.AccountComponent\Transaction.Storage.Srv.App.Component.AccountComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Component.CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Component.BudgetComponent\Transaction.Storage.Srv.App.Component.BudgetComponent.csproj" />
   </ItemGroup>
 </Project>
