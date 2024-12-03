@@ -65,6 +65,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Test", "test\App\Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Test\Transaction.Storage.Srv.App.Core.Aggregates.BudgetAggregate.Test.csproj", "{3712556C-1636-4C4B-A9FF-AEA504BFDD3C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{FA2E3BA4-EB40-4F73-B7B8-0F6C49A49E11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Component.CategoryComponent", "src\App\Components\CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj", "{70E852F5-D3AA-4885-9F0A-84A6C867114F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +158,10 @@ Global
 		{3712556C-1636-4C4B-A9FF-AEA504BFDD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3712556C-1636-4C4B-A9FF-AEA504BFDD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3712556C-1636-4C4B-A9FF-AEA504BFDD3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70E852F5-D3AA-4885-9F0A-84A6C867114F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70E852F5-D3AA-4885-9F0A-84A6C867114F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70E852F5-D3AA-4885-9F0A-84A6C867114F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70E852F5-D3AA-4885-9F0A-84A6C867114F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8FFD0AA-8994-46C5-A735-EE3FD2605029} = {30032F90-D4B5-4AEB-9F69-1410965AF697}
@@ -184,5 +192,7 @@ Global
 		{3CB88D38-C535-49E7-867E-83C12BA37AA0} = {4FFD3E99-9A20-47C2-80C0-B76F9D4995AE}
 		{C8D31331-783C-417C-82DC-F0231E13F600} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
 		{3712556C-1636-4C4B-A9FF-AEA504BFDD3C} = {CEF995E0-EC5C-4E16-91FB-6C3036CB5AD7}
+		{FA2E3BA4-EB40-4F73-B7B8-0F6C49A49E11} = {0830D399-4688-4E3A-AB2F-D365FA86202B}
+		{70E852F5-D3AA-4885-9F0A-84A6C867114F} = {FA2E3BA4-EB40-4F73-B7B8-0F6C49A49E11}
 	EndGlobalSection
 EndGlobal

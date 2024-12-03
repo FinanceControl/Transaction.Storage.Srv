@@ -1,7 +1,7 @@
 ﻿namespace Transaction.Storage.Srv.Shared.Model;
 
 public interface IConstantDomainModel{
-  public int Id{get;set;}
+  public int Id{get;}
 }
 
 public interface IDomainModel: IConstantDomainModel
