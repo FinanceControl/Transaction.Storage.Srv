@@ -12,17 +12,11 @@ namespace Transaction.Storage.Srv.Test.Tools;
 public abstract class BaseDbTest<T> : LoggingTestsBase<T>, IDisposable
 {
   protected IServiceProvider global_sp;
-  private static int number = 1;
-  private static object Lock = new object();
   private static IConfiguration GetConfig(string dbSuffix)
   {
     var _configurationBuilder = new ConfigurationBuilder();
     int next_number;
-    lock (Lock)
-    {
-      next_number = number++;
-    }
-    setupConfigBuider(dbSuffix + next_number.ToString(), _configurationBuilder);
+    setupConfigBuider(dbSuffix + Guid.NewGuid().ToString(), _configurationBuilder);
 
     return _configurationBuilder.Build();
   }

@@ -19,5 +19,15 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
+<ItemGroup>
+    <Content Include="./appsettings.test.json">
+     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\tools\Transaction.Storage.Srv.Test.Tools\Transaction.Storage.Srv.Test.Tools.csproj" />
+    <ProjectReference Include="..\..\..\..\src\App\Components\Transaction.Storage.Srv.App.Component.CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj" />
+  </ItemGroup>
 </Project>

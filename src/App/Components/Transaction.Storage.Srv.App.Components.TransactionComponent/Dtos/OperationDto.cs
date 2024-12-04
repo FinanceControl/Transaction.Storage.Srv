@@ -5,7 +5,17 @@ using Transaction.Storage.Srv.Shared.Database.Models;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Dtos;
 
-public class OperationDto
+public class OperationDto : NewOperationDto, IOperation
+{
+    public Guid Guid {get;}
+
+    public DateTimeOffset CreatedDateTime {get;}
+
+    public DateTimeOffset UpdatedDateTime {get;}
+
+    public int Id {get;}
+}
+public class NewOperationDto:IOperationBody
 {
 
     public string ExternalId {get;set;} 

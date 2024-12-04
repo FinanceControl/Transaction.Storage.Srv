@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Transaction.Storage.Srv.App.Components.CategoryComponent.Entities;
+using Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Events;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Models;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;

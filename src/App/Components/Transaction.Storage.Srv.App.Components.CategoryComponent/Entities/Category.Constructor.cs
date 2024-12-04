@@ -4,7 +4,7 @@ using Transaction.Storage.Srv.App.Components.CategoryComponent.Models;
 using Transaction.Storage.Srv.Shared.Database.Models;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
-namespace Transaction.Storage.Srv.App.Components.CategoryComponent.Entities;
+namespace Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
 public partial class Category : DomainEntity, ICategory
 {
     public class Factory : IEntityFactory<CategoryAddEvent, Category>

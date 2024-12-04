@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Transaction.Storage.Srv.App.Components.CategoryComponent.Entities;
+using Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
 
 namespace Transaction.Storage.Srv.App.Components.CategoryComponent.Configs;
 
