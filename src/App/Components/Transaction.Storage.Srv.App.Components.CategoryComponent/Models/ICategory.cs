@@ -8,5 +8,5 @@ public interface ICategory : IDomainModel, ICategoryBody
 }
 public interface ICategoryBody
 {
-    public string Name { get; set; }
+    public string Name { get; }
 }

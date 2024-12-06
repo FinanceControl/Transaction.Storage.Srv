@@ -1,4 +1,5 @@
 using Ardalis.Result;
+using Mapster;
 using Transaction.Storage.Srv.App.Components.BudgetComponent.Events;
 using Transaction.Storage.Srv.App.Components.BudgetComponent.Models;
 using Transaction.Storage.Srv.Shared.Database.Models;
@@ -24,6 +25,6 @@ public partial class Budget : DomainEntity, IBudget
 
     public Budget(BudgetAddEvent addEventDto) : base()
     {
-        Name = addEventDto.Name;
+        addEventDto.Adapt(this);
     }
 }

@@ -17,7 +17,7 @@ public partial class Account : DomainEntity, IAccount
 
   [Required]
   public int CounterPartyId { get; private set; }
-  public CounterParty CounterParty { get; private set; }
+  public CounterParty? CounterParty { get; private set; }
 
   [Display(Name = "Are account controlled automatically")]
   public bool IsUnderManagement { get; private set; }

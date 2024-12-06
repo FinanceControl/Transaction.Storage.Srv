@@ -10,18 +10,23 @@ using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
 
-class AccountMocks
+public class AccountMocks
 {
+    private int number = 1;
     IServiceProvider _sp;
     public AccountMocks(IServiceProvider sp)
     {
         _sp = sp;
     }
-    public async Task<AccountDto> AddAsync(string name = "Mock Account", int counterPartyId = -1)
+    public async Task<AccountDto> AddAsync(string? name = null){
+        var counterParty = await new CounterPartyMocks(_sp).AddAsync();
+        return await AddAsync(counterParty.Id,name);
+    }
+    public async Task<AccountDto> AddAsync(int counterPartyId, string? name = null)
     {
-        if (counterPartyId == -1){
-            counterPartyId = (await new CounterPartyMocks(_sp).AddAsync()).Id;
-        }
+        if (name == null)
+            name = $"Mock Account {number++} {new Random().Next()}";
+
         var handler = new AccountAddEventHandler(
                                 _sp.GetRequiredService<IRepositoryBase<Account>>(), 
                                 _sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),

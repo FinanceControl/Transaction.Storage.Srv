@@ -1,5 +1,6 @@
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
+using Mapster;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Events;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 namespace Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
@@ -21,10 +22,8 @@ public partial class AssetType
   {
 
   }
-  protected AssetType(AssetTypeAddEvent newAssetTypeAddEvent)
+  protected AssetType(AssetTypeAddEvent addEventDto)
   {
-    Name = newAssetTypeAddEvent.Name;
-    IsInflationProtected = newAssetTypeAddEvent.IsInflationProtected;
-    IsUnderManagement = newAssetTypeAddEvent.IsUnderManagement;
+    addEventDto.Adapt(this);
   }
 }

@@ -1,4 +1,5 @@
 using Ardalis.Result;
+using Mapster;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Events;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Models;
 using Transaction.Storage.Srv.Shared.Database.Models;
@@ -23,6 +24,6 @@ public partial class Category : DomainEntity, ICategory
 
     public Category(CategoryAddEvent addEventDto) : base()
     {
-        Name = addEventDto.Name;
+        addEventDto.Adapt(this);
     }
 }

@@ -40,6 +40,14 @@ public abstract class BaseDbTest<T> : LoggingTestsBase<T>, IDisposable
   {
 
   }
+  public BaseDbTest(ITestOutputHelper output, IEnumerable<Func<IServiceCollection, IServiceCollection>> serviceRegistrationArr, LogLevel logLevel) :
+    this(output, (sc) => { 
+      foreach (var serviceRegistration in serviceRegistrationArr)
+        serviceRegistration(sc);           
+      }, logLevel)
+  {
+
+  }
   public BaseDbTest(ITestOutputHelper output, Action<IServiceCollection> serviceRegistration, LogLevel logLevel) : base(output, logLevel)
   {
     

@@ -17,5 +17,6 @@
     <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.AccountComponent\Transaction.Storage.Srv.App.Components.AccountComponent.csproj" />
     <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent\Transaction.Storage.Srv.App.Components.CategoryComponent.csproj" />
     <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.BudgetComponent\Transaction.Storage.Srv.App.Components.BudgetComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.TransactionComponent\Transaction.Storage.Srv.App.Components.TransactionComponent.csproj" />
   </ItemGroup>
 </Project>

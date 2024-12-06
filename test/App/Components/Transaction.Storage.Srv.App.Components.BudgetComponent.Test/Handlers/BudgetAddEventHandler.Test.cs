@@ -42,7 +42,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
 
         #region Act
         Logger.LogDebug("Test ACT");
-        var result = await handler.Handle(request, cancellationToken);
+        var assertedResult = await handler.Handle(request, cancellationToken);
 
         #endregion
 
@@ -50,12 +50,14 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         #region Assert
         Logger.LogDebug("Test ASSERT");
 
-        Assert.True(result.IsSuccess);
+        Assert.True(assertedResult.IsSuccess);
+        Assert.True(assertedResult.Value.Id > 0);
 
         var savedEntity = await global_sp.GetRequiredService<IReadRepositoryBase<Budget>>().ListAsync(cancellationToken);
         Assert.Single(savedEntity);
 
         var assertedEntity = savedEntity.First();
+        Assert.Equal(assertedResult.Value.Id, assertedEntity.Id);
         Assert.Equal(request.Name, assertedEntity.Name);
 
         #endregion

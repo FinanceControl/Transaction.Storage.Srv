@@ -76,7 +76,7 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> :
     if (!build_result.IsSuccess)
       return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping for ok result"));
 
-    _logger.LogInformation("Add entity {TEntityType}: {TEntity}", typeof(TEntity).Name, build_result.Value);
+    _logger.LogInformation("Add entity {TEntityType}: {TEntity}", typeof(TEntity).Name, build_result.Value.ToString());
     var new_Asset = await _repository.AddAsync(build_result.Value, cancellationToken);
 
     var result = await ToResult(new_Asset, cancellationToken);

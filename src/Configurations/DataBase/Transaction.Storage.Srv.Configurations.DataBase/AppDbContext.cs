@@ -5,6 +5,7 @@ using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 using Transaction.Storage.Srv.Shared.Database.Models;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
+using Transaction.Storage.Srv.App.Components.TransactionComponent.Entity;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase;
 
@@ -16,6 +17,7 @@ public partial class AppDbContext : DbContext
   {
     this.logger = logger;
   }
+  public DbSet<Operation> Operations{get;set;}
   public DbSet<Category> Categories{get;set;}
   public DbSet<Budget> Budgets{get;set;}
   public DbSet<AssetType> AssetTypes { get; set; }

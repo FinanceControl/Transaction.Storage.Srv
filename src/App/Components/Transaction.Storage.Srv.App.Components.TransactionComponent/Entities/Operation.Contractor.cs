@@ -36,12 +36,13 @@ public partial class Operation
         }
         public async Task<Result<Operation>> BuildAsync(OperationAddEvent source, CancellationToken cancellationToken = default)
         {
-            var new_Budget = new Operation(source);
-            
-            var source_result = await new Validator(accountRep,assetRep,categoryRep,budgetRep,operationRep).ValidateAsync(source);
+            var source_result = await new Validator(accountRep,assetRep,categoryRep,budgetRep,operationRep)
+                                    .ValidateAsync(source, cancellationToken);
             if (!source_result.IsValid)
                 return Result.Invalid(source_result.AsErrors());
 
+            var new_Budget = new Operation(source);
+            new_Budget.Account = await this.accountRep.GetByIdAsync(new_Budget.AccountId,cancellationToken);
             return Result.Success(new_Budget);
         }
 

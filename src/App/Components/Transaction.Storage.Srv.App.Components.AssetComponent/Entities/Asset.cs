@@ -15,5 +15,5 @@ public partial class Asset : ConstantDomainEntity,IAssetDto
 
   [Required]
   public int AssetTypeId { get; private set; }
-  public AssetType AssetType { get; private set; }
+  public AssetType? AssetType { get; private set; }
 }

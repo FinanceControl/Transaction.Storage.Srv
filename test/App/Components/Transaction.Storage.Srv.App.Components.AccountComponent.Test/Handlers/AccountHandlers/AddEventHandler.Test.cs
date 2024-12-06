@@ -56,7 +56,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
 
         Assert.True(assertedResult.IsSuccess);
         Assert.Equal(request.Name, assertedResult.Value.Name);
-
+        Assert.True(assertedResult.Value.Id > 0);
 
         var savedEntities = await global_sp.GetRequiredService<IReadRepositoryBase<Account>>().ListAsync(cancellationToken);
         Assert.Single(savedEntities);

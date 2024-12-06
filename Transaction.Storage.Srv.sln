@@ -71,6 +71,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.CategoryComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent.Test\Transaction.Storage.Srv.App.Components.CategoryComponent.Test.csproj", "{DA6F061E-3BF2-4056-868A-378645BD8CED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.TransactionComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.TransactionComponent.Test\Transaction.Storage.Srv.App.Components.TransactionComponent.Test.csproj", "{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -164,6 +166,10 @@ Global
 		{DA6F061E-3BF2-4056-868A-378645BD8CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA6F061E-3BF2-4056-868A-378645BD8CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA6F061E-3BF2-4056-868A-378645BD8CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{227C19D0-B594-42D4-B4E3-2EBB108D24C4} = {DF7BA0D6-3797-4D3F-9FD5-E68D20F757E7}
@@ -198,5 +204,6 @@ Global
 		{6A0A513C-F072-4ADF-B182-828958601B65} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 		{732C0905-EDC1-4FF9-B4BF-5CB822B0FCA8} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 		{DA6F061E-3BF2-4056-868A-378645BD8CED} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
+		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 using Transaction.Storage.Srv.App.Components.BudgetComponent.Entity;
@@ -39,8 +40,8 @@ public partial class Operation : DomainEntity, IOperation
     [MaxLength(255)]
     public string Notes { get; set; }
 
-    public Account Account { get; set; }
-    public Budget Budget { get; set; }
-    public Category Category { get; set; }
-    public Asset Asset { get; set; }
+    public Account? Account { get; set; }
+    public Budget? Budget { get; set; }
+    public Category? Category { get; set; }
+    public Asset? Asset { get; set; }
 }

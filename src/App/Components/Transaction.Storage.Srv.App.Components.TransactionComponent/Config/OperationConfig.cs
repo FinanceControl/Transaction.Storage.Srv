@@ -12,9 +12,9 @@ public class OperationConfiguration : IEntityTypeConfiguration<Operation>
 {
     public void Configure(EntityTypeBuilder<Operation> builder)
     {
-        builder.HasOne<Account>().WithMany().HasForeignKey(e=>e.AccountId).IsRequired();
-        builder.HasOne<Budget>().WithMany().HasForeignKey(e=>e.BudgetId).IsRequired();
-        builder.HasOne<Category>().WithMany().HasForeignKey(e=>e.CategoryId).IsRequired();
-        builder.HasOne<Asset>().WithMany().HasForeignKey(e=>e.AssetId).IsRequired();
+        builder.HasOne(r=>r.Account).WithMany().HasForeignKey(e=>e.AccountId).IsRequired();
+        builder.HasOne(e=>e.Budget).WithMany().HasForeignKey(e=>e.BudgetId).IsRequired();
+        builder.HasOne(e=>e.Category).WithMany().HasForeignKey(e=>e.CategoryId).IsRequired();
+        builder.HasOne(e=>e.Asset).WithMany().HasForeignKey(e=>e.AssetId).IsRequired();
     }
 }

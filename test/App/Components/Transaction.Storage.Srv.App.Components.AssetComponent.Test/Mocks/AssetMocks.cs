@@ -9,15 +9,24 @@ using Transaction.Storage.Srv.App.Components.AssetComponent.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.AssetComponent.Test.Mocks;
-class AssetMocks
+public class AssetMocks
 {
+    static int number =1;
     IServiceProvider _sp;
     public AssetMocks(IServiceProvider sp)
     {
         _sp = sp;
     }
-    public async Task<AssetDto> AddAsync(int assetTypeId, string name = "Mock Asset")
+    public async Task<AssetDto> AddAsync(string? name = null){
+        var assetType = await new AssetTypeMocks(_sp).AddAsync();
+        return await AddAsync(assetType.Id, name);
+    }
+
+    public async Task<AssetDto> AddAsync(int assetTypeId, string? name = null)
     {
+        if (name == null)
+            name = $"Mock Asset {number++} {new Random().Next()}";
+     
         var handler = new AssetAddEventHandler(
                                         _sp.GetRequiredService<IRepositoryBase<Asset>>(), 
                                         _sp.GetRequiredService<IEntityFactory<AssetAddEvent, Asset>>(),
@@ -25,7 +34,7 @@ class AssetMocks
         var request = new AssetAddEvent
         {
             Name = name,
-            AssetTypeId = assetTypeId
+            AssetTypeId = assetTypeId!
         };
 
         var cancellationToken = CancellationToken.None;

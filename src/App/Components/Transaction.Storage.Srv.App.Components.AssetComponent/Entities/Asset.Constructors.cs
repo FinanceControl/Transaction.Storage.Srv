@@ -5,6 +5,7 @@ using Ardalis.Specification;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Events;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
+using Mapster;
 
 namespace Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 
@@ -24,13 +25,7 @@ public partial class Asset
       if (!source_result.IsValid)
         return Result.Invalid(source_result.AsErrors());
 
-      var assetType = await assetTypeRep.GetByIdAsync(source.AssetTypeId, cancellationToken);
-      Guard.Against.Null(assetType);
-
-      var new_assertType = new Asset(source)
-      {
-        AssetType = assetType
-      };
+      var new_assertType = new Asset(source);
 
       return Result.Success(new_assertType);
     }
@@ -48,10 +43,9 @@ public partial class Asset
     AssetTypeId = assertTypeId;
   }
 #endif
-  protected Asset(AssetAddEvent assetAddEventDto)
+  protected Asset(AssetAddEvent addEventDto)
   {
-    Name = assetAddEventDto.Name;
-    AssetTypeId = assetAddEventDto.AssetTypeId;
+      addEventDto.Adapt(this);
   }
 
   public static implicit operator List<object>(Asset v)

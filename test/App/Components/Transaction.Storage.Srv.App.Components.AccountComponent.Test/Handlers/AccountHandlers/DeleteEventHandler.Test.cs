@@ -22,10 +22,10 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
         #region Array
         Logger.LogDebug("Test ARRAY");
         
-        var existCounterPartyId = (await new CounterPartyMocks(global_sp).AddAsync()).Id;
+            
         var accountMocks = new AccountMocks(global_sp);
-        var existAccount1 = await accountMocks.AddAsync("Exist 1",existCounterPartyId);
-        var existAccount2 = await accountMocks.AddAsync("Exist 2",existCounterPartyId);
+        var existAccount1 = await accountMocks.AddAsync();
+        var existAccount2 = await accountMocks.AddAsync();
         
         var handler = new AccountDeleteEventHandler(global_sp.GetRequiredService<IRepositoryBase<Account>>());
 
@@ -54,7 +54,7 @@ public class DeleteEventHandler_Test : BaseDbTest<DeleteEventHandler_Test>
         Assert.Single(savedEntity);
 
         var counterParty = savedEntity.First();
-        Assert.Equal("Exist 2", counterParty.Name);
+        Assert.Equal(existAccount2.Name, counterParty.Name);
         Assert.Equal(existAccount2.Id, counterParty.Id);
 
         #endregion

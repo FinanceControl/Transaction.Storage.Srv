@@ -9,15 +9,19 @@ using Transaction.Storage.Srv.App.Components.AssetComponent.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.AssetComponent.Test.Mocks;
-class AssetTypeMocks
+public class AssetTypeMocks
 {
+    static int number = 1;
     IServiceProvider _sp;
     public AssetTypeMocks(IServiceProvider sp)
     {
         _sp = sp;
     }
-    public async Task<AssetTypeDto> AddAsync(string name = "Mock AssetType")
+    public async Task<AssetTypeDto> AddAsync(string? name = null)
     {
+        if (name==null)
+            name = $"Mock AssetType {number++} {new Random().Next()}";
+
         var handler = new AssetTypeAddEventHandler(
                                             _sp.GetRequiredService<IRepositoryBase<AssetType>>(), 
                                             _sp.GetRequiredService<IEntityFactory<AssetTypeAddEvent, AssetType>>(),
