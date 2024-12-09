@@ -51,16 +51,14 @@ public class OperationUpdateEventHandler : IRequestHandler<OperationUpdateEvent,
         if (entity == null)
             return Result.NotFound(request.Id.ToString());
 
-        _logger.LogInformation("Update entity {TEntityType}: {TEntity}", typeof(Operation).Name, entity.ToString());
         if (entity.Guid != request.Guid)
             return Result.Conflict("Operation with same ID has another GUID");
 
-        var updated_entity = request.Adapt(entity);
-        var source_result = await new Operation.Validator(accountRep, assetRep, categoryRep, budgetRep, operationRep)
-                                .ValidateAsync(updated_entity, cancellationToken);
+        _logger.LogInformation("Update entity {TEntityType}: {TEntity}", typeof(Operation).Name, entity.ToString());
+        var updated_entity = await UpdateAsync(request, entity,cancellationToken);
 
-        if (!source_result.IsValid)
-            return Result.Invalid(source_result.AsErrors());
+        if (!updated_entity.IsSuccess)
+            return updated_entity.Map<Operation, OperationDto>((at) => throw new ApplicationException("Unexpected result mapping for ok result"));
 
         await repository.SaveChangesAsync();
 
@@ -69,6 +67,17 @@ public class OperationUpdateEventHandler : IRequestHandler<OperationUpdateEvent,
         return Result.Success(result);
     }
 
+    protected virtual async Task<Result<Operation>> UpdateAsync(OperationUpdateEvent source, Operation entity, CancellationToken cancellationToken){
+        var updated_entity = source.Adapt(entity);
+        var source_result = await new Operation.Validator(accountRep, assetRep, categoryRep, budgetRep, operationRep)
+                                .ValidateAsync(updated_entity, cancellationToken);
+                    
+        if (!source_result.IsValid)
+            return Result.Invalid(source_result.AsErrors());
+
+        return updated_entity;
+    }
+    
     protected virtual Task<OperationDto> ToResult(Operation entity, CancellationToken cancellationToken)
     {
         return Task.FromResult(entity.Adapt<OperationDto>());
