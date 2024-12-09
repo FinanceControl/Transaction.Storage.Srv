@@ -2,9 +2,23 @@ using Transaction.Storage.Srv.Shared.Model;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Models;
 
-public interface IOperation: IDomainModel,IOperationBody{
+/// <summary>
+/// Operation Model
+/// </summary>
+public interface IOperation: IDomainModel,IOperationUpdate{
 
 }
+
+/// <summary>
+/// Operation Update Model
+/// </summary>
+public interface IOperationUpdate: IDomainModelId, IOperationBody{
+
+}
+
+/// <summary>
+/// Operation Content 
+/// </summary>
 public interface IOperationBody:IExternalIdData{
     public DateTime PlanDatetime {get;}
     public DateTime CommitDateTime{get;}
@@ -17,6 +31,9 @@ public interface IOperationBody:IExternalIdData{
     public string Notes {get;}
 }
 
+/// <summary>
+/// Id of external ID
+/// </summary>
 public interface IExternalIdData{
     public string ExternalId {get;}
     public int AccountId {get;}

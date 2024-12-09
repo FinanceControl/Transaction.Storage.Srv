@@ -1,17 +1,19 @@
+using Ardalis.Result;
 using Ardalis.Specification;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Test.Mocks;
+using Transaction.Storage.Srv.App.Components.TransactionComponent.Dtos;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Entity;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Events;
-using Transaction.Storage.Srv.App.Components.TransactionComponent.Handlers;
-using Transaction.Storage.Srv.Shared.Events.Interfaces;
+using Transaction.Storage.Srv.App.Components.TransactionComponent.Test.Mocks;
 using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Test.Handlers;
-public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
+public class UpdateEventHandler_Test : BaseDbTest<UpdateEventHandler_Test>
 {
     private static IEnumerable<Func<IServiceCollection, IServiceCollection>> sc_arr =[ 
         AccountComponent.Module.Register ,
@@ -20,7 +22,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         BudgetComponent.Module.Register,
         Module.Register, 
     ];
-    public AddEventHandler_Test(ITestOutputHelper output, LogLevel logLevel = LogLevel.Debug)
+    public UpdateEventHandler_Test(ITestOutputHelper output, LogLevel logLevel = LogLevel.Debug)
             : base(output, sc_arr , logLevel)
     {
 
@@ -36,23 +38,25 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         var category = await new CategoryMocks(global_sp).AddAsync();
         var budget = await new BudgetMocks(global_sp).AddAsync();
 
-        var handler = new OperationAddEventHandler(
-                                            global_sp.GetRequiredService<IRepositoryBase<Operation>>(),
-                                            global_sp.GetRequiredService<IEntityFactory<OperationAddEvent, Operation>>(),
-                                            Output.BuildLoggerFor<OperationAddEventHandler>());
-        var request = new OperationAddEvent
+        var operation = await new OperationMocks(global_sp).AddAsync();
+
+        var handler =  global_sp.GetRequiredService<IRequestHandler<OperationUpdateEvent, Result<OperationDto>>>();
+        
+        var request = new OperationUpdateEvent
         {
-            ExternalId = "ext1",
+            Guid = operation.Guid,
+            Id = operation.Id,
+            ExternalId = "ext2",
             PlanDatetime = DateTime.UtcNow,
             CommitDateTime = DateTime.UtcNow + TimeSpan.FromHours(10),
-            Description = "description1",
+            Description = "description333",
             AccountId = account.Id,
             BudgetId = budget.Id,
             CategoryId = category.Id,
             AssetId = asset.Id,
-            Amount = 10,
-            Source = "source1",
-            Notes = "Note1"
+            Amount = 100,
+            Source = "source2",
+            Notes = "Note3"
         };
 
         var cancellationToken = CancellationToken.None;
@@ -63,22 +67,20 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
 
         #region Act
         Logger.LogDebug("Test ACT");
-        var assertedResult = await handler.Handle(request, cancellationToken);
-        
+        var result = await handler.Handle(request, cancellationToken);
+
         #endregion
 
 
         #region Assert
         Logger.LogDebug("Test ASSERT");
 
-        Assert.True(assertedResult.IsSuccess);
-        Assert.True(assertedResult.Value.Id > 0);
+        Assert.True(result.IsSuccess, result.Errors.ToString());
 
         var savedEntity = await global_sp.GetRequiredService<IReadRepositoryBase<Operation>>().ListAsync(cancellationToken);
         Assert.Single(savedEntity);
 
         var assertedEntity = savedEntity.First();
-        Assert.Equal(assertedResult.Value.Id, assertedEntity.Id);
         Assert.Equal(request.ExternalId,assertedEntity.ExternalId);
         Assert.Equal(request.PlanDatetime,assertedEntity.PlanDatetime);
         Assert.Equal(request.CommitDateTime,assertedEntity.CommitDateTime);

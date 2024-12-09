@@ -5,8 +5,12 @@ using Transaction.Storage.Srv.App.Components.TransactionComponent.Models;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Events;
 
-public class OperationAddEvent : IOperationBody, IRequest<Result<OperationDto>>
+public class OperationUpdateEvent : IOperationUpdate, IRequest<Result<OperationDto>>
 {
+    public Guid Guid {get;set;}
+
+    public int Id {get;set;}
+
     public DateTime PlanDatetime {get;set;}
 
     public DateTime CommitDateTime {get;set;}

@@ -61,7 +61,7 @@ public abstract class DomainEntity : ConstantDomainEntity, IDomainModel
   public byte[]? Version { get; set; }
 }
 
-public abstract class ConstantDomainEntity : EntityBase, IConstantDomainModel
+public abstract class ConstantDomainEntity : EntityBase, IConstantDomainModelId
 {
 
   private List<EventLogEntity> _domainEvents = new();

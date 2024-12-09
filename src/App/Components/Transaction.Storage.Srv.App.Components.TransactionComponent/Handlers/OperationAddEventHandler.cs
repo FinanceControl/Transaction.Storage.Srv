@@ -18,4 +18,5 @@ public class OperationAddEventHandler : EntityAddEventHandler<OperationAddEvent,
             : base(rep, entityFactory, logger)
     {
     }
+    
 }

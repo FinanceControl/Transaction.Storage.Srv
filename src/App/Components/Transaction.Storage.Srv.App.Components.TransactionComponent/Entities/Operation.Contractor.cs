@@ -7,6 +7,7 @@ using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 using Transaction.Storage.Srv.App.Components.BudgetComponent.Entity;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Events;
+using Transaction.Storage.Srv.App.Components.TransactionComponent.Models;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Entity;
@@ -41,11 +42,11 @@ public partial class Operation
             if (!source_result.IsValid)
                 return Result.Invalid(source_result.AsErrors());
 
-            var new_Budget = new Operation(source);
-            new_Budget.Account = await this.accountRep.GetByIdAsync(new_Budget.AccountId,cancellationToken);
-            return Result.Success(new_Budget);
+            var new_entity = new Operation(source);
+            return Result.Success(new_entity);
         }
 
+   
     }
 
     protected Operation()
