@@ -36,25 +36,12 @@ public class AccountController : ControllerBase
     return Ok(ent.Adapt<AccountDto>());
   }
 
-  [HttpDelete("{id}")]
-  [ProducesResponseType(typeof(AccountDto), StatusCodes.Status200OK)]
-  [ProducesResponseType(StatusCodes.Status404NotFound)]
-  [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AccountDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())
-  {
-    var eventDto = new AccountDeleteEvent() { Id = id, IsForced = isForced };
-    var result = await mediator.Send(eventDto, cancellationToken);
-    return result.ToActionResult(this);
-  }
-
   [HttpGet()]
   [ProducesResponseType(typeof(IEnumerable<AccountDto>), StatusCodes.Status200OK)]
   public async Task<ActionResult<IEnumerable<AccountDto>>> GetAll(
       CancellationToken cancellationToken = new())
   {
     var ent = await readRepository.ListAsync(cancellationToken);
-    if (ent is null)
-      return NotFound();
     return Ok(ent.Select(e => e.Adapt<AccountDto>()));
   }
 

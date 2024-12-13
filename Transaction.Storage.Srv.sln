@@ -59,8 +59,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{2B80C676-B6FE-4685-A238-2CA4CC3ADCB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Test", "test\App\Transaction.Storage.Srv.App.Test\Transaction.Storage.Srv.App.Test.csproj", "{9F66E7C0-7932-4829-B123-050F5CAB83A8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{A73659EC-E92C-49EE-99C2-DD028B71E323}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.AccountComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.AccountComponent.Test\Transaction.Storage.Srv.App.Components.AccountComponent.Test.csproj", "{1EF5CD6E-10C2-44DF-BBCA-3171F8328E3A}"
@@ -72,6 +70,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.CategoryComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent.Test\Transaction.Storage.Srv.App.Components.CategoryComponent.Test.csproj", "{DA6F061E-3BF2-4056-868A-378645BD8CED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.App.Components.TransactionComponent.Test", "test\App\Components\Transaction.Storage.Srv.App.Components.TransactionComponent.Test\Transaction.Storage.Srv.App.Components.TransactionComponent.Test.csproj", "{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{80256C8F-B3AE-4C80-9DAA-5E94DCDA114C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Storage.Srv.API.WebApi.Test", "test\Api\Transaction.Storage.Srv.API.WebApi.Test\Transaction.Storage.Srv.API.WebApi.Test.csproj", "{B3B71095-ED21-4CF3-8BC1-990917800BFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,10 +148,6 @@ Global
 		{A77D220D-95A1-4D98-8808-D8172862B506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A77D220D-95A1-4D98-8808-D8172862B506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A77D220D-95A1-4D98-8808-D8172862B506}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F66E7C0-7932-4829-B123-050F5CAB83A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F66E7C0-7932-4829-B123-050F5CAB83A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F66E7C0-7932-4829-B123-050F5CAB83A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F66E7C0-7932-4829-B123-050F5CAB83A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1EF5CD6E-10C2-44DF-BBCA-3171F8328E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1EF5CD6E-10C2-44DF-BBCA-3171F8328E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EF5CD6E-10C2-44DF-BBCA-3171F8328E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -170,6 +168,10 @@ Global
 		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B71095-ED21-4CF3-8BC1-990917800BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B71095-ED21-4CF3-8BC1-990917800BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B71095-ED21-4CF3-8BC1-990917800BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B71095-ED21-4CF3-8BC1-990917800BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{227C19D0-B594-42D4-B4E3-2EBB108D24C4} = {DF7BA0D6-3797-4D3F-9FD5-E68D20F757E7}
@@ -198,12 +200,13 @@ Global
 		{EC46BD33-C0BC-482D-B535-62FB37086E4D} = {3A4B819B-9C8F-47A7-B306-02610B49FF5B}
 		{A77D220D-95A1-4D98-8808-D8172862B506} = {EC46BD33-C0BC-482D-B535-62FB37086E4D}
 		{2B80C676-B6FE-4685-A238-2CA4CC3ADCB6} = {3A4B819B-9C8F-47A7-B306-02610B49FF5B}
-		{9F66E7C0-7932-4829-B123-050F5CAB83A8} = {2B80C676-B6FE-4685-A238-2CA4CC3ADCB6}
 		{A73659EC-E92C-49EE-99C2-DD028B71E323} = {2B80C676-B6FE-4685-A238-2CA4CC3ADCB6}
 		{1EF5CD6E-10C2-44DF-BBCA-3171F8328E3A} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 		{6A0A513C-F072-4ADF-B182-828958601B65} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 		{732C0905-EDC1-4FF9-B4BF-5CB822B0FCA8} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 		{DA6F061E-3BF2-4056-868A-378645BD8CED} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
 		{EF8D8156-7E49-4598-B5D0-0E88DBAFFF05} = {A73659EC-E92C-49EE-99C2-DD028B71E323}
+		{80256C8F-B3AE-4C80-9DAA-5E94DCDA114C} = {3A4B819B-9C8F-47A7-B306-02610B49FF5B}
+		{B3B71095-ED21-4CF3-8BC1-990917800BFD} = {80256C8F-B3AE-4C80-9DAA-5E94DCDA114C}
 	EndGlobalSection
 EndGlobal

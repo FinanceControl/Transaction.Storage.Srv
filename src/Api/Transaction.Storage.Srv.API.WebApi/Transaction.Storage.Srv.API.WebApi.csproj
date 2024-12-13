@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <PackageReference Include="Ardalis.Result.AspNetCore" Version="7.2.0" />
-    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+    <PackageReference Include="Ardalis.Result.AspNetCore" Version="10.1.0" />
+    <PackageReference Include="CsvHelper" Version="33.0.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\..\App\Transaction.Storage.Srv.App\Transaction.Storage.Srv.App.csproj" />
     <ProjectReference Include="..\..\App\Components\Transaction.Storage.Srv.App.Component.TransactionComponent\Transaction.Storage.Srv.App.Component.TransactionComponent.csproj" />

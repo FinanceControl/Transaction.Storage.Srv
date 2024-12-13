@@ -36,17 +36,6 @@ public class CounterPartyController : ControllerBase
     return base.Ok(ent.Adapt<CounterPartyDto>());
   }
 
-  [HttpDelete("{id}")]
-  [ProducesResponseType(typeof(CounterPartyDto), StatusCodes.Status200OK)]
-  [ProducesResponseType(StatusCodes.Status404NotFound)]
-  [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<CounterPartyDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())
-  {
-    var eventDto = new CounterPartyDeleteEvent() { Id = id, IsForced = isForced };
-    var result = await mediator.Send(eventDto, cancellationToken);
-    return result.ToActionResult(this);
-  }
-
   [HttpGet()]
   [ProducesResponseType(typeof(IEnumerable<CounterPartyDto>), StatusCodes.Status200OK)]
   public async Task<ActionResult<IEnumerable<CounterPartyDto>>> GetAll(

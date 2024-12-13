@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit.Abstractions;
 using Transaction.Storage.Srv.Configurations.DataBase;
+using Npgsql;
+using Microsoft.EntityFrameworkCore;
 
 namespace Transaction.Storage.Srv.Test.Tools;
 
@@ -16,41 +18,49 @@ public abstract class BaseDbTest<T> : LoggingTestsBase<T>, IDisposable
   {
     var _configurationBuilder = new ConfigurationBuilder();
     int next_number;
-    setupConfigBuider(dbSuffix + Guid.NewGuid().ToString(), _configurationBuilder);
+    setupConfigBuider(_configurationBuilder);
 
     return _configurationBuilder.Build();
   }
 
-  private static void setupConfigBuider(string dbSuffix, IConfigurationBuilder _configurationBuilder)
+  private static void setupConfigBuider(IConfigurationBuilder _configurationBuilder)
   {
     _configurationBuilder.AddJsonFile("./appsettings.test.json");
     _configurationBuilder.AddEnvironmentVariables();
+
+    // Извлечь строку подключения
+    var connectionString = _configurationBuilder.Build().GetConnectionString("DefaultConnection");
+
+    // Модифицировать строку подключения, добавив имя теста и GUID
+    var testGuid = Guid.NewGuid();
+    var conStrBuilder = new NpgsqlConnectionStringBuilder(connectionString);
+    conStrBuilder.Database = $"{conStrBuilder.Database}_{testGuid}";
+    var newConnectionString = conStrBuilder.ConnectionString;
+
     var dict = new Dictionary<string, string>
       {
-          {"ConnectionStrings:DbSuffix", dbSuffix},
-          {"ASPNETCORE_ENVIRONMENT", "Development"}
+          {"ConnectionStrings:DefaultConnection", newConnectionString}
       };
     _configurationBuilder.AddInMemoryCollection(dict);
 
-    //Console.WriteLine(_configurationBuilder.Build().GetConnectionString("DefaultConnection"));
-    //Console.WriteLine("Db Suffix: " + dbSuffix);
   }
-  public BaseDbTest(ITestOutputHelper output, Func<IServiceCollection, IServiceCollection> serviceRegistration, LogLevel logLevel) :
-    this(output, (sc) => { serviceRegistration(sc); }, logLevel)
+  public BaseDbTest(ITestOutputHelper output, Func<IServiceCollection,IConfiguration, IServiceCollection> serviceRegistration, LogLevel logLevel) :
+    this(output, (sc,config) => { serviceRegistration(sc,config); }, logLevel)
   {
 
   }
-  public BaseDbTest(ITestOutputHelper output, IEnumerable<Func<IServiceCollection, IServiceCollection>> serviceRegistrationArr, LogLevel logLevel) :
-    this(output, (sc) => { 
+  public BaseDbTest(ITestOutputHelper output, IEnumerable<Func<IServiceCollection,IConfiguration, IServiceCollection>> serviceRegistrationArr, LogLevel logLevel) :
+    this(output, (sc,config) =>
+    {
       foreach (var serviceRegistration in serviceRegistrationArr)
-        serviceRegistration(sc);           
-      }, logLevel)
+        serviceRegistration(sc,config);
+    }, logLevel)
   {
 
   }
-  public BaseDbTest(ITestOutputHelper output, Action<IServiceCollection> serviceRegistration, LogLevel logLevel) : base(output, logLevel)
+  public BaseDbTest(ITestOutputHelper output, Action<IServiceCollection,IConfiguration> serviceRegistration, LogLevel logLevel) : base(output, logLevel)
   {
-    
+
     var host = new HostBuilder()
           //.ConfigureHostConfiguration(config => setupConfigBuider(typeof(T).Name, config))
           .ConfigureServices((hostContext, services) =>
@@ -66,12 +76,14 @@ public abstract class BaseDbTest<T> : LoggingTestsBase<T>, IDisposable
                     builder.AddXunit(output); // Add the xUnit logger
                   });
             services.AddSingleton<ILogger>(sp => output.BuildLogger());
-            Module.Register(services);
-            serviceRegistration(services);
+            Module.Register(services, services.BuildServiceProvider().GetRequiredService<IConfiguration>());
+            serviceRegistration(services,services.BuildServiceProvider().GetRequiredService<IConfiguration>());
           })
           .Build();
 
     global_sp = host.Services;
+    var db_context = global_sp.GetRequiredService<AppDbContext>();
+    db_context.Database.Migrate();
   }
 
 

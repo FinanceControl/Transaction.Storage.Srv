@@ -38,8 +38,6 @@ public class CounterPartyTypeController : ControllerBase
       CancellationToken cancellationToken = new())
   {
     var ent = await readRepository.ListAsync(cancellationToken);
-    if (ent is null)
-      return NotFound();
     return Ok(ent.Select(e => e.Adapt<AssetTypeDto>()));
   }
 }

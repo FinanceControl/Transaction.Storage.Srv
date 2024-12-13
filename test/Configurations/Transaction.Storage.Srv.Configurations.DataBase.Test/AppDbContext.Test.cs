@@ -3,8 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
-using Transaction.Storage.Srv.Configurations.DataBase.Test.Tools;
-
+using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase.Test;

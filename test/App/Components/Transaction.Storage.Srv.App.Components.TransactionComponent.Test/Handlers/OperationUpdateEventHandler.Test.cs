@@ -1,6 +1,7 @@
 using Ardalis.Result;
 using Ardalis.Specification;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
@@ -15,7 +16,7 @@ using Xunit.Abstractions;
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Test.Handlers;
 public class UpdateEventHandler_Test : BaseDbTest<UpdateEventHandler_Test>
 {
-    private static IEnumerable<Func<IServiceCollection, IServiceCollection>> sc_arr =[ 
+    private static IEnumerable<Func<IServiceCollection,IConfiguration, IServiceCollection>> sc_arr =[ 
         AccountComponent.Module.Register ,
         AssetComponent.Module.Register,
         CategoryComponent.Module.Register,
