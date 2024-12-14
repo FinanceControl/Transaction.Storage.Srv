@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Dtos;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AccountComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
 [ApiController]
-[Route($"api/{SwaggerGenOptionsInit.AccountAggregate}/[controller]")]
-[ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AccountAggregate)]
+[Route($"api/{AccountSwaggerDocInit.ComponentName}/[controller]")]
+[ApiExplorerSettings(GroupName = AccountSwaggerDocInit.ComponentName)]
 public class CounterPartyTypeController : ControllerBase
 {
   private readonly IReadRepositoryBase<CounterPartyType> readRepository;

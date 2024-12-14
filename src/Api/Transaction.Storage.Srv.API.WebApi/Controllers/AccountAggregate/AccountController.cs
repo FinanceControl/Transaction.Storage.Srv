@@ -3,6 +3,7 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AccountComponent;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
@@ -10,8 +11,8 @@ using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEven
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
 [ApiController]
-[Route($"api/{SwaggerGenOptionsInit.AccountAggregate}/[controller]")]
-[ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AccountAggregate)]
+[Route($"api/{AccountSwaggerDocInit.ComponentName}/[controller]")]
+[ApiExplorerSettings(GroupName = AccountSwaggerDocInit.ComponentName)]
 public class AccountController : ControllerBase
 {
   private readonly IMediator mediator;
