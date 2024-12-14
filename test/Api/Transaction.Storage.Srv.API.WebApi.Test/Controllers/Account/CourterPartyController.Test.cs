@@ -6,12 +6,13 @@ using System.Text;
 using System.Net;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Microsoft.AspNetCore.Mvc;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AccountComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi.Test.Controllers.Account;
 
 public class CounterPartyController_Post_TestCases : LoggingTestsBase<CounterPartyController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
 {
-    private static string url = $"api/{SwaggerGenOptionsInit.AccountAggregate}/counterparty";
+    private static string url = $"api/{AccountSwaggerDocInit.ComponentName}/counterparty";
     private readonly HttpClient _client;
     private CounterPartyDto _counterPartyDto;
     private readonly ApplicationFactoryMock application;

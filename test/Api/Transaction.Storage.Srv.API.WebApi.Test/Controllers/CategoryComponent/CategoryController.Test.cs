@@ -4,21 +4,21 @@ using Xunit.Abstractions;
 using System.Text.Json;
 using System.Text;
 using System.Net;
-using Transaction.Storage.Srv.API.WebApi.Controllers.BudgetComponent;
-using Transaction.Storage.Srv.App.Components.BudgetComponent.Dto;
-using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
+using Transaction.Storage.Srv.API.WebApi.Controllers.CategoryComponent;
+using Transaction.Storage.Srv.App.Components.CategoryComponent.Dto;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
 
 namespace Transaction.Storage.Srv.API.WebApi.Test.Controllers.Asset;
 
-public class BudgetController_Post_TestCases : LoggingTestsBase<BudgetController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
+public class CategoryController_Post_TestCases : LoggingTestsBase<CategoryController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
 {
-    private static string url = $"api/{BudgetSwaggerDocInit.ComponentName}/Budget";
+    private static string url = $"api/{CategorySwaggerDocInit.ComponentName}/Category";
     private readonly HttpClient _client;
     private readonly ApplicationFactoryMock application;
 
-    public BudgetController_Post_TestCases(ITestOutputHelper output, ApplicationFactoryMock application, LogLevel logLevel = LogLevel.Debug) : base(output, logLevel)
+    public CategoryController_Post_TestCases(ITestOutputHelper output, ApplicationFactoryMock application, LogLevel logLevel = LogLevel.Debug) : base(output, logLevel)
     {
         this.application = application;
         _client = application.CreateClient();
@@ -48,7 +48,7 @@ public class BudgetController_Post_TestCases : LoggingTestsBase<BudgetController
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
 
         var responseString = await response.Content.ReadAsStringAsync();
-        var assertedResponseObject = JsonSerializer.Deserialize<BudgetDto>(responseString, new JsonSerializerOptions
+        var assertedResponseObject = JsonSerializer.Deserialize<CategoryDto>(responseString, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
@@ -62,16 +62,16 @@ public class BudgetController_Post_TestCases : LoggingTestsBase<BudgetController
     [Fact]
     public async Task WHEN_ValidDuplicateInput_THEN_ReturnsCreatedAsync()
     {
-        BudgetDto existBudgetDto;
+        CategoryDto existCategoryDto;
         using (var scope_sp = application.Services.CreateScope())
         {
-            existBudgetDto = await new BudgetMocks(scope_sp.ServiceProvider).AddAsync();
+            existCategoryDto = await new CategoryMocks(scope_sp.ServiceProvider).AddAsync();
         }
 
         var usedDto = new
         {
             // Заполните свойства события
-            Name = existBudgetDto.Name
+            Name = existCategoryDto.Name
         };
 
         var jsonContent = new StringContent(

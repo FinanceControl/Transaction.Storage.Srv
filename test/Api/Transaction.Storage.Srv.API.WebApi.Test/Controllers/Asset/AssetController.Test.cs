@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Dtos;
 using Microsoft.Extensions.DependencyInjection;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Test.Mocks;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AssetComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi.Test.Controllers.Asset;
 
 public class AssetController_Post_TestCases : LoggingTestsBase<AssetController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
 {
-    private static string url = $"api/{SwaggerGenOptionsInit.AssetAggregate}/Asset";
+    private static string url = $"api/{AssetSwaggerDocInit.ComponentName}/Asset";
     private readonly HttpClient _client;
     private readonly ApplicationFactoryMock application;
     private AssetTypeDto assetTypeDto;

@@ -8,12 +8,13 @@ using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AccountComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi.Test.Controllers.Account;
 
 public class AccountController_Post_TestCases : LoggingTestsBase<AccountController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
 {
-    private static string url = $"api/{SwaggerGenOptionsInit.AccountAggregate}/account";
+    private static string url = $"api/{AccountSwaggerDocInit.ComponentName}/account";
     private readonly HttpClient _client;
     private CounterPartyDto _counterPartyDto;
     private readonly ApplicationFactoryMock application;
