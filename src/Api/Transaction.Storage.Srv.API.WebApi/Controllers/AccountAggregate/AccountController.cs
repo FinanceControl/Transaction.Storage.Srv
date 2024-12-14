@@ -47,9 +47,9 @@ public class AccountController : ControllerBase
   }
 
   [HttpPost()]
-  [ProducesResponseType(typeof(IAccount), StatusCodes.Status201Created)]
+  [ProducesResponseType(typeof(AccountDto), StatusCodes.Status201Created)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<IAccount>> PostAccount([FromBody] AccountAddEvent newAccountAddEvent,
+  public async Task<ActionResult<AccountDto>> PostAccount([FromBody] AccountAddEvent newAccountAddEvent,
       CancellationToken cancellationToken = new())
   {
     var result = await mediator.Send(newAccountAddEvent, cancellationToken);

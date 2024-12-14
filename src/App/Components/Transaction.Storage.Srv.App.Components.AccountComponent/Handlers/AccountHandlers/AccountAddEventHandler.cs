@@ -5,10 +5,11 @@ using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Handlers.AccountHandlers;
 
-public class AccountAddEventHandler : EntityAddEventHandler<AccountAddEvent, Account, IAccount>
+public class AccountAddEventHandler : EntityAddEventHandler<AccountAddEvent, Account, AccountDto>
 {
 
   public AccountAddEventHandler(
