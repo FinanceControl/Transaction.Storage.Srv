@@ -7,11 +7,13 @@ using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Handlers;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events;
+using Transaction.Storage.Srv.Test.Tools;
+using Microsoft.Extensions.DependencyInjection;
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Test.Handlers;
-public class CounterPartyTypeFetchHandler_Test : LoggingTestsBase<CounterPartyTypeFetchHandler_Test>
+public class CounterPartyTypeFetchHandler_Test : BaseDbTest<CounterPartyTypeFetchHandler_Test>
 {
 
-    public CounterPartyTypeFetchHandler_Test(ITestOutputHelper output, LogLevel logLevel = LogLevel.Debug) : base(output, logLevel)
+    public CounterPartyTypeFetchHandler_Test(ITestOutputHelper output, LogLevel logLevel = LogLevel.Debug) : base(output, Module.Register, logLevel)
     {
 
     }
@@ -22,16 +24,9 @@ public class CounterPartyTypeFetchHandler_Test : LoggingTestsBase<CounterPartyTy
         #region Array
         Logger.LogDebug("Test ARRAY");
 
-        var mockRepo = Substitute.For<IReadRepositoryBase<CounterPartyType>>();
-        var testEntities = new List<CounterPartyType>
-        {
-            new CounterPartyType(ICounterPartyType.Enum.Storage),
-            new CounterPartyType(ICounterPartyType.Enum.Individual)
-        };
+        var repo = global_sp.GetRequiredService<IReadRepositoryBase<CounterPartyType>>();
 
-        mockRepo.ListAsync(Arg.Any<CancellationToken>()).Returns(testEntities);
-
-        var handler = new CounterPartyTypeFetchHandler(mockRepo);
+        var handler = new CounterPartyTypeFetchHandler(repo);
         var request = new CounterPartyTypeFetchEvent();
         var cancellationToken = CancellationToken.None;
 
@@ -53,13 +48,7 @@ public class CounterPartyTypeFetchHandler_Test : LoggingTestsBase<CounterPartyTy
         Assert.NotNull(result.Value);
 
         var resultList = result.Value.ToList();
-        Assert.Equal(2, resultList.Count);
-        Assert.Equal(testEntities[0].Id, resultList[0].Id);
-        Assert.Equal(testEntities[0].Name, resultList[0].Name);
-        Assert.Equal(testEntities[1].Id, resultList[1].Id);
-        Assert.Equal(testEntities[1].Name, resultList[1].Name);
-
-        await mockRepo.Received(1).ListAsync(Arg.Any<CancellationToken>());
+        Assert.Equal(3, resultList.Count);
 
         #endregion
     }

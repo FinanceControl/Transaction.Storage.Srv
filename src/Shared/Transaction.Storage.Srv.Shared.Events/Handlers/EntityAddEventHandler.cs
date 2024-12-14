@@ -5,6 +5,7 @@ using MediatR;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Transaction.Storage.Srv.Shared.Database.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace Transaction.Storage.Srv.Shared.Events.Handlers;
 public class OldEntityAddEventHandler<TEvent, TEntity, TResult> :
@@ -77,9 +78,23 @@ public class EntityAddEventHandler<TEvent, TEntity, TResult> :
       return build_result.Map<TEntity, TResult>((at) => throw new ApplicationException("Unexpected result mapping for ok result"));
 
     _logger.LogInformation("Add entity {TEntityType}: {TEntity}", typeof(TEntity).Name, build_result.Value.ToString());
-    var new_Asset = await _repository.AddAsync(build_result.Value, cancellationToken);
+    
+    TEntity new_Entity;
+    try
+    {
+      new_Entity = await _repository.AddAsync(build_result.Value, cancellationToken);
+    }
+    catch (DbUpdateException ex)
+    {
+      _logger.LogWarning(ex,"Db raise exception on update.");
+      return Result<TResult>.Conflict("Unexpected conflict when add entity to DataBase");
+    }
+    catch (Exception ex){
+      _logger.LogError(ex,"Db raise exception on update.");
+      return Result<TResult>.CriticalError("Cann't add entity to Database");
+    }
 
-    var result = await ToResult(new_Asset, cancellationToken);
+    var result = await ToResult(new_Entity, cancellationToken);
     _logger.LogInformation("Add return resut {TResultType}: {TResut}", typeof(TResult).Name, result);
     return Result.Success(result);
   }

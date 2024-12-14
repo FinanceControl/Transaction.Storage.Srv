@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Transaction.Storage.Srv.API.WebApi.Controllers.BudgetComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi;
 public static class SwaggerGenOptionsInit
@@ -8,6 +9,8 @@ public static class SwaggerGenOptionsInit
   public const string Version = "v1.0";
   public const string AssetAggregate = nameof(Controllers.AssetAggregate);
   public const string AccountAggregate = nameof(Controllers.AccountAggregate);
+ 
+
   public const string TransactionAggregate = "abc";// nameof(Controllers.Tr);
 
   public static void Init(this SwaggerGenOptions options)
@@ -34,6 +37,7 @@ public static class SwaggerGenOptionsInit
         //Url = new Uri("https://github.com/Instrument-Data-Source/Instrument-quote-data-source-srv")
       }
     });
+    options.InitBudgetApiInfo();
     options.SwaggerDoc(TransactionAggregate, new OpenApiInfo
     {
       Version = Version,
@@ -51,6 +55,7 @@ public static class SwaggerGenOptionsInit
   {
     options.SwaggerEndpoint($"/swagger/{AssetAggregate}/swagger.json", AssetAggregate);
     options.SwaggerEndpoint($"/swagger/{AccountAggregate}/swagger.json", AccountAggregate);
+    options.InitBudgetApiInfo();
     options.SwaggerEndpoint($"/swagger/{TransactionAggregate}/swagger.json", TransactionAggregate);
   }
 }

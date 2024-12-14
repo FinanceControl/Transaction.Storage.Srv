@@ -24,7 +24,6 @@ public partial class Operation
             RuleFor(at => at.AssetId).SetValidator(new IdValidator<Asset>(assetRep, nameof(AssetId)));
             RuleFor(at => at.CategoryId).SetValidator(new IdValidator<Category>(categoryRep, nameof(CategoryId)));
             RuleFor(at => at.BudgetId).SetValidator(new IdValidator<Budget>(budgetRep, nameof(BudgetId)));
-            RuleFor(o => o).SetValidator(new ExternalIdValidator(accountRep, operationRep));
         }
     }
 }

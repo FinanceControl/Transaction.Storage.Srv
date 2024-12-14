@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
-using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 

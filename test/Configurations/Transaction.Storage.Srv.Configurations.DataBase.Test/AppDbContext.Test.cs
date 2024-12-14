@@ -23,23 +23,6 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
     Logger.LogDebug("Test ARRAY");
 
     CounterParty used_CP;
-    //using (var array_scope = this.global_sp.CreateScope())
-    //{
-    //  var sp = array_scope.ServiceProvider;
-    //
-    //  var rr_cpt = sp.GetService<IReadRepositoryBase<CounterPartyType>>();
-    //  var testList = await rr_cpt.ListAsync();
-    //
-    //  var usedDbContext = sp.GetRequiredService<AppDbContext>();
-    //  var testList2 = usedDbContext.CounterPartyTypes.ToArray();
-    //
-    //  used_CP = await new CounterParty.Factory(rr_cpt).BuildAsync(new CounterPartyAddEvent()
-    //  {
-    //    Name = "N1",
-    //    CounterPartyTypeId = 1
-    //  });
-    //}
-
     CancellationToken ct = default;
     #endregion
 
@@ -53,7 +36,9 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
       var rr_cpt = sp.GetService<IReadRepositoryBase<CounterPartyType>>();
-      used_CP = await new CounterParty.Factory(rr_cpt).BuildAsync(new CounterPartyAddEvent()
+      var rr_cp = sp.GetService<IReadRepositoryBase<CounterParty>>();
+      
+      used_CP = await new CounterParty.Factory(rr_cpt,rr_cp).BuildAsync(new CounterPartyAddEvent()
       {
         Name = "N1",
         CounterPartyTypeId = 1
@@ -97,8 +82,8 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
       var rr = sp.GetService<IReadRepositoryBase<CounterPartyType>>();
-
-      used_CP = await usedDbContext.AddAsync(await new CounterParty.Factory(rr).BuildAsync(new CounterPartyAddEvent()
+      var rr_cp = sp.GetService<IReadRepositoryBase<CounterParty>>();
+      used_CP = await usedDbContext.AddAsync(await new CounterParty.Factory(rr,rr_cp).BuildAsync(new CounterPartyAddEvent()
       {
         Name = "N1",
         CounterPartyTypeId = 1

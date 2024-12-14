@@ -1,7 +1,7 @@
 using Transaction.Storage.Srv.App.Components.BudgetComponent.Models;
 
 namespace Transaction.Storage.Srv.App.Components.BudgetComponent.Dto;
-public class NewBudgetDto : INewBudget
+public class NewBudgetDto : IBudgetBody
 {
     public string Name {get;set;}
 }

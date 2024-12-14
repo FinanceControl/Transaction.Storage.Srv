@@ -1,10 +1,12 @@
-
-using Ardalis.GuardClauses;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using Ardalis.Specification;
+using Mapster;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Specifications;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
+using Transaction.Storage.Srv.Shared.Validators;
 
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 
@@ -13,10 +15,12 @@ public partial class Account
   public class Factory : IEntityFactory<AccountAddEvent, Account>
   {
     private readonly IReadRepositoryBase<CounterParty> counterPartyRep;
+    private readonly IReadRepositoryBase<Account> entityRep;
 
-    public Factory(IReadRepositoryBase<CounterParty> counterPartyRep)
+    public Factory(IReadRepositoryBase<CounterParty> counterPartyRep, IReadRepositoryBase<Account> entityRep)
     {
       this.counterPartyRep = counterPartyRep;
+      this.entityRep = entityRep;
     }
     public async Task<Result<Account>> BuildAsync(AccountAddEvent source, CancellationToken cancellationToken = default)
     {
@@ -24,15 +28,13 @@ public partial class Account
       if (!source_result.IsValid)
         return Result.Invalid(source_result.AsErrors());
 
-      var counterParty = await counterPartyRep.GetByIdAsync(source.CounterPartyId, cancellationToken);
-      Guard.Against.Null(counterParty);
+      source_result = await new UIXValidator<Account, IAccountBody>(entityRep, [new AccountByNameSpec.Factory()]).ValidateAsync(source);
+      if (!source_result.IsValid)
+        return Result.Conflict(source_result.Errors.Select(e => e.ErrorMessage).ToArray());
 
-      var new_account = new Account(source)
-      {
-        CounterParty = counterParty
-      };
+      var new_assertType = new Account(source);
 
-      return Result.Success(new_account);
+      return Result.Success(new_assertType);
     }
 
   }
@@ -43,10 +45,6 @@ public partial class Account
 
   protected Account(AccountAddEvent addEventDto)
   {
-    Name = addEventDto.Name;
-    CounterPartyId = addEventDto.CounterPartyId;
-    Description = addEventDto.Description;
-    IsUnderManagement = addEventDto.IsUnderManagement;
-    KeepassId = addEventDto.KeepassId;
+    addEventDto.Adapt(this);
   }
 }

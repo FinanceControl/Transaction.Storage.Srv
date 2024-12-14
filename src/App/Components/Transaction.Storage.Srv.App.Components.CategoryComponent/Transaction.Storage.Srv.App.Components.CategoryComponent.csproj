@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="../../../Shared/Transaction.Storage.Srv.Shared.Validators/Transaction.Storage.Srv.Shared.Validators.csproj" />
     <ProjectReference Include="..\..\..\Shared\Transaction.Storage.Srv.Shared.Model\Transaction.Storage.Srv.Shared.Model.csproj" />
     <ProjectReference Include="..\..\..\Shared\Transaction.Storage.Srv.Shared.Database\Transaction.Storage.Srv.Shared.Database.csproj" />
     <ProjectReference Include="..\..\..\Shared\Transaction.Storage.Srv.Shared.Events\Transaction.Storage.Srv.Shared.Events.csproj" />

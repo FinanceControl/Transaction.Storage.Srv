@@ -4,7 +4,6 @@ using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.Shared.Events.Handlers;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Handlers.AccountHandlers;

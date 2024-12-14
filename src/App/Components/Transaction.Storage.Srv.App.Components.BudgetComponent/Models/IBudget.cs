@@ -1,9 +1,9 @@
 using Transaction.Storage.Srv.Shared.Model;
 
 namespace Transaction.Storage.Srv.App.Components.BudgetComponent.Models;
-public interface IBudget:IDomainModel, INewBudget{
+public interface IBudget:IDomainModel, IBudgetBody{
 
 }   
-public interface INewBudget {
+public interface IBudgetBody {
     public string Name {get;}
 }

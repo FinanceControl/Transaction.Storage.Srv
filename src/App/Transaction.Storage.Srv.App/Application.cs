@@ -2,9 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Transaction.Storage.Srv.Configurations.DataBase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
+using Mapster;
+using FastExpressionCompiler;
+using Transaction.Storage.Srv.Configurations.DataBase;
 
 namespace Transaction.Storage.Srv.App;
 
@@ -12,9 +14,11 @@ public static class Application
 {
   public static IServiceCollection InitApp(this IServiceCollection sc, IConfiguration config)
   {
-    Configurations.DataBase.Module.Register(sc, config);
+    TypeAdapterConfig.GlobalSettings.Compiler = exp => exp.CompileFast();
+    Module.Register(sc, config);
     Components.AssetComponent.Module.Register(sc,config);
     Components.AccountComponent.Module.Register(sc,config);
+    Components.BudgetComponent.Module.Register(sc,config);
     Components.TransactionComponent.Module.Register(sc,config);
     return sc;
   }

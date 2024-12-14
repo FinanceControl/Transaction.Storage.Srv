@@ -7,6 +7,7 @@ using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
 using Transaction.Storage.Srv.App.Components.BudgetComponent.Entity;
 using Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Events;
+using Transaction.Storage.Srv.App.Components.TransactionComponent.Validators;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Entity;
@@ -40,6 +41,10 @@ public partial class Operation
                                     .ValidateAsync(source, cancellationToken);
             if (!source_result.IsValid)
                 return Result.Invalid(source_result.AsErrors());
+            
+            source_result = await new ExternalIdValidator(accountRep, operationRep).ValidateAsync(source,cancellationToken);
+            if (!source_result.IsValid)
+                return Result.Conflict(source_result.Errors.Select(e=>e.ErrorMessage).ToArray());
 
             var new_entity = new Operation(source);
             return Result.Success(new_entity);

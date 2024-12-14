@@ -36,17 +36,6 @@ public class AssetTypeController : ControllerBase
     return Ok(ent.Adapt<AssetTypeDto>());
   }
 
-  [HttpDelete("{id}")]
-  [ProducesResponseType(typeof(AssetTypeDto), StatusCodes.Status200OK)]
-  [ProducesResponseType(StatusCodes.Status404NotFound)]
-  [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AssetTypeDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())
-  {
-    var eventDto = new AssetTypeDeleteEvent() { Id = id, IsForced = isForced };
-    var result = await mediator.Send(eventDto, cancellationToken);
-    return result.ToActionResult(this);
-  }
-
   [HttpGet()]
   [ProducesResponseType(typeof(IEnumerable<AssetTypeDto>), StatusCodes.Status200OK)]
   public async Task<ActionResult<IEnumerable<AssetTypeDto>>> GetAll(
