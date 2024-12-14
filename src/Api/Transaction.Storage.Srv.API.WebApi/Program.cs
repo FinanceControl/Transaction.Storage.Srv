@@ -1,8 +1,6 @@
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 using Transaction.Storage.Srv.API.WebApi;
 using Transaction.Storage.Srv.App;
-using Transaction.Storage.Srv.Configurations.DataBase;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

@@ -1,8 +1,6 @@
 using Ardalis.Specification;
-using Castle.Core.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Handlers.AccountHandlers;

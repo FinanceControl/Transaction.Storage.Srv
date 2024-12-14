@@ -2,7 +2,6 @@
 using Ardalis.Specification;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Test.Mocks;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Dtos;

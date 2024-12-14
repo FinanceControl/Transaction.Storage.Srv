@@ -1,17 +1,12 @@
-using System;
 using Divergic.Logging.Xunit;
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using System.Text.Json;
 using System.Text;
 using System.Net;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
-using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Microsoft.Extensions.DependencyInjection;
-using Transaction.Storage.Srv.Configurations.DataBase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Transaction.Storage.Srv.API.WebApi.Test.Controllers.Account;
@@ -54,20 +49,23 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
             "application/json");
 
         // Act
+        var startDate = DateTime.UtcNow;
         var response = await _client.PostAsync(url, jsonContent);
+        var endDate = DateTime.UtcNow;
 
         // Assert
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
 
-        var responseString = await response.Content.ReadAsStringAsync();
-        var responseObject = JsonSerializer.Deserialize<AccountDto>(responseString, new JsonSerializerOptions
+        var assertedResponseString = await response.Content.ReadAsStringAsync();
+        var assertedResponseObject = JsonSerializer.Deserialize<AccountDto>(assertedResponseString, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
 
-        Assert.NotNull(responseObject);
-        Assert.Equal("Test Account", responseObject.Name);
-
+        Assert.NotNull(assertedResponseObject);
+        Assert.Equal("Test Account", assertedResponseObject.Name);
+        Assert.InRange(assertedResponseObject.CreatedDateTime, startDate, endDate);
+        Assert.InRange(assertedResponseObject.UpdatedDateTime, startDate, endDate);
     }
 
     [Fact]

@@ -1,7 +1,6 @@
 using Ardalis.Result;
 using MediatR;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
-using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
 

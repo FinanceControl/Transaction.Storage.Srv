@@ -1,6 +1,5 @@
 using Ardalis.Result;
 using Ardalis.Specification;
-using MediatR;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Dtos;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Events;
 using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;

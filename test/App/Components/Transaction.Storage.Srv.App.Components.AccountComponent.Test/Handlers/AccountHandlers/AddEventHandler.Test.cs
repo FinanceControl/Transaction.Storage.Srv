@@ -1,6 +1,5 @@
 using Ardalis.Result;
 using Ardalis.Specification;
-using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;

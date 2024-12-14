@@ -1,7 +1,4 @@
-
-using System.ComponentModel.DataAnnotations;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Models;
-using Transaction.Storage.Srv.Shared.Database.Models;
 using Transaction.Storage.Srv.Shared.Model;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Dtos;

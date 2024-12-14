@@ -30,6 +30,7 @@
     <ProjectReference Include="../../../src/Api/Transaction.Storage.Srv.API.WebApi/Transaction.Storage.Srv.API.WebApi.csproj" />
     <ProjectReference Include="../../../src/App/Components/Transaction.Storage.Srv.App.Components.AccountComponent/Transaction.Storage.Srv.App.Components.AccountComponent.csproj" />
     <ProjectReference Include="../../App/Components/Transaction.Storage.Srv.App.Components.AccountComponent.Test/Transaction.Storage.Srv.App.Components.AccountComponent.Test.csproj" />
+    <ProjectReference Include="../../App/Components/Transaction.Storage.Srv.App.Components.AssetComponent.Test/Transaction.Storage.Srv.App.Components.AssetComponent.Test.csproj" />
   </ItemGroup>
 
   <ItemGroup>

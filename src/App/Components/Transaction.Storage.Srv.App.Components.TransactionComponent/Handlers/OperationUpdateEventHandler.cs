@@ -11,8 +11,6 @@ using Transaction.Storage.Srv.App.Components.CategoryComponent.Entity;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Dtos;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Entity;
 using Transaction.Storage.Srv.App.Components.TransactionComponent.Events;
-using Transaction.Storage.Srv.App.Components.TransactionComponent.Models;
-using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.TransactionComponent.Handlers;
 
