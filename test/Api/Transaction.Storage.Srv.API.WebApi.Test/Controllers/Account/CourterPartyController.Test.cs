@@ -16,14 +16,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Transaction.Storage.Srv.API.WebApi.Test.Controllers.Account;
 
-public class AccountController_Post_TestCases : LoggingTestsBase<AccountController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
+public class CounterPartyController_Post_TestCases : LoggingTestsBase<CounterPartyController_Post_TestCases>, IDisposable, IClassFixture<ApplicationFactoryMock>
 {
-    private static string url = $"api/{SwaggerGenOptionsInit.AccountAggregate}/account";
+    private static string url = $"api/{SwaggerGenOptionsInit.AccountAggregate}/counterparty";
     private readonly HttpClient _client;
     private CounterPartyDto _counterPartyDto;
     private readonly ApplicationFactoryMock application;
 
-    public AccountController_Post_TestCases(ITestOutputHelper output, ApplicationFactoryMock application, LogLevel logLevel = LogLevel.Debug) : base(output, logLevel)
+    public CounterPartyController_Post_TestCases(ITestOutputHelper output, ApplicationFactoryMock application, LogLevel logLevel = LogLevel.Debug) : base(output, logLevel)
     {
         this.application = application;
         _client = application.CreateClient();
@@ -32,24 +32,15 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
     [Fact]
     public async Task WHEN_ValidInput_THEN_ReturnsCreatedAsync()
     {
-        // Arrange
-        using (var scope_sp = application.Services.CreateScope())
-        {
-            _counterPartyDto = await new CounterPartyMocks(scope_sp.ServiceProvider).AddAsync();
-        }
-
-        var newAccountAddEvent = new
+        var usedDto = new
         {
             // Заполните свойства события
-            Name = "Test Account",
-            Description = "Some description",
-            CounterPartyId = _counterPartyDto.Id,
-            IsUnderManagement = true,
-            KeepassId = "123"
+            Name = "Test CP",
+            CounterPartyTypeId = 1,
         };
 
         var jsonContent = new StringContent(
-            JsonSerializer.Serialize(newAccountAddEvent),
+            JsonSerializer.Serialize(usedDto),
             Encoding.UTF8,
             "application/json");
 
@@ -60,13 +51,13 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
 
         var responseString = await response.Content.ReadAsStringAsync();
-        var responseObject = JsonSerializer.Deserialize<AccountDto>(responseString, new JsonSerializerOptions
+        var responseObject = JsonSerializer.Deserialize<CounterPartyDto>(responseString, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
 
         Assert.NotNull(responseObject);
-        Assert.Equal("Test Account", responseObject.Name);
+        Assert.Equal("Test CP", responseObject.Name);
 
     }
 
@@ -74,23 +65,15 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
     public async Task WHEN_InvalidCounterPartyId_THEN_ReturnsBadRequest()
     {
         // Arrange
-        using (var scope_sp = application.Services.CreateScope())
-        {
-            _counterPartyDto = await new CounterPartyMocks(scope_sp.ServiceProvider).AddAsync();
-        }
-
-        var newAccountAddEvent = new
+        var usedDto = new
         {
             // Заполните свойства события
-            Name = "Test Account",
-            Description = "Some description",
-            CounterPartyId = _counterPartyDto.Id+100,
-            IsUnderManagement = true,
-            KeepassId = "123"
-        };
+            Name = "Test CP",
+            CounterPartyTypeId = 100,
+        };  
 
         var jsonContent = new StringContent(
-            JsonSerializer.Serialize(newAccountAddEvent),
+            JsonSerializer.Serialize(usedDto),
             Encoding.UTF8,
             "application/json");
 
@@ -107,8 +90,7 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
         });
 
         Assert.NotNull(responseObject);
-        Assert.Contains(nameof(newAccountAddEvent.CounterPartyId),responseObject.Errors);
+        Assert.Contains(nameof(usedDto.CounterPartyTypeId),responseObject.Errors);
     }
 
-    
 }

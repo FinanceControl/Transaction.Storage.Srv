@@ -9,10 +9,16 @@ namespace Transaction.Storage.Srv.Shared.Validators;
 /// <typeparam name="TEntity"></typeparam>
 public class IdValidator<TEntity> : AbstractValidator<int> where TEntity : EntityBase
 {
-  public IdValidator(IReadRepositoryBase<TEntity> readRep, string fieldName = "Id")
+  public const string DefaultIdFieldName = "Id";
+  public const string DefaultCode = "IdNotFound";
+  public const Severity DefaultSeverity = Severity.Error;
+
+  public IdValidator(IReadRepositoryBase<TEntity> readRep, string fieldName = DefaultIdFieldName, string code = DefaultCode, Severity severity = DefaultSeverity)
   {
     RuleFor(id => id).MustAsync(async (id, ct) => (await readRep.GetByIdAsync(id, ct)) != null)
-      .WithMessage((id) => $"{fieldName} {id} doesn't exist");
+      .WithMessage((id) => $"{fieldName} {id} doesn't exist")
+      .WithErrorCode(code)
+      .WithSeverity(severity);
   }
 }
 

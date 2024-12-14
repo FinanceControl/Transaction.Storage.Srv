@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
@@ -46,16 +47,16 @@ public class AccountController : ControllerBase
   }
 
   [HttpPost()]
-  [ProducesResponseType(typeof(AccountDto), StatusCodes.Status201Created)]
+  [ProducesResponseType(typeof(IAccount), StatusCodes.Status201Created)]
   [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<AccountDto>> PostAccount([FromBody] AccountAddEvent newAccountAddEvent,
+  public async Task<ActionResult<IAccount>> PostAccount([FromBody] AccountAddEvent newAccountAddEvent,
       CancellationToken cancellationToken = new())
   {
     var result = await mediator.Send(newAccountAddEvent, cancellationToken);
 
     if (result.IsSuccess)
     {
-      return CreatedAtAction(nameof(Get), new { id = result.Value.Id }, result.Value);
+      return CreatedAtAction(nameof(PostAccount), new { id = result.Value.Id }, result.Value);
     }
 
     var res = result.ToActionResult(this);

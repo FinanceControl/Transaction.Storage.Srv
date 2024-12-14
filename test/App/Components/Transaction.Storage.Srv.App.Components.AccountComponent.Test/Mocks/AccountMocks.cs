@@ -6,6 +6,7 @@ using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Events.AccountEvents;
 using Transaction.Storage.Srv.App.Components.AccountComponent.Handlers.AccountHandlers;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
 using Transaction.Storage.Srv.Shared.Events.Interfaces;
 
 namespace Transaction.Storage.Srv.App.Components.AccountComponent.Test.Mocks;
@@ -18,11 +19,11 @@ public class AccountMocks
     {
         _sp = sp;
     }
-    public async Task<AccountDto> AddAsync(string? name = null){
+    public async Task<IAccount> AddAsync(string? name = null){
         var counterParty = await new CounterPartyMocks(_sp).AddAsync();
         return await AddAsync(counterParty.Id,name);
     }
-    public async Task<AccountDto> AddAsync(int counterPartyId, string? name = null)
+    public async Task<IAccount> AddAsync(int counterPartyId, string? name = null)
     {
         if (name == null)
             name = $"Mock Account {number++} {new Random().Next()}";
