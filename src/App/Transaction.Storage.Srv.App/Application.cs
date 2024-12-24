@@ -17,6 +17,7 @@ public static class Application
     TypeAdapterConfig.GlobalSettings.Compiler = exp => exp.CompileFast();
     Module.Register(sc, config);
     Components.AssetComponent.Module.Register(sc,config);
+    Components.CategoryComponent.Module.Register(sc,config);
     Components.AccountComponent.Module.Register(sc,config);
     Components.BudgetComponent.Module.Register(sc,config);
     Components.TransactionComponent.Module.Register(sc,config);

@@ -22,4 +22,6 @@ public class AccountDto : IAccount
   public DateOnly LastSyncDate { get; set; }
 
   public string KeepassId { get; set; }
+
+  public string ExternalId { get; set; }
 }

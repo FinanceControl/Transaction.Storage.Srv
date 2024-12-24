@@ -23,8 +23,10 @@ public partial class Account : DomainEntity, IAccount
   public bool IsUnderManagement { get; private set; }
 
   public DateOnly CloseDate { get; private set; }
-  
+
   public DateOnly LastSyncDate { get; private set; }
 
   public string KeepassId { get; private set; }
+
+  public string ExternalId { get; private set; }
 }

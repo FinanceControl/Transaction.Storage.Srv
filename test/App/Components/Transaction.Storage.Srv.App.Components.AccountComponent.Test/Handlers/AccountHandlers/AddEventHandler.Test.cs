@@ -37,7 +37,8 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
             Description = "Test account description",
             CounterPartyId = counterPartyMock.Id,
             IsUnderManagement = false,
-            KeepassId = "123"     
+            KeepassId = "123",
+            ExternalId="321"    
         };
 
         var cancellationToken = CancellationToken.None;

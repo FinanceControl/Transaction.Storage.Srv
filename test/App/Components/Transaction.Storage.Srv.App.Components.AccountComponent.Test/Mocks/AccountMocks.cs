@@ -36,7 +36,8 @@ public class AccountMocks
             Description = "Test account description",
             CounterPartyId = counterPartyId,
             IsUnderManagement = false,
-            KeepassId = "123"     
+            KeepassId = "123",
+            ExternalId=name+"_extid"    
         };
 
         var cancellationToken = CancellationToken.None;

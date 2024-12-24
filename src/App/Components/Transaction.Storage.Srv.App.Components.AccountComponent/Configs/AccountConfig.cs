@@ -13,5 +13,6 @@ public class AccountConfig : IEntityTypeConfiguration<Account>
       .HasForeignKey(e => e.CounterPartyId)
       .IsRequired();
     entityBuilder.HasIndex(e => e.Name).IsUnique();
+    entityBuilder.HasIndex(e => new {e.CounterPartyId, e.ExternalId}).IsUnique();
   }
 }

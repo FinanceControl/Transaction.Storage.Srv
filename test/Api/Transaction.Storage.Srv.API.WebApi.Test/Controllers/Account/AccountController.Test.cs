@@ -41,7 +41,8 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
             Description = "Some description",
             CounterPartyId = _counterPartyDto.Id,
             IsUnderManagement = true,
-            KeepassId = "123"
+            KeepassId = "123",
+            ExternalId="321"
         };
 
         var jsonContent = new StringContent(
@@ -65,6 +66,7 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
 
         Assert.NotNull(assertedResponseObject);
         Assert.Equal("Test Account", assertedResponseObject.Name);
+        Assert.Equal(newAccountAddEvent.ExternalId, assertedResponseObject.ExternalId);
         Assert.InRange(assertedResponseObject.CreatedDateTime, startDate, endDate);
         Assert.InRange(assertedResponseObject.UpdatedDateTime, startDate, endDate);
     }
@@ -85,7 +87,8 @@ public class AccountController_Post_TestCases : LoggingTestsBase<AccountControll
             Description = "Some description",
             CounterPartyId = _counterPartyDto.Id+100,
             IsUnderManagement = true,
-            KeepassId = "123"
+            KeepassId = "123",
+            ExternalId="321"
         };
 
         var jsonContent = new StringContent(

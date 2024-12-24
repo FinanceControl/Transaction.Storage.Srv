@@ -18,6 +18,7 @@ public interface IAccountBody
 
   public int CounterPartyId { get; }
   public bool IsUnderManagement { get; }
+  public string ExternalId {get;}
 }
 
 /// <summary>

@@ -13,4 +13,6 @@ public class AccountAddEvent : IRequest<Result<AccountDto>>, IAccountBody
   public int CounterPartyId { get; set; }
   public bool IsUnderManagement { get; set; }
   public string KeepassId { get; set; }
+
+  public string ExternalId { get; set; }
 }
