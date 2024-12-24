@@ -28,7 +28,7 @@ public partial class Account
       if (!source_result.IsValid)
         return Result.Invalid(source_result.AsErrors());
 
-      source_result = await new UIXValidator<Account, IAccountBody>(entityRep, [new AccountByNameSpec.Factory()]).ValidateAsync(source);
+      source_result = await new UIXValidator<Account, IAccountBody>(entityRep, [new AccountByNameSpec.Factory(), new AccountByCounterPartyIdExternalIdSpec.Factory()]).ValidateAsync(source);
       if (!source_result.IsValid)
         return Result.Conflict(source_result.Errors.Select(e => e.ErrorMessage).ToArray());
 

@@ -28,7 +28,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         var counterPartyMock = await new CounterPartyMocks(global_sp).AddAsync();
 
         var handler = new AccountAddEventHandler(
-                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(), 
+                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(),
                                             global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),
                                             Output.BuildLoggerFor<AccountAddEventHandler>());
         var request = new AccountAddEvent
@@ -38,7 +38,7 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
             CounterPartyId = counterPartyMock.Id,
             IsUnderManagement = false,
             KeepassId = "123",
-            ExternalId="321"    
+            ExternalId = "321"
         };
 
         var cancellationToken = CancellationToken.None;
@@ -82,16 +82,17 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         var counterPartyMock = await new CounterPartyMocks(global_sp).AddAsync();
 
         var handler = new AccountAddEventHandler(
-                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(), 
+                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(),
                                             global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),
                                             Output.BuildLoggerFor<AccountAddEventHandler>());
         var request = new AccountAddEvent
         {
             Name = "Test Account",
             Description = "Test account description",
-            CounterPartyId = counterPartyMock.Id+100,
+            CounterPartyId = counterPartyMock.Id + 100,
             IsUnderManagement = false,
-            KeepassId = "123"     
+            KeepassId = "123",
+            ExternalId = "321"
         };
 
         var cancellationToken = CancellationToken.None;
@@ -111,12 +112,113 @@ public class AddEventHandler_Test : BaseDbTest<AddEventHandler_Test>
         Logger.LogDebug("Test ASSERT");
 
         Assert.False(assertedResult.IsSuccess);
-        Assert.Equal(ResultStatus.Invalid,assertedResult.Status);
-        
+        Assert.Equal(ResultStatus.Invalid, assertedResult.Status);
+
         var assertedError = Assert.Single(assertedResult.ValidationErrors);
         Assert.Equal(IdValidator<Account>.DefaultCode, assertedError.ErrorCode);
         Assert.Equal(nameof(AccountAddEvent.CounterPartyId), assertedError.Identifier);
         Assert.Equal(ValidationSeverity.Error, assertedError.Severity);
+        #endregion
+    }
+
+    [Fact]
+    public async Task WHEN_Duplicate_only_ExternalId_THEN_SavesToDatabaseAsync()
+    {
+        #region Array
+        Logger.LogDebug("Test ARRAY");
+        var counterPartyMock = await new CounterPartyMocks(global_sp).AddAsync();
+        var existAccount = await new AccountMocks(global_sp).AddAsync();
+
+        var handler = new AccountAddEventHandler(
+                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(),
+                                            global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),
+                                            Output.BuildLoggerFor<AccountAddEventHandler>());
+        var request = new AccountAddEvent
+        {
+            Name = "Test Account",
+            Description = "Test account description",
+            CounterPartyId = counterPartyMock.Id,
+            IsUnderManagement = false,
+            KeepassId = "123",
+            ExternalId = existAccount.ExternalId
+        };
+
+        var cancellationToken = CancellationToken.None;
+
+
+        #endregion
+
+
+        #region Act
+        Logger.LogDebug("Test ACT");
+        var assertedResult = await handler.Handle(request, cancellationToken);
+
+        #endregion
+
+
+        #region Assert
+        Logger.LogDebug("Test ASSERT");
+
+        Assert.True(assertedResult.IsSuccess);
+        Assert.Equal(request.Name, assertedResult.Value.Name);
+        Assert.True(assertedResult.Value.Id > 0);
+
+        var savedEntities = await global_sp.GetRequiredService<IReadRepositoryBase<Account>>().ListAsync(cancellationToken);
+        Assert.Equal(2, savedEntities.Count());
+
+        var assertedEntity = savedEntities.Single(e=>e.Name == request.Name);
+        Assert.Equal(assertedResult.Value.Id, assertedEntity.Id);
+        Assert.Equal(request.Name, assertedEntity.Name);
+        Assert.Equal(request.Description, assertedEntity.Description);
+        Assert.Equal(request.CounterPartyId, assertedEntity.CounterPartyId);
+        Assert.Equal(request.IsUnderManagement, assertedEntity.IsUnderManagement);
+        Assert.Equal(request.KeepassId, assertedEntity.KeepassId);
+        #endregion
+    }
+
+
+    [Fact]
+    public async Task WHEN_Duplicated_PartyId_ExternalId_THEN_ReturnConflictError()
+    {
+        #region Array
+        Logger.LogDebug("Test ARRAY");
+        var existAccount = await new AccountMocks(global_sp).AddAsync();
+
+        var handler = new AccountAddEventHandler(
+                                            global_sp.GetRequiredService<IRepositoryBase<Account>>(),
+                                            global_sp.GetRequiredService<IEntityFactory<AccountAddEvent, Account>>(),
+                                            Output.BuildLoggerFor<AccountAddEventHandler>());
+        var request = new AccountAddEvent
+        {
+            Name = "Test Account",
+            Description = "Test account description",
+            CounterPartyId = existAccount.CounterPartyId,
+            IsUnderManagement = false,
+            KeepassId = "123",
+            ExternalId = existAccount.ExternalId
+        };
+
+        var cancellationToken = CancellationToken.None;
+
+
+        #endregion
+
+
+        #region Act
+        Logger.LogDebug("Test ACT");
+        var assertedResult = await handler.Handle(request, cancellationToken);
+
+        #endregion
+
+
+        #region Assert
+        Logger.LogDebug("Test ASSERT");
+
+        Assert.False(assertedResult.IsSuccess);
+        Assert.Equal(ResultStatus.Conflict, assertedResult.Status);
+
+        var assertedError = Assert.Single(assertedResult.Errors);
+        Assert.Contains("Has exist entity with same", assertedError);
         #endregion
     }
 }
