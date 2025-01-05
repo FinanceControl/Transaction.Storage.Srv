@@ -27,7 +27,7 @@ public static class Module
     return _connectionStringBuilder;
   }
 
-  public static IServiceCollection Register(this IServiceCollection sc)
+  public static IServiceCollection Register(this IServiceCollection sc,IConfiguration config)
   {
     using var sp = sc.BuildServiceProvider();
     var logger = sp.GetService<ILogger>();
@@ -37,7 +37,7 @@ public static class Module
 
     sc.AddDbContext<AppDbContext>((provider, builder) =>
       {
-        DbConnectionStringBuilder connectionStringSource = GetConnectionStringBuilder(provider.GetService<IConfiguration>());
+        //DbConnectionStringBuilder connectionStringSource = GetConnectionStringBuilder(provider.GetService<IConfiguration>());
         var environment = provider.GetService<IHostEnvironment>();
 
         if (environment != null)
@@ -49,13 +49,11 @@ public static class Module
           }
         }
 
+        var connectionStringSource =  new NpgsqlConnectionStringBuilder(config.GetConnectionString("DefaultConnection"));
         logger?.LogInformation("PG host: {0}, db: {1}", connectionStringSource["Host"], connectionStringSource["Database"]);
+        
         builder.UseNpgsql(connectionStringSource.ConnectionString);
       });
-
-    logger?.LogInformation("Migration - begin");
-    sc.BuildServiceProvider().GetService<AppDbContext>()!.Database.Migrate();
-    logger?.LogInformation("Migration - done");
     return sc;
   }
 

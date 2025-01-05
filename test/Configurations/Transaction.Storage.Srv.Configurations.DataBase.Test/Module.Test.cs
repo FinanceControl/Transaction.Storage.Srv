@@ -1,10 +1,9 @@
 using Ardalis.Specification;
-using Divergic.Logging.Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
-using Transaction.Storage.Srv.Configurations.DataBase.Test.Tools;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Model;
+using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase.Test;
@@ -33,7 +32,7 @@ public class Module_Test : BaseDbTest<AppDbContext>
 
     List<CounterPartyType> assertedResult;
     List<CounterPartyType> assertedResult2;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<AppDbContext>();
@@ -49,17 +48,17 @@ public class Module_Test : BaseDbTest<AppDbContext>
     #region Assert
     Logger.LogDebug("Test ASSERT");
 
-    Assert.Equal(Enum.GetNames<CounterPartyType.Enum>().Count(), assertedResult.Count);
+    Assert.Equal(Enum.GetNames<ICounterPartyType.Enum>().Count(), assertedResult.Count);
     foreach (var cpt in assertedResult)
     {
-      var expected_name = Enum.GetName<CounterPartyType.Enum>(cpt.EnumId);
+      var expected_name = Enum.GetName<ICounterPartyType.Enum>(cpt.EnumId);
       Assert.Equal(expected_name, cpt.Name);
     }
 
-    Assert.Equal(Enum.GetNames<CounterPartyType.Enum>().Count(), assertedResult2.Count);
+    Assert.Equal(Enum.GetNames<ICounterPartyType.Enum>().Count(), assertedResult2.Count);
     foreach (var cpt in assertedResult2)
     {
-      var expected_name = Enum.GetName<CounterPartyType.Enum>(cpt.EnumId);
+      var expected_name = Enum.GetName<ICounterPartyType.Enum>(cpt.EnumId);
       Assert.Equal(expected_name, cpt.Name);
     }
     #endregion

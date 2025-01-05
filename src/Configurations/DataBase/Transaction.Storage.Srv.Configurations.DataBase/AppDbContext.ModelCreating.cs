@@ -34,7 +34,7 @@ public partial class AppDbContext
   {
     logger?.LogInformation("Search assamblies");
     HashSet<Assembly> usingAssemble = new HashSet<Assembly>();
-    foreach (var propInfo in this.GetType().GetProperties())
+    foreach (var propInfo in GetType().GetProperties())
     {
       if (propInfo.PropertyType.IsGenericType
             && propInfo.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>))

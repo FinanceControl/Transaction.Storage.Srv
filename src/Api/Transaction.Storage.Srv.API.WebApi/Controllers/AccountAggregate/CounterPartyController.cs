@@ -3,15 +3,16 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Dto;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AccountComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AccountAggregate;
 
 [ApiController]
-[Route($"api/{SwaggerGenOptionsInit.AccountAggregate}/[controller]")]
-[ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AccountAggregate)]
+[Route($"api/{AccountSwaggerDocInit.ComponentName}/[controller]")]
+[ApiExplorerSettings(GroupName = AccountSwaggerDocInit.ComponentName)]
 public class CounterPartyController : ControllerBase
 {
   private readonly IMediator mediator;
@@ -33,18 +34,7 @@ public class CounterPartyController : ControllerBase
     var ent = await readRepository.GetByIdAsync(id, cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.Adapt<CounterPartyDto>());
-  }
-
-  [HttpDelete("{id}")]
-  [ProducesResponseType(typeof(CounterPartyDto), StatusCodes.Status200OK)]
-  [ProducesResponseType(StatusCodes.Status404NotFound)]
-  [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-  public async Task<ActionResult<CounterPartyDto>> Delete([FromRoute] int id, [FromQuery] bool isForced = false, CancellationToken cancellationToken = new())
-  {
-    var eventDto = new CounterPartyDeleteEvent() { Id = id, IsForced = isForced };
-    var result = await mediator.Send(eventDto, cancellationToken);
-    return result.ToActionResult(this);
+    return base.Ok(ent.Adapt<CounterPartyDto>());
   }
 
   [HttpGet()]
@@ -55,7 +45,7 @@ public class CounterPartyController : ControllerBase
     var ent = await readRepository.ListAsync(cancellationToken);
     if (ent is null)
       return NotFound();
-    return Ok(ent.Select(e => e.Adapt<CounterPartyDto>()));
+    return Ok(ent.Select(e => e.Adapt<CounterParty>()));
   }
 
   [HttpPost()]

@@ -3,15 +3,16 @@ using Ardalis.Specification;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Dtos;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
+using Transaction.Storage.Srv.API.WebApi.Controllers.AssetComponent;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Dtos;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Entity;
+using Transaction.Storage.Srv.App.Components.AssetComponent.Events;
 
 namespace Transaction.Storage.Srv.API.WebApi.Controllers.AssetAggregate;
 
 [ApiController]
-[Route($"api/{SwaggerGenOptionsInit.AssetAggregate}/[controller]")]
-[ApiExplorerSettings(GroupName = SwaggerGenOptionsInit.AssetAggregate)]
+[Route($"api/{AssetSwaggerDocInit.ComponentName}/[controller]")]
+[ApiExplorerSettings(GroupName = AssetSwaggerDocInit.ComponentName)]
 public class AssetController : ControllerBase
 {
   private readonly IMediator mediator;

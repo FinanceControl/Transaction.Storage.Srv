@@ -17,18 +17,21 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.Account", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.Account", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("CloseDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("CounterPartyId")
                         .HasColumnType("integer");
@@ -41,8 +44,22 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)");
 
+                    b.Property<string>("ExternalId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uuid");
+
                     b.Property<bool>("IsUnderManagement")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("KeepassId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateOnly>("LastSyncDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -59,15 +76,16 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CounterPartyId");
-
                     b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.HasIndex("CounterPartyId", "ExternalId")
                         .IsUnique();
 
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterParty", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterParty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,6 +98,9 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Property<DateTimeOffset>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -104,7 +125,7 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.ToTable("CounterParties");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterPartyType", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterPartyType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +146,7 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "LegalEntity"
+                            Name = "Company"
                         },
                         new
                         {
@@ -139,7 +160,7 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.Asset", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AssetComponent.Entity.Asset", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,24 +171,10 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.Property<int>("AssetTypeId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<short>("DecimalSize")
-                        .HasColumnType("smallint");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
-
-                    b.Property<DateTimeOffset>("UpdatedDateTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
@@ -179,16 +186,13 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.ToTable("Assets");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.AssetType", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AssetComponent.Entity.AssetType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTimeOffset>("CreatedDateTime")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsInflationProtected")
                         .HasColumnType("boolean");
@@ -201,6 +205,33 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("AssetTypes");
+                });
+
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.BudgetComponent.Entity.Budget", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedDateTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
                     b.Property<DateTimeOffset>("UpdatedDateTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -214,10 +245,10 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("AssetTypes");
+                    b.ToTable("Budgets");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.CategoryComponent.Entity.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -225,16 +256,16 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset?>("CommitDateTime")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<DateTimeOffset>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Description")
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<DateTimeOffset>("UpdatedDateTime")
                         .HasColumnType("timestamp with time zone");
@@ -246,12 +277,13 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommitDateTime");
+                    b.HasIndex("Name")
+                        .IsUnique();
 
-                    b.ToTable("Headers");
+                    b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Position", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.TransactionComponent.Entity.Operation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -259,20 +291,52 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AccountId")
+                    b.Property<int>("AccountId")
                         .HasColumnType("integer");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(30, 15)");
+                        .HasColumnType("numeric");
 
                     b.Property<int>("AssetId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("BudgetId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CommitDateTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTimeOffset>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("HeaderId")
-                        .HasColumnType("integer");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<string>("ExternalId")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<DateTime>("PlanDatetime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<DateTimeOffset>("UpdatedDateTime")
                         .HasColumnType("timestamp with time zone");
@@ -288,14 +352,16 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.HasIndex("AssetId");
 
-                    b.HasIndex("HeaderId");
+                    b.HasIndex("BudgetId");
 
-                    b.ToTable("Positions");
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Operations");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.Account", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.Account", b =>
                 {
-                    b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterParty", "CounterParty")
+                    b.HasOne("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterParty", "CounterParty")
                         .WithMany("Accounts")
                         .HasForeignKey("CounterPartyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -304,9 +370,9 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.Navigation("CounterParty");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterParty", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterParty", b =>
                 {
-                    b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterPartyType", "CounterPartyType")
+                    b.HasOne("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterPartyType", "CounterPartyType")
                         .WithMany("CounterParties")
                         .HasForeignKey("CounterPartyTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -315,9 +381,9 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.Navigation("CounterPartyType");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.Asset", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AssetComponent.Entity.Asset", b =>
                 {
-                    b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.AssetType", "AssetType")
+                    b.HasOne("Transaction.Storage.Srv.App.Components.AssetComponent.Entity.AssetType", "AssetType")
                         .WithMany("Assets")
                         .HasForeignKey("AssetTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -326,21 +392,29 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
                     b.Navigation("AssetType");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Position", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.TransactionComponent.Entity.Operation", b =>
                 {
-                    b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.Account", "Account")
+                    b.HasOne("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.Account", "Account")
                         .WithMany()
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.Asset", "Asset")
+                    b.HasOne("Transaction.Storage.Srv.App.Components.AssetComponent.Entity.Asset", "Asset")
                         .WithMany()
                         .HasForeignKey("AssetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", "Header")
-                        .WithMany("Positions")
-                        .HasForeignKey("HeaderId")
+                    b.HasOne("Transaction.Storage.Srv.App.Components.BudgetComponent.Entity.Budget", "Budget")
+                        .WithMany()
+                        .HasForeignKey("BudgetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Transaction.Storage.Srv.App.Components.CategoryComponent.Entity.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -348,27 +422,24 @@ namespace Transaction.Storage.Srv.Configurations.DataBase.Migrations
 
                     b.Navigation("Asset");
 
-                    b.Navigation("Header");
+                    b.Navigation("Budget");
+
+                    b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterParty", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterParty", b =>
                 {
                     b.Navigation("Accounts");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models.CounterPartyType", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AccountComponent.Entity.CounterPartyType", b =>
                 {
                     b.Navigation("CounterParties");
                 });
 
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models.AssetType", b =>
+            modelBuilder.Entity("Transaction.Storage.Srv.App.Components.AssetComponent.Entity.AssetType", b =>
                 {
                     b.Navigation("Assets");
-                });
-
-            modelBuilder.Entity("Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.Models.Header", b =>
-                {
-                    b.Navigation("Positions");
                 });
 #pragma warning restore 612, 618
         }

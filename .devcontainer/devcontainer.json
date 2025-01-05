@@ -15,14 +15,19 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"formulahendry.dotnet-test-explorer",
-				"formulahendry.dotnet",
-				"ms-dotnettools.vscode-dotnet-runtime",
-				"aliasadidev.nugetpackagemanagergui",
-				"fernandoescolar.vscode-solution-explorer",
-				"ms-dotnettools.csharp",
-				"mhutchie.git-graph"
-			]
+                "formulahendry.dotnet-test-explorer",
+                "formulahendry.dotnet",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "aliasadidev.nugetpackagemanagergui",
+                "fernandoescolar.vscode-solution-explorer",
+                "ms-dotnettools.csharp",
+                "mhutchie.git-graph",
+                "mutantdino.resourcemonitor",
+                "ms-dotnettools.csdevkit",
+                "Gruntfuggly.todo-tree",
+                "codezombiech.gitignore",
+                "github.vscode-github-actions"
+            ]
 		}
 	},
 

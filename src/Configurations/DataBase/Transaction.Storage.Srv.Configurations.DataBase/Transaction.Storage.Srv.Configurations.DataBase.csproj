@@ -7,14 +7,16 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Ardalis.GuardClauses" Version="4.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj" />
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj" />
-    <ProjectReference Include="..\..\..\App\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate\Transaction.Storage.Srv.App.Core.Aggregates.TransactionAggregate.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.AssetComponent\Transaction.Storage.Srv.App.Components.AssetComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.AccountComponent\Transaction.Storage.Srv.App.Components.AccountComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent\Transaction.Storage.Srv.App.Components.CategoryComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.BudgetComponent\Transaction.Storage.Srv.App.Components.BudgetComponent.csproj" />
+    <ProjectReference Include="..\..\..\App\Components\Transaction.Storage.Srv.App.Components.TransactionComponent\Transaction.Storage.Srv.App.Components.TransactionComponent.csproj" />
   </ItemGroup>
 </Project>

@@ -6,13 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="FastExpressionCompiler" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Transaction.Storage.Srv.App.Aggregates.AssetAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.csproj" />
     <ProjectReference Include="..\..\Configurations\DataBase\Transaction.Storage.Srv.Configurations.DataBase\Transaction.Storage.Srv.Configurations.DataBase.csproj" />
-    <ProjectReference Include="..\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate\Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Components.AccountComponent\Transaction.Storage.Srv.App.Components.AccountComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Components.AssetComponent\Transaction.Storage.Srv.App.Components.AssetComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Components.BudgetComponent\Transaction.Storage.Srv.App.Components.BudgetComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Components.CategoryComponent\Transaction.Storage.Srv.App.Components.CategoryComponent.csproj" />
+    <ProjectReference Include="..\Components\Transaction.Storage.Srv.App.Components.TransactionComponent\Transaction.Storage.Srv.App.Components.TransactionComponent.csproj" />
   </ItemGroup>
 </Project>

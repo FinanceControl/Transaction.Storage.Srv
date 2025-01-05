@@ -1,13 +1,9 @@
 using Ardalis.Specification;
-using Divergic.Logging.Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AccountAggregate.Models;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Events;
-using Transaction.Storage.Srv.App.Core.Aggregates.AssetAggregate.Models;
-using Transaction.Storage.Srv.Configurations.DataBase.Test.Tools;
-
+using Transaction.Storage.Srv.App.Components.AccountComponent.Entity;
+using Transaction.Storage.Srv.App.Components.AccountComponent.Events.CounterPartyEvents;
+using Transaction.Storage.Srv.Test.Tools;
 using Xunit.Abstractions;
 
 namespace Transaction.Storage.Srv.Configurations.DataBase.Test;
@@ -27,23 +23,6 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
     Logger.LogDebug("Test ARRAY");
 
     CounterParty used_CP;
-    //using (var array_scope = this.global_sp.CreateScope())
-    //{
-    //  var sp = array_scope.ServiceProvider;
-    //
-    //  var rr_cpt = sp.GetService<IReadRepositoryBase<CounterPartyType>>();
-    //  var testList = await rr_cpt.ListAsync();
-    //
-    //  var usedDbContext = sp.GetRequiredService<AppDbContext>();
-    //  var testList2 = usedDbContext.CounterPartyTypes.ToArray();
-    //
-    //  used_CP = await new CounterParty.Factory(rr_cpt).BuildAsync(new CounterPartyAddEvent()
-    //  {
-    //    Name = "N1",
-    //    CounterPartyTypeId = 1
-    //  });
-    //}
-
     CancellationToken ct = default;
     #endregion
 
@@ -52,12 +31,14 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
     Logger.LogDebug("Test ACT");
 
     DateTimeOffset fromDt = DateTimeOffset.UtcNow;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
       var rr_cpt = sp.GetService<IReadRepositoryBase<CounterPartyType>>();
-      used_CP = await new CounterParty.Factory(rr_cpt).BuildAsync(new CounterPartyAddEvent()
+      var rr_cp = sp.GetService<IReadRepositoryBase<CounterParty>>();
+      
+      used_CP = await new CounterParty.Factory(rr_cpt,rr_cp).BuildAsync(new CounterPartyAddEvent()
       {
         Name = "N1",
         CounterPartyTypeId = 1
@@ -71,7 +52,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
     #region Assert
     Logger.LogDebug("Test ASSERT");
 
-    using (var assert_scope = this.global_sp.CreateScope())
+    using (var assert_scope = global_sp.CreateScope())
     {
       var sp = assert_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
@@ -96,13 +77,13 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
 
     CounterParty used_CP;
     DateTimeOffset fromCreatedDt = DateTimeOffset.UtcNow;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
       var rr = sp.GetService<IReadRepositoryBase<CounterPartyType>>();
-
-      used_CP = await usedDbContext.AddAsync(await new CounterParty.Factory(rr).BuildAsync(new CounterPartyAddEvent()
+      var rr_cp = sp.GetService<IReadRepositoryBase<CounterParty>>();
+      used_CP = await usedDbContext.AddAsync(await new CounterParty.Factory(rr,rr_cp).BuildAsync(new CounterPartyAddEvent()
       {
         Name = "N1",
         CounterPartyTypeId = 1
@@ -117,7 +98,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
 
 
     DateTimeOffset fromDt = DateTimeOffset.UtcNow;
-    using (var act_scope = this.global_sp.CreateScope())
+    using (var act_scope = global_sp.CreateScope())
     {
       var sp = act_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();
@@ -133,7 +114,7 @@ public class AppDbContext_Test : BaseDbTest<AppDbContext>
 
     #region Assert
     Logger.LogDebug("Test ASSERT");
-    using (var assert_scope = this.global_sp.CreateScope())
+    using (var assert_scope = global_sp.CreateScope())
     {
       var sp = assert_scope.ServiceProvider;
       var usedDbContext = sp.GetRequiredService<IRepositoryBase<CounterParty>>();

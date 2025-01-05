@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\tools\Transaction.Storage.Srv.Test.Tools\Transaction.Storage.Srv.Test.Tools.csproj" />
+    <ProjectReference Include="..\..\..\..\src\App\Components\Transaction.Storage.Srv.App.Components.TransactionComponent\Transaction.Storage.Srv.App.Components.TransactionComponent.csproj" />
+    <ProjectReference Include="..\Transaction.Storage.Srv.App.Components.AccountComponent.Test\Transaction.Storage.Srv.App.Components.AccountComponent.Test.csproj" />
+    <ProjectReference Include="..\Transaction.Storage.Srv.App.Components.AssetComponent.Test\Transaction.Storage.Srv.App.Components.AssetComponent.Test.csproj" />
+    <ProjectReference Include="..\Transaction.Storage.Srv.App.Components.BudgetComponent.Test\Transaction.Storage.Srv.App.Components.BudgetComponent.Test.csproj" />
+    <ProjectReference Include="..\Transaction.Storage.Srv.App.Components.CategoryComponent.Test\Transaction.Storage.Srv.App.Components.CategoryComponent.Test.csproj" />
+  </ItemGroup>
+
+</Project>

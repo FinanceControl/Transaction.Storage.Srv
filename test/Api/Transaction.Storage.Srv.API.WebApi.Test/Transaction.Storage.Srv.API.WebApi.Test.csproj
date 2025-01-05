@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="Divergic.Logging.Xunit" Version="4.3.1" />
+    <PackageReference Include="NSubstitute" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="appsettings.Test.json">
+     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../../src/Api/Transaction.Storage.Srv.API.WebApi/Transaction.Storage.Srv.API.WebApi.csproj" />
+    <ProjectReference Include="../../../src/App/Components/Transaction.Storage.Srv.App.Components.AccountComponent/Transaction.Storage.Srv.App.Components.AccountComponent.csproj" />
+    <ProjectReference Include="../../App/Components/Transaction.Storage.Srv.App.Components.AccountComponent.Test/Transaction.Storage.Srv.App.Components.AccountComponent.Test.csproj" />
+    <ProjectReference Include="../../App/Components/Transaction.Storage.Srv.App.Components.AssetComponent.Test/Transaction.Storage.Srv.App.Components.AssetComponent.Test.csproj" />
+    <ProjectReference Include="../../App/Components/Transaction.Storage.Srv.App.Components.BudgetComponent.Test/Transaction.Storage.Srv.App.Components.BudgetComponent.Test.csproj" />
+    <ProjectReference Include="../../App/Components/Transaction.Storage.Srv.App.Components.CategoryComponent.Test/Transaction.Storage.Srv.App.Components.CategoryComponent.Test.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>
