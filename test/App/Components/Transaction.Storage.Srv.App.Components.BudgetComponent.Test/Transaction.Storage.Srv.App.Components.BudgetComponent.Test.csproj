@@ -29,6 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\tools\Transaction.Storage.Srv.Test.Tools\Transaction.Storage.Srv.Test.Tools.csproj" />
-    <ProjectReference Include="..\..\..\..\src\App\Components\Transaction.Storage.Srv.App.Component.BudgetComponent\Transaction.Storage.Srv.App.Component.BudgetComponent.csproj" />
+    <ProjectReference Include="..\..\..\..\src\App\Components\Transaction.Storage.Srv.App.Components.BudgetComponent\Transaction.Storage.Srv.App.Components.BudgetComponent.csproj" />
   </ItemGroup>
 </Project>

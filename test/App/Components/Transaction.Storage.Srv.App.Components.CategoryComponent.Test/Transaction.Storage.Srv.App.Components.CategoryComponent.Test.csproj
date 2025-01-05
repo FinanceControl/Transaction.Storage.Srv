@@ -28,6 +28,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\tools\Transaction.Storage.Srv.Test.Tools\Transaction.Storage.Srv.Test.Tools.csproj" />
-    <ProjectReference Include="..\..\..\..\src\App\Components\Transaction.Storage.Srv.App.Component.CategoryComponent\Transaction.Storage.Srv.App.Component.CategoryComponent.csproj" />
+    <ProjectReference Include="..\..\..\..\src\App\Components\Transaction.Storage.Srv.App.Components.CategoryComponent\Transaction.Storage.Srv.App.Components.CategoryComponent.csproj" />
   </ItemGroup>
 </Project>

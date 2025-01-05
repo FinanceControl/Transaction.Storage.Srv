@@ -8,8 +8,16 @@ using Transaction.Storage.Srv.API.WebApi.Controllers.CategoryComponent;
 using Transaction.Storage.Srv.API.WebApi.Controllers.TransactionComponent;
 
 namespace Transaction.Storage.Srv.API.WebApi;
+/// <summary>
+/// Swagger doc init tools
+/// </summary>
 public static class SwaggerGenOptionsInit
 {
+
+  /// <summary>
+  /// Init Swagger documentations
+  /// </summary>
+  /// <param name="options"></param>
   public static void Init(this SwaggerGenOptions options)
   {
     options
@@ -20,6 +28,10 @@ public static class SwaggerGenOptionsInit
     .InitTransactionApiInfo();
   }
 
+  /// <summary>
+  /// Init swagger doc api config
+  /// </summary>
+  /// <param name="options"></param>
   public static void Init(this SwaggerUIOptions options)
   {
     options
