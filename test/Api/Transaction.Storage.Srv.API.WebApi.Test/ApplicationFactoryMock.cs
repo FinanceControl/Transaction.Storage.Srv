@@ -19,7 +19,7 @@ public class ApplicationFactoryMock : WebApplicationFactory<Program>
       config.SetBasePath(Directory.GetCurrentDirectory());
       // Загрузить настройки из appsettings.Test.json
       config.AddJsonFile("appsettings.Test.json", optional: false);
-
+      config.AddEnvironmentVariables();
       // Построить конфигурацию
       var builtConfig = config.Build();
 
